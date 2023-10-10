@@ -4,6 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class MovementAlt : MonoBehaviour
 {
     //buat bisa gerak harus punya speed dulu dan xvalue
@@ -17,14 +18,13 @@ public class MovementAlt : MonoBehaviour
     //akses rigidbody
     Rigidbody2D rb;
     public float jumpHeight = 8;
-    bool isGround = false;
+    public bool isGround = false;
     public bool moving;
     private bool isAttacking = false;
     private GameObject child;
     private GameObject landing;
-    [SerializeField]private LayerMask layerMask;
-    //private Movement movement;
-    //private int count = 0;
+    [SerializeField] private LayerMask layerMask;
+
 
 
 
@@ -40,15 +40,16 @@ public class MovementAlt : MonoBehaviour
     }
 
     // Update is called once per frame
+    #region unitymethod
     void Update()
     {
         //Debug.Log("COUNT is : " + count);
-        if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("isJumping") == false )
+        if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("isJumping") == false)
         {
             OnDisableMovement();
             Attack();
             Invoke("OnEnableMovement", 0.5f);
-            
+
         }
         if (moving == true)
         {
@@ -73,112 +74,115 @@ public class MovementAlt : MonoBehaviour
 
         }
     }
-    private void FixedUpdate()
-    {
-        Vector3 down = transform.TransformDirection(Vector3.down);
-        RaycastHit2D groundHit = Physics2D.Raycast(child.transform.position, down , 0.5f, layerMask);
 
-        Debug.DrawRay(child.transform.position, down * 0.5f, Color.red);
-
-        if(groundHit.rigidbody != null){
-            isGround = true;
-        }
-        else
+        private void FixedUpdate()
         {
-            Debug.Log("check");
-            isGround = false;
+            Vector3 down = transform.TransformDirection(Vector3.down);
+            RaycastHit2D groundHit = Physics2D.Raycast(child.transform.position, down, 0.5f, layerMask);
+
+            Debug.DrawRay(child.transform.position, down * 0.5f, Color.red);
+
+            if (groundHit.rigidbody != null) {
+                isGround = true;
+            }
+            else
+            {
+                Debug.Log("check");
+                isGround = false;
+            }
         }
-    }
+    #endregion 
     public void OnDisableMovement()
-    {
-        moving = false;
-        animator.SetBool("isMoving", false);
-        //Debug.Log("IS NOT MOVE");
-    }
-    public void OnEnableMovement()
-    {
-
-        moving = true;
-        animator.SetBool("isAttacking", false);
-        
-        //Debug.Log("IS MOVE");
-        
-    }
-    public void Move()
-    {
-        //ambil berapa lama input horizontal 0 = no input,  1/-1 = hold
-        xvalue = Input.GetAxis("Horizontal");
-        yvalue = Input.GetAxis("Vertical");
-
-        //ubah boolean isMoving jadi true
-        if (xvalue == 0 && yvalue == 0)
         {
+            moving = false;
             animator.SetBool("isMoving", false);
+            //Debug.Log("IS NOT MOVE");
         }
-        else
+        public void OnEnableMovement()
         {
-            animator.SetBool("isMoving", true);
+
+            moving = true;
+            animator.SetBool("isAttacking", false);
+
+            //Debug.Log("IS MOVE");
+
         }
-
-        //buat arah gerakan
-        Vector2 arah = new Vector2(xvalue, yvalue).normalized;
-
-        //kondisi jika berbalik
-        if (xvalue < 0)
+        public void Move()
         {
-            this.transform.localScale = new Vector3(-1, 1, 1);
+            //ambil berapa lama input horizontal 0 = no input,  1/-1 = hold
+            xvalue = Input.GetAxis("Horizontal");
+            yvalue = Input.GetAxis("Vertical");
+
+            //ubah boolean isMoving jadi true
+            if (xvalue == 0 && yvalue == 0)
+            {
+                animator.SetBool("isMoving", false);
+            }
+            else
+            {
+                animator.SetBool("isMoving", true);
+            }
+
+            //buat arah gerakan
+            Vector2 arah = new Vector2(xvalue, yvalue).normalized;
+
+            //kondisi jika berbalik
+            if (xvalue < 0)
+            {
+                this.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (xvalue > 0)
+            {
+                this.transform.localScale = new Vector3(1, 1, 1);
+            }
+            //kalkulasi kecepatan arah
+            this.transform.Translate(arah * Time.deltaTime * speed);
         }
-        else if(xvalue > 0)
+        void Attack()
         {
-            this.transform.localScale = new Vector3(1, 1, 1);
+            animator.SetBool("isAttacking", true);
         }
-        //kalkulasi kecepatan arah
-        this.transform.Translate(arah * Time.deltaTime * speed);
-    }
-    void Attack()
-    {
-        animator.SetBool("isAttacking", true);
-    }
-    void Jump(float jumping)
-    {
-        rb.velocity = new Vector2(0, jumping);
-        
-        
-    }
+        void Jump(float jumping)
+        {
+            rb.velocity = new Vector2(0, jumping);
 
 
-    
+        }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    // if trigger sentuh tanah dengan tag "platform" allow jump
-        
-    //    if (collision.tag == "Platform" )
-    //    {
-    //        count++;
-    //        isGround = true;
-    //        animator.SetBool("isJumping", false);
-    //    }
-    //}
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.tag == "Platform" ) {
-    //        count--;
-    //        isGround = false;
-    //        animator.SetBool("isJumping", true);
-    //    }
-    //}
-    ////private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (count == 2)
-    //    {
-    //        transform.Find("HitRange").gameObject.SetActive(false);
-    //    } else if (count == 0)
-    //    {
-    //        transform.Find("HitRange").gameObject.SetActive(true);
-    //    }
-    //}
-}
+
+
+
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    // if trigger sentuh tanah dengan tag "platform" allow jump
+
+        //    if (collision.tag == "Platform" )
+        //    {
+        //        count++;
+        //        isGround = true;
+        //        animator.SetBool("isJumping", false);
+        //    }
+        //}
+        //private void OnTriggerExit2D(Collider2D collision)
+        //{
+        //    if (collision.tag == "Platform" ) {
+        //        count--;
+        //        isGround = false;
+        //        animator.SetBool("isJumping", true);
+        //    }
+        //}
+        ////private void OnTriggerStay2D(Collider2D collision)
+        //{
+        //    if (count == 2)
+        //    {
+        //        transform.Find("HitRange").gameObject.SetActive(false);
+        //    } else if (count == 0)
+        //    {
+        //        transform.Find("HitRange").gameObject.SetActive(true);
+        //    }
+        //}
+    }
+
 
 
 

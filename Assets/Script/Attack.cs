@@ -41,7 +41,7 @@ public class Attack : MonoBehaviour
                 CanSpecialAttack = false;
                 StartCoroutine(SpecialAttackCooldown());
                 //lastSpecialAttackTime = Time.time; // Set waktu serangan khusus terakhir
-                Invoke("MovementEnable", 0.5f);
+                Invoke("MovementEnable", 1f);
             }
 
             else

@@ -84,11 +84,13 @@ public class MovementAlt : MonoBehaviour
 
             if (groundHit.rigidbody != null) {
                 isGround = true;
-            }
+                animator.SetBool("isJumping", false);
+        }
             else
             {
                 Debug.Log("check");
                 isGround = false;
+                animator.SetBool("isJumping", true);
             }
         }
     #endregion 

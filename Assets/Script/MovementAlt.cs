@@ -24,7 +24,8 @@ public class MovementAlt : MonoBehaviour
     private GameObject child;
     private GameObject landing;
     [SerializeField] private LayerMask layerMask;
-
+    public int maxHealth = 100;
+    int currentHealth;
 
 
 
@@ -150,40 +151,59 @@ public class MovementAlt : MonoBehaviour
 
 
         }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
 
+        //animasi kena pukul
 
-
-
-        //private void OnTriggerEnter2D(Collider2D collision)
-        //{
-        //    // if trigger sentuh tanah dengan tag "platform" allow jump
-
-        //    if (collision.tag == "Platform" )
-        //    {
-        //        count++;
-        //        isGround = true;
-        //        animator.SetBool("isJumping", false);
-        //    }
-        //}
-        //private void OnTriggerExit2D(Collider2D collision)
-        //{
-        //    if (collision.tag == "Platform" ) {
-        //        count--;
-        //        isGround = false;
-        //        animator.SetBool("isJumping", true);
-        //    }
-        //}
-        ////private void OnTriggerStay2D(Collider2D collision)
-        //{
-        //    if (count == 2)
-        //    {
-        //        transform.Find("HitRange").gameObject.SetActive(false);
-        //    } else if (count == 0)
-        //    {
-        //        transform.Find("HitRange").gameObject.SetActive(true);
-        //    }
-        //}
+        if (currentHealth < 0)
+        {
+            Die();
+        }
     }
+    void Die()
+    {
+        Debug.Log("MATI DIA");
+
+        //animasi mati
+
+        //disable musuh
+    }
+
+
+
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    // if trigger sentuh tanah dengan tag "platform" allow jump
+
+    //    if (collision.tag == "Platform" )
+    //    {
+    //        count++;
+    //        isGround = true;
+    //        animator.SetBool("isJumping", false);
+    //    }
+    //}
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Platform" ) {
+    //        count--;
+    //        isGround = false;
+    //        animator.SetBool("isJumping", true);
+    //    }
+    //}
+    ////private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (count == 2)
+    //    {
+    //        transform.Find("HitRange").gameObject.SetActive(false);
+    //    } else if (count == 0)
+    //    {
+    //        transform.Find("HitRange").gameObject.SetActive(true);
+    //    }
+    //}
+}
 
 
 

@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DarahMusuh : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     public Animator enemyAnimator; // Reference to the Animator component of your enemy
-    private bool playerInside = false;
-    [SerializeField] private float moveSpeed;
+    public float moveSpeed;
     private GameObject player;
     public bool moving;
     public int maxHealth = 100;
@@ -54,16 +53,6 @@ public class DarahMusuh : MonoBehaviour
 
         //disable musuh
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player")&& moving == true)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-            playerInside = true;
-            enemyAnimator.SetBool("isRunning", true);
-        }
-    }
     /*private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player")) // Change "Player" to the actual tag of your player object
@@ -72,15 +61,6 @@ public class DarahMusuh : MonoBehaviour
             enemyAnimator.SetBool("isRunning", true);
         }
     }*/
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInside = false;
-            enemyAnimator.SetBool("isRunning", false);
-        }
-    }
 
     void Rotate()
     {
@@ -96,6 +76,7 @@ public class DarahMusuh : MonoBehaviour
     public void OnDisableMovement()
     {
         moving = false;
+        enemyAnimator.SetBool("isRunning", false);
         //Debug.Log("IS NOT MOVE");
     }
     public void OnEnableMovement()

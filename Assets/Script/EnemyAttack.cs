@@ -15,11 +15,11 @@ public class Enemyattack : MonoBehaviour
     public float specialCooldown = 3.0f; // Waktu cooldown untuk serangan khusus
     //private float lastSpecialAttackTime = -1000.0f; // Inisialisasi dengan nilai yang memastikan serangan pertama bisa dilakukan
     private bool CanSpecialAttack = true;
-    private DarahMusuh enemy;
+    private EnemyMovement enemy;
 
     private void Start()
     {
-        enemy = GetComponent<DarahMusuh>();
+        enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
     }
     private void Update()
     {
@@ -65,11 +65,21 @@ public class Enemyattack : MonoBehaviour
         //damage ke musuh
         foreach (Collider2D player in hitPlayer)
         {
+            enemy.OnDisableMovement();
             player.GetComponent<MovementAlt>().TakeDamage(attackDamage);
             Debug.Log("Kena Area Pukul");
+            Invoke("MovementEnable", 0.5f);
         }
     }
-
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("stay");
+            BasicAttack();
+            enemy.moving = false;
+        }
+    }
     /*void SpecialAttack()
     {
         //animasi
@@ -81,7 +91,7 @@ public class Enemyattack : MonoBehaviour
         //damage ke musuh
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<DarahMusuh>().SpecialTakeDamage(specialDamage);
+            enemy.GetComponent<EnemyMovement>().SpecialTakeDamage(specialDamage);
             Debug.Log("Kena Spesial Attack Pukul");
         }
     }*/
@@ -104,15 +114,13 @@ public class Enemyattack : MonoBehaviour
             return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
-    void OnTriggerStay2D(Collider2D collision)
-    {
+    //void OnTriggerStay2D(Collider2D collision)
+    //{
 
-        if (collision.CompareTag("Player"))
-        {
-            enemy.OnDisableMovement();
-            BasicAttack();
-            Invoke("MovementEnable", 0.5f);
+    //    if (collision.CompareTag("Player"))
+    //    {
+            
 
-        }
-    }
+    //    }
+    //}
 }

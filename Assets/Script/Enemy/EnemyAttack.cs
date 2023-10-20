@@ -66,8 +66,8 @@ public class Enemyattack : MonoBehaviour
         foreach (Collider2D player in hitPlayer)
         {
             enemy.OnDisableMovement();
-            player.GetComponent<MovementAlt>().TakeDamage(attackDamage);
-            Debug.Log("Kena Area Pukul");
+            player.GetComponent<DarahPlayer>().TakeDamage(attackDamage);
+            Debug.Log("Kena Player");
             Invoke("MovementEnable", 0.5f);
         }
     }

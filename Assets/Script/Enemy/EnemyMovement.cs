@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Animator enemyAnimator; // Reference to the Animator component of your enemy
+    public Animator enemyAnimator; 
     public float moveSpeed;
     private GameObject player;
     public bool moving;
@@ -53,14 +53,7 @@ public class EnemyMovement : MonoBehaviour
 
         //disable musuh
     }
-    /*private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player")) // Change "Player" to the actual tag of your player object
-        {
-            playerInside = true;
-            enemyAnimator.SetBool("isRunning", true);
-        }
-    }*/
+
 
     void Rotate()
     {

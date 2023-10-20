@@ -150,25 +150,6 @@ public class MovementAlt : MonoBehaviour
 
 
         }
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-
-        //animasi kena pukul
-
-        if (currentHealth < 0)
-        {
-            Die();
-        }
-    }
-    void Die()
-    {
-        Debug.Log("MATI DIA");
-
-        //animasi mati
-
-        //disable musuh
-    }
 
 
 

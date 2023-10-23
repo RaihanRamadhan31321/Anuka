@@ -95,7 +95,7 @@ public class Controller : MonoBehaviour
         //damage ke musuh
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<DarahMusuh>().TakeDamage(attackDamage);
+            enemy.GetComponent<EnemyMovement>().TakeDamage(attackDamage);
             Debug.Log("Kena Area Pukul");
         }
     }
@@ -111,7 +111,7 @@ public class Controller : MonoBehaviour
         //damage ke musuh
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<DarahMusuh>().SpecialTakeDamage(specialDamage);
+            enemy.GetComponent<EnemyMovement>().SpecialTakeDamage(specialDamage);
             Debug.Log("Kena Spesial Attack Pukul");
         }
     }

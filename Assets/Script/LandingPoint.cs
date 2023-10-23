@@ -29,9 +29,6 @@ public class LandingPoint : MonoBehaviour
         if (playerMoving == true)
         {
             Gerak();
-        }else
-        {
-            Debug.Log("NAH!!");
         }
         
     }

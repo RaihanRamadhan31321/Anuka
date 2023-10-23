@@ -16,43 +16,18 @@ public class Enemyattack : MonoBehaviour
     //private float lastSpecialAttackTime = -1000.0f; // Inisialisasi dengan nilai yang memastikan serangan pertama bisa dilakukan
     private bool CanSpecialAttack = true;
     private EnemyMovement enemy;
+    private DarahPlayer player;
+    private Rigidbody2D rb;
 
     private void Start()
     {
         enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
+        player = FindObjectOfType<DarahPlayer>();
+        rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
-        //basicattack
-        /*if (Input.GetKeyDown(KeyCode.Mouse0) && player.animator.GetBool("isJumping") == false)
-        {
-            player.OnDisableMovement();
-            BasicAttack();
-            Invoke("MovementEnable", 0.5f);
-
-        }*/
-        //specialattack
-        /*if (Input.GetKeyDown(KeyCode.Mouse1) && player.isGround)
-        {
-            if (CanSpecialAttack) // Periksa apakah serangan khusus dapat dilakukan
-            {
-                player.OnDisableMovement();
-                SpecialAttack();
-                CanSpecialAttack = false;
-                StartCoroutine(SpecialAttackCooldown());
-                //lastSpecialAttackTime = Time.time; // Set waktu serangan khusus terakhir
-                Invoke("MovementEnable", 1f);
-            }
-
-            else
-            {
-                Debug.Log("Spesial Attack Sedang Cooldown");
-                //float remainingCooldown = specialCooldown - (Time.time - lastSpecialAttackTime);
-                //Debug.Log("Spesial Attack Sedang Cooldown: " + remainingCooldown.ToString("F1") + " seconds");
-                // Atur teks cooldown pada UI
-                //cooldownUI.SetCooldownText(remainingCooldown);
-            }
-        }*/
+        rb.AddForce(Vector2.zero);
     }
     void BasicAttack()
     {
@@ -60,20 +35,20 @@ public class Enemyattack : MonoBehaviour
         enemy.enemyAnimator.SetBool("isAttacking", true);
 
         //deteksi musuh di radius jarak attack
-        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+        //Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
 
-        //damage ke musuh
-        foreach (Collider2D player in hitPlayer)
-        {
-            enemy.OnDisableMovement();
-            player.GetComponent<DarahPlayer>().TakeDamage(attackDamage);
-            Debug.Log("Kena Player");
-            Invoke("MovementEnable", 0.5f);
-        }
+        ////damage ke musuh
+        //foreach (Collider2D player in hitPlayer)
+        //{
+        enemy.OnDisableMovement();
+        player.TakeDamage(attackDamage);
+        Debug.Log("Kena Player");
+        Invoke("MovementEnable", 0.7f);
+        
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && enemy.enemyAnimator.GetBool("isAttacking") == false)
         {
             Debug.Log("stay");
             BasicAttack();

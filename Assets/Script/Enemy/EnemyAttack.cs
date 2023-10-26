@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//#define ZHAFRAN
+
 public class Enemyattack : MonoBehaviour
 {
-#if ZHAFRAN
     public Animator animator;
-#endif
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask playerLayers;

@@ -557,7 +557,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -2.2755127, y: 0}
+  m_AnchoredPosition: {x: -2.275528, y: 0}
   m_SizeDelta: {x: -4.5509, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &229336530
@@ -2100,6 +2100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   _uiManager: {fileID: 0}
 --- !u!1 &1396724096
 GameObject:
@@ -2342,6 +2343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ddebe5babdc2a4486ef8cade535d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   attackPoint: {fileID: 1857414426}
   attackRange: 1.44
   playerLayers:
@@ -2528,8 +2530,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 127.18701, y: -26.19281}
-  m_SizeDelta: {x: 218.97388, y: 27.371796}
+  m_AnchoredPosition: {x: 153.6, y: -33}
+  m_SizeDelta: {x: 256.8239, y: 50.0818}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1914022814
 MonoBehaviour:
@@ -2578,7 +2580,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2612,6 +2614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliderHealth: {fileID: 1914022814}
+  fillImage: {fileID: 1607690884}
 --- !u!4 &1922005151
 Transform:
   m_ObjectHideFlags: 0

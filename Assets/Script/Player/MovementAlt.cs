@@ -76,23 +76,23 @@ public class MovementAlt : MonoBehaviour
         }
     }
 
-        private void FixedUpdate()
+    private void FixedUpdate()
+    {
+        Vector3 down = transform.TransformDirection(Vector3.down);
+        RaycastHit2D groundHit = Physics2D.Raycast(child.transform.position, down, 0.5f, layerMask);
+
+        Debug.DrawRay(child.transform.position, down * 0.5f, Color.red);
+
+        if (groundHit.rigidbody != null) {
+            isGround = true;
+            animator.SetBool("isJumping", false);
+    }
+        else
         {
-            Vector3 down = transform.TransformDirection(Vector3.down);
-            RaycastHit2D groundHit = Physics2D.Raycast(child.transform.position, down, 0.5f, layerMask);
-
-            Debug.DrawRay(child.transform.position, down * 0.5f, Color.red);
-
-            if (groundHit.rigidbody != null) {
-                isGround = true;
-                animator.SetBool("isJumping", false);
+            isGround = false;
+            animator.SetBool("isJumping", true);
         }
-            else
-            {
-                isGround = false;
-                animator.SetBool("isJumping", true);
-            }
-        }
+    }
     #endregion 
     public void OnDisableMovement()
         {
@@ -100,56 +100,54 @@ public class MovementAlt : MonoBehaviour
             animator.SetBool("isMoving", false);
             //Debug.Log("IS NOT MOVE");
         }
-        public void OnEnableMovement()
+    public void OnEnableMovement()
+    {
+
+        moving = true;
+        animator.SetBool("isAttacking", false);
+
+        //Debug.Log("IS MOVE");
+
+    }
+    public void Move()
+    {
+        //ambil berapa lama input horizontal 0 = no input,  1/-1 = hold
+        xvalue = Input.GetAxis("Horizontal");
+        yvalue = Input.GetAxis("Vertical");
+
+        //ubah boolean isMoving jadi true
+        if (xvalue == 0 && yvalue == 0)
         {
-
-            moving = true;
-            animator.SetBool("isAttacking", false);
-
-            //Debug.Log("IS MOVE");
-
+            animator.SetBool("isMoving", false);
         }
-        public void Move()
+        else
         {
-            //ambil berapa lama input horizontal 0 = no input,  1/-1 = hold
-            xvalue = Input.GetAxis("Horizontal");
-            yvalue = Input.GetAxis("Vertical");
-
-            //ubah boolean isMoving jadi true
-            if (xvalue == 0 && yvalue == 0)
-            {
-                animator.SetBool("isMoving", false);
-            }
-            else
-            {
-                animator.SetBool("isMoving", true);
-            }
-
-            //buat arah gerakan
-            Vector2 arah = new Vector2(xvalue, yvalue).normalized;
-
-            //kondisi jika berbalik
-            if (xvalue < 0)
-            {
-                this.transform.localScale = new Vector3(-1, 1, 1);
-            }
-            else if (xvalue > 0)
-            {
-                this.transform.localScale = new Vector3(1, 1, 1);
-            }
-            //kalkulasi kecepatan arah
-            this.transform.Translate(arah * Time.deltaTime * speed);
+            animator.SetBool("isMoving", true);
         }
-        void Attack()
+
+        //buat arah gerakan
+        Vector2 arah = new Vector2(xvalue, yvalue).normalized;
+
+        //kondisi jika berbalik
+        if (xvalue < 0)
         {
-            animator.SetBool("isAttacking", true);
+            this.transform.localScale = new Vector3(-1, 1, 1);
         }
-        void Jump(float jumping)
+        else if (xvalue > 0)
         {
-            rb.velocity = new Vector2(0, jumping);
-
-
+            this.transform.localScale = new Vector3(1, 1, 1);
         }
+        //kalkulasi kecepatan arah
+        this.transform.Translate(arah * Time.deltaTime * speed);
+        }
+    void Attack()
+    {
+        animator.SetBool("isAttacking", true);
+    }
+    void Jump(float jumping)
+    {
+        rb.velocity = new Vector2(0, jumping);
+    }
 
 
 

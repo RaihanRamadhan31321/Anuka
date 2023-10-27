@@ -5,7 +5,7 @@ using UnityEngine;
 public class DarahPlayer : MonoBehaviour
 {
     public int maxHealth = 100;
-    int currentHealth;
+    public int currentHealth;
     [SerializeField] private UIManager _uiManager;
     // Start is called before the first frame update
     void Start()
@@ -15,14 +15,7 @@ public class DarahPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(20);
-            Debug.Log("Kena Darah");
-        }
-    }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -33,7 +26,7 @@ public class DarahPlayer : MonoBehaviour
         {
             Die();
         }
-        _uiManager.updateHealth(currentHealth);
+        _uiManager.UpdateHealth(currentHealth);
     }
     void Die()
     {

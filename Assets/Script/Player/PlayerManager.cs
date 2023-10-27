@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         _uiManager = UIManager.instance;
-        _uiManager.updateHealth(health);
+        _uiManager.UpdateHealth(health);
     }
 
     // Update is called once per frame

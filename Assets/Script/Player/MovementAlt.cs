@@ -26,7 +26,10 @@ public class MovementAlt : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     public int maxHealth = 100;
     int currentHealth;
-
+    public float batasBarrier;
+    private TriggerBarrier trigger;
+    public float atas;
+    public float bawah;
 
 
     // Start is called before the first frame update
@@ -38,12 +41,19 @@ public class MovementAlt : MonoBehaviour
         child = transform.Find("MoveLimit").gameObject;
         landing = FindAnyObjectByType<LandingPoint>().gameObject;
         isGround = true;
+        trigger = FindObjectOfType<TriggerBarrier>();
+
     }
 
     // Update is called once per frame
     #region unitymethod
     void Update()
     {
+        if (trigger.isFighting == true)
+        {
+            Barrier();
+
+        }
         //Debug.Log("COUNT is : " + count);
         if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("isJumping") == false)
         {
@@ -148,7 +158,12 @@ public class MovementAlt : MonoBehaviour
     {
         rb.velocity = new Vector2(0, jumping);
     }
-
+    public void Barrier()
+    {
+        float clampedValue = Mathf.Clamp(transform.position.x, atas,bawah);
+        Vector3 pembatas = new Vector3(clampedValue, transform.position.y, transform.position.z);
+        transform.position = pembatas;
+    }
 
 
 

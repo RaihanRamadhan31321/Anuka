@@ -36,5 +36,6 @@ public class DarahPlayer : MonoBehaviour
 
         //disable musuh
     }
+   
 
 }

@@ -16,10 +16,19 @@ public class Attack : MonoBehaviour
     //private float lastSpecialAttackTime = -1000.0f; // Inisialisasi dengan nilai yang memastikan serangan pertama bisa dilakukan
     private bool CanSpecialAttack = true;
     private MovementAlt player;
+    private Animator animator;
+    private GameObject enemy;
+    [SerializeField] private float mundur;
+    Rigidbody2D rb;
+    private int hitCount;
 
     private void Start()
     {
         player = GetComponent<MovementAlt>();
+        enemy = FindObjectOfType<EnemyMovement>().gameObject;
+
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
@@ -47,10 +56,18 @@ public class Attack : MonoBehaviour
             else
             {
                 Debug.Log("Spesial Attack Sedang Cooldown");
-                //float remainingCooldown = specialCooldown - (Time.time - lastSpecialAttackTime);
-                //Debug.Log("Spesial Attack Sedang Cooldown: " + remainingCooldown.ToString("F1") + " seconds");
-                // Atur teks cooldown pada UI
-                //cooldownUI.SetCooldownText(remainingCooldown);
+            }
+        }
+
+        if (transform.position.x > enemy.transform.position.x)
+        {
+            mundur = Mathf.Abs(mundur);
+        }
+        else
+        {
+            if (mundur > 0)
+            {
+                mundur = -mundur;
             }
         }
     }
@@ -89,12 +106,27 @@ public class Attack : MonoBehaviour
     void MovementEnable()
     {
         player.OnEnableMovement();
+        animator.SetBool("getHit", false);
+        rb.velocity = new Vector2(0,0);
     }
 
     IEnumerator SpecialAttackCooldown()
     {
         yield return new WaitForSeconds(specialCooldown);
         CanSpecialAttack = true;
+    }
+    public void GetHit()
+    {
+        player.OnDisableMovement();
+        animator.SetBool("getHit", true);
+        if(hitCount == 3) 
+        { 
+            Vector2 back = new Vector2(mundur, 0);
+            rb.velocity = back;
+            hitCount = 0;
+        }
+        Invoke("MovementEnable", 0.4f);
+        hitCount++;
     }
 
     //display

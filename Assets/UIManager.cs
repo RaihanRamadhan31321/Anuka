@@ -2,33 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private Slider sliderHealth;
-    [SerializeField] private Image fillImage; // Tambahkan ini dan hubungkan melalui Inspector
     public static UIManager instance;
 
+    [SerializeField] private Slider sliderHealth;
+    [SerializeField] private Image fillImage;
+
+    public GameObject pausePanel;
+    private bool isPaused = true;
     private void Awake()
     {
         instance = this;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isPaused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
+    }
+    public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
+    }
     public void UpdateHealth(float value)
     {
         sliderHealth.value = value;
 
-        // Tambahan kode untuk mengatur warna fill image berdasarkan persentase kesehatan
+    
         float healthPercentage = sliderHealth.value;
 
-        if (healthPercentage <= 30f) // Jika di bawah 30%
+        if (healthPercentage <= 30f) 
         {
-            fillImage.color = Color.red; // Ubah warna fill image menjadi merah
+            fillImage.color = Color.red; 
         }
         else
         {
-            fillImage.color = Color.green; // Kembalikan warna fill image menjadi hijau
+            fillImage.color = Color.green; 
         }
 
         if (sliderHealth.value <= sliderHealth.minValue)
@@ -36,4 +67,13 @@ public class UIManager : MonoBehaviour
             fillImage.enabled = false;
         }
     }
+
+    /*    public void MenuUtama()
+    {
+        Application.LoadLevel(0);
+    }*/
+
 }
+
+
+

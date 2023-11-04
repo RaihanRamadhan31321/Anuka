@@ -14,23 +14,39 @@ public class Enemyattack : MonoBehaviour
     //private float lastSpecialAttackTime = -1000.0f; // Inisialisasi dengan nilai yang memastikan serangan pertama bisa dilakukan
     private bool CanAttack = true;
     private EnemyMovement enemy;
-    private DarahPlayer playerHP;
-    private Attack playerAtk;
+    private PlayerHealthPoint playerHP;
+    private PlayerAttack playerAtk;
     private Rigidbody2D rb;
     private bool cd = true;
+    private int hitCount;
+    private Vector3 stay;
+    [Tooltip("Untuk Mengatur seberapa jauh terlempar jika di pukul 3 kali")]
+    [SerializeField] private float mundur;
 
     private void Start()
     {
         enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
-        playerHP = FindObjectOfType<DarahPlayer>();
-        playerAtk = FindObjectOfType<Attack>();
+        playerHP = FindObjectOfType<PlayerHealthPoint>();
+        playerAtk = FindObjectOfType<PlayerAttack>();
         rb = GetComponent<Rigidbody2D>();
+        animator = enemy.enemyAnimator;
+        stay = new Vector3(1.51f, 0.26f, 0);
     }
     private void Update()
     {
+        transform.localPosition = stay;
         rb.AddForce(Vector2.zero);
-        Debug.Log(CanAttack);
-        
+        if (transform.position.x > playerHP.transform.position.x)
+        {
+            mundur = Mathf.Abs(mundur);
+        }
+        else
+        {
+            if (mundur > 0)
+            {
+                mundur = -mundur;
+            }
+        }
     }
     void BasicAttack()
     {
@@ -64,41 +80,11 @@ public class Enemyattack : MonoBehaviour
             enemy.moving = false;
         }
     }
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Player") && enemy.enemyAnimator.GetBool("isAttacking") == false)
-    //    {
-    //        if (CanAttack)
-    //        {
-    //            BasicAttack();
-    //            CanAttack = false;
-    //        }
-    //        else
-    //        {
-    //            StartCoroutine(AttackCooldown());
-    //        }
-    //        enemy.moving = false;
-    //    }
-    //}
-    /*void SpecialAttack()
-    {
-        //animasi
-        playerHP.animator.SetTrigger("IsHugeAttack");
-
-        //deteksi musuh di radius jarak attack
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
-        //damage ke musuh
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            enemy.GetComponent<EnemyMovement>().SpecialTakeDamage(specialDamage);
-            Debug.Log("Kena Spesial Attack Pukul");
-        }
-    }*/
-
     void MovementEnable()
     {
         enemy.OnEnableMovement();
+        enemy.rb.velocity = new Vector2(0,0);
+        animator.SetBool("getHit", false);
     }
 
     IEnumerator AttackCooldown()
@@ -107,6 +93,20 @@ public class Enemyattack : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown);
         CanAttack = true;
         cd = false;
+    }
+    public void GetHit()
+    {
+        enemy.OnDisableMovement();
+        animator.SetBool("getHit", true);
+        if (hitCount == 3)
+        {
+            Vector2 back = new Vector2(mundur, 0);
+            enemy.rb.velocity = back;
+
+            hitCount = 0;
+        }
+        Invoke("MovementEnable", 0.4f);
+        hitCount++;
     }
 
     //display

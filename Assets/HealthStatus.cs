@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthStatus : MonoBehaviour
 {
-    public DarahPlayer playerHealth;
+    public PlayerHealthPoint playerHealth;
     public Slider slider;
     public Image fillImage;
 

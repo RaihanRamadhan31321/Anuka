@@ -68,7 +68,7 @@ public class Controller : MonoBehaviour
             else
             {
                 float remainingCooldown = specialCooldown - (Time.time - lastSpecialAttackTime);
-                Debug.Log("Spesial Attack Sedang Cooldown: " + remainingCooldown.ToString("F1") + " seconds");
+                Debug.Log("Spesial PlayerAttack Sedang Cooldown: " + remainingCooldown.ToString("F1") + " seconds");
                 // Atur teks cooldown pada UI
                 //cooldownUI.SetCooldownText(remainingCooldown);
             }
@@ -112,7 +112,7 @@ public class Controller : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyMovement>().SpecialTakeDamage(specialDamage);
-            Debug.Log("Kena Spesial Attack Pukul");
+            Debug.Log("Kena Spesial PlayerAttack Pukul");
         }
     }
 

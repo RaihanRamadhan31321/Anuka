@@ -20,7 +20,6 @@ public class Movement : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 30;
-    private bool isAttacking = false;
     private Movement movement;
     private int count = 0;
 

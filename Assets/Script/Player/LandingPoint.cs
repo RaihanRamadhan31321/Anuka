@@ -10,13 +10,13 @@ public class LandingPoint : MonoBehaviour
     private float playerSpeed;
     private GameObject player;
     private GameObject childOfPlayer;
-    private MovementAlt movement;
+    private PlayerMovement movement;
     public bool playerMoving;
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<MovementAlt>().gameObject;
-        movement = player.GetComponent<MovementAlt>();
+        player = FindObjectOfType<PlayerMovement>().gameObject;
+        movement = player.GetComponent<PlayerMovement>();
         childOfPlayer = player.transform.Find("MoveLimit").gameObject;
         
         playerSpeed = movement.speed;

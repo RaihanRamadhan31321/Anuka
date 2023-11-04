@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //#define ZHAFRAN
-public class Attack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
 #if ZHAFRAN
     public Animator animator;
@@ -15,16 +15,17 @@ public class Attack : MonoBehaviour
     public float specialCooldown = 3.0f; // Waktu cooldown untuk serangan khusus
     //private float lastSpecialAttackTime = -1000.0f; // Inisialisasi dengan nilai yang memastikan serangan pertama bisa dilakukan
     private bool CanSpecialAttack = true;
-    private MovementAlt player;
+    private PlayerMovement player;
     private Animator animator;
     private GameObject enemy;
+    [Tooltip("Untuk Mengatur seberapa jauh terlempar jika di pukul 3 kali")]
     [SerializeField] private float mundur;
     Rigidbody2D rb;
     private int hitCount;
 
     private void Start()
     {
-        player = GetComponent<MovementAlt>();
+        player = GetComponent<PlayerMovement>();
         enemy = FindObjectOfType<EnemyMovement>().gameObject;
 
         animator = GetComponent<Animator>();
@@ -55,7 +56,7 @@ public class Attack : MonoBehaviour
 
             else
             {
-                Debug.Log("Spesial Attack Sedang Cooldown");
+                Debug.Log("Spesial PlayerAttack Sedang Cooldown");
             }
         }
 
@@ -83,6 +84,7 @@ public class Attack : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyMovement>().TakeDamage(attackDamage);
+            enemy.transform.Find("AttackRange").GetComponent<Enemyattack>().GetHit();
             Debug.Log("Kena Area Pukul");
         }
     }
@@ -99,7 +101,7 @@ public class Attack : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyMovement>().SpecialTakeDamage(specialDamage);
-            Debug.Log("Kena Spesial Attack Pukul");
+            Debug.Log("Kena Spesial PlayerAttack Pukul");
         }
     }
 

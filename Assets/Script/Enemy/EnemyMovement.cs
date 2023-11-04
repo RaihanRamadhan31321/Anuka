@@ -10,10 +10,12 @@ public class EnemyMovement : MonoBehaviour
     public bool moving;
     public int maxHealth = 100;
     int currentHealth;
+    [HideInInspector] public Rigidbody2D rb;
     void Start()
     {
         currentHealth = maxHealth;
-        player = FindObjectOfType<MovementAlt>().gameObject;
+        player = FindObjectOfType<PlayerMovement>().gameObject;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update() 

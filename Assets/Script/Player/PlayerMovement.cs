@@ -5,34 +5,31 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class MovementAlt : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    //buat bisa gerak harus punya speed dulu dan xvalue
-    public float speed = 8;
-    //xvalue itu sebagai penyimpan nilai input
+    #region Variabel
+    [HideInInspector] public bool isGround = false;
+    [HideInInspector] public bool moving;
+    [HideInInspector] public float atas;
+    [HideInInspector] public float bawah;
+    private GameObject child;
+    Rigidbody2D rb;
+    private GameObject landing;
     private float xvalue;
     private float yvalue;
-    public float delay = 3;
-    float timer;
-    public Animator animator;
-    //akses rigidbody
-    Rigidbody2D rb;
-    public float jumpHeight = 8;
-    public bool isGround = false;
-    public bool moving;
-    private bool isAttacking = false;
-    private GameObject child;
-    private GameObject landing;
-    [SerializeField] private LayerMask layerMask;
-    public int maxHealth = 100;
-    int currentHealth;
-    public float batasBarrier;
     private TriggerBarrier trigger;
-    public float atas;
-    public float bawah;
+    [Header("JANGAN SENTUH!!!")]
+    [Tooltip("Masukan animator game object ini ke sini")]
+    public Animator animator;
+    [SerializeField] private LayerMask layerMask;
 
-
-    // Start is called before the first frame update
+    [Space(20f)]
+    [Header("Player Movement Atribut")]
+    public float jumpHeight = 8;
+    public float speed = 8;
+    [Tooltip("Ukuran BarrierOn untuk player")]
+    public float batasBarrier;
+    #endregion
     void Start()
     {
         //langsung ambil komponen rb karena perlu 1 kali saja
@@ -45,16 +42,14 @@ public class MovementAlt : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     #region unitymethod
     void Update()
     {
         if (trigger.isFighting == true)
         {
-            Barrier();
+            BarrierOn();
 
         }
-        //Debug.Log("COUNT is : " + count);
         if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("isJumping") == false)
         {
             OnDisableMovement();
@@ -65,8 +60,7 @@ public class MovementAlt : MonoBehaviour
         if (moving == true)
         {
             Move();
-        }
-        //jika spasi ditekan maka tambah velocity ke sumbu y rigidbody     
+        }    
         if (rb.velocity.y < 0 && isGround == true)
         {
             rb.gravityScale = 0;
@@ -74,7 +68,6 @@ public class MovementAlt : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
             landing.SetActive(false);
         }
-
         if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
         {
             landing.SetActive(true);
@@ -83,6 +76,10 @@ public class MovementAlt : MonoBehaviour
             Jump(jumpHeight);
             child.SetActive(false);
 
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            BarrierOff();
         }
     }
 
@@ -108,16 +105,12 @@ public class MovementAlt : MonoBehaviour
         {
             moving = false;
             animator.SetBool("isMoving", false);
-            //Debug.Log("IS NOT MOVE");
         }
     public void OnEnableMovement()
     {
 
         moving = true;
         animator.SetBool("isAttacking", false);
-
-        //Debug.Log("IS MOVE");
-
     }
     public void Move()
     {
@@ -158,44 +151,19 @@ public class MovementAlt : MonoBehaviour
     {
         rb.velocity = new Vector2(0, jumping);
     }
-    public void Barrier()
+    public void BarrierOn()
     {
         float clampedValue = Mathf.Clamp(transform.position.x, atas,bawah);
         Vector3 pembatas = new Vector3(clampedValue, transform.position.y, transform.position.z);
         transform.position = pembatas;
     }
+    public void BarrierOff()
+    {
+        Vector3 normal = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        trigger.isFighting = false;
+        transform.position = normal;
+    }
 
-
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    // if trigger sentuh tanah dengan tag "platform" allow jump
-
-    //    if (collision.tag == "Platform" )
-    //    {
-    //        count++;
-    //        isGround = true;
-    //        animator.SetBool("isJumping", false);
-    //    }
-    //}
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.tag == "Platform" ) {
-    //        count--;
-    //        isGround = false;
-    //        animator.SetBool("isJumping", true);
-    //    }
-    //}
-    ////private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (count == 2)
-    //    {
-    //        transform.Find("HitRange").gameObject.SetActive(false);
-    //    } else if (count == 0)
-    //    {
-    //        transform.Find("HitRange").gameObject.SetActive(true);
-    //    }
-    //}
 }
 
 

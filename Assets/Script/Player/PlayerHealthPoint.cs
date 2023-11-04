@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DarahPlayer : MonoBehaviour
+public class PlayerHealthPoint : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;

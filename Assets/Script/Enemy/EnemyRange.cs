@@ -10,7 +10,7 @@ public class EnemyRange : MonoBehaviour
     void Start()
     {
         enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
-        player = FindObjectOfType<MovementAlt>().gameObject;
+        player = FindObjectOfType<PlayerMovement>().gameObject;
     }
 
     // Update is called once per frame

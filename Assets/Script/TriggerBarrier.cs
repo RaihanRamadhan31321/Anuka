@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class TriggerBarrier : MonoBehaviour
 {
-    private MovementAlt player;
-    public bool isFighting = false;
+    private PlayerMovement player;
+    [HideInInspector]public bool isFighting = false;
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<MovementAlt>();
+        player = FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -23,10 +23,11 @@ public class TriggerBarrier : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isFighting = true;
-            Debug.Log("Player dalam trigger");
             player.atas = (transform.position.x) - player.batasBarrier;
             player.bawah = transform.position.x + player.batasBarrier;
             transform.gameObject.SetActive(false);
+            Debug.Log("atas = " + player.atas);
+            Debug.Log("bawah = " + player.bawah);
         }
     }
 }

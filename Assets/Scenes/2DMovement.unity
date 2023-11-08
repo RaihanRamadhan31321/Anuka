@@ -4360,7 +4360,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpHeight: 8
-  speed: 8
+  speed: 12
   batasBarrier: 3
 --- !u!50 &1304989955
 Rigidbody2D:

@@ -68,10 +68,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /*    public void MenuUtama()
+    public void MenuUtama()
     {
         Application.LoadLevel(0);
-    }*/
+    }
 
 }
 

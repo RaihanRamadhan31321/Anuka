@@ -44,3 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Battle
+    uniqueID: 2902836413
+    locked: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
@@ -12,9 +13,14 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool moving;
     [HideInInspector] public float atas;
     [HideInInspector] public float bawah;
-    private GameObject child;
-    Rigidbody2D rb;
-    private GameObject landing;
+    [HideInInspector] public GameObject child;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public GameObject landing;
+    [HideInInspector] public GameObject playerGameObject;
+    [HideInInspector] public Vector3 StartPoint;
+
+    [HideInInspector] public PlayerHealthPoint playerHP;
+
     private float xvalue;
     private float yvalue;
     private TriggerBarrier trigger;
@@ -27,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Movement Atribut")]
     public float jumpHeight = 8;
     public float speed = 8;
-    [Tooltip("Ukuran BarrierOn untuk player")]
+    [Tooltip("Ukuran BarrierOn untuk playerGameObject")]
     public float batasBarrier;
     #endregion
     void Start()
@@ -37,8 +43,14 @@ public class PlayerMovement : MonoBehaviour
         OnEnableMovement();
         child = transform.Find("MoveLimit").gameObject;
         landing = FindAnyObjectByType<LandingPoint>().gameObject;
+        playerGameObject = this.gameObject;
+        //sementara
+        playerHP = FindObjectOfType<PlayerHealthPoint>();
         isGround = true;
         trigger = FindObjectOfType<TriggerBarrier>();
+
+        StartPoint = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+            
 
     }
 
@@ -147,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetBool("isAttacking", true);
     }
-    void Jump(float jumping)
+    public void Jump(float jumping)
     {
         rb.velocity = new Vector2(0, jumping);
     }

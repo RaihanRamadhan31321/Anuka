@@ -3,25 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
-    public Image newGame;
-    public GameObject exitBoong;
+    public Image newGame; 
 
+ 
+
+    void Update()
+    {
+       if (Input.GetKey(KeyCode.Escape))
+        {
+           ExitBoong();
+        } 
+    }
+
+    public void LevelScene()
+    {
+        SceneManager.LoadScene("LevelScene");
+    }
     public void Gameplay()
     {
         Application.LoadLevel(2);
     }
     public void ExitBoong()
     {
-        Time.timeScale = 0;
-        exitBoong.SetActive(true);
+        SceneManager.LoadScene("ExitScene");
     }
 
-    public void gajadiDeh()
-    {
-        Time.timeScale = 1;
-        exitBoong.SetActive(false);
-    }
+
 }

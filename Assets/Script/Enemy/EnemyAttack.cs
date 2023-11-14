@@ -64,6 +64,7 @@ public class Enemyattack : MonoBehaviour
     {
         cd = false;
         StartCoroutine(AttackCooldown());
+        
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -77,7 +78,8 @@ public class Enemyattack : MonoBehaviour
             {
                 BasicAttack();
             }
-            enemy.moving = false;
+            enemy.OnDisableMovement();
+            Debug.Log("CHECK");
         }
     }
     void MovementEnable()
@@ -90,7 +92,11 @@ public class Enemyattack : MonoBehaviour
     IEnumerator AttackCooldown()
     {
         Debug.Log("CD");
+        enemy.OnDisableMovement();
         yield return new WaitForSeconds(attackCooldown);
+
+        Debug.Log("CD2");
+        enemy.OnEnableMovement();
         CanAttack = true;
         cd = false;
     }

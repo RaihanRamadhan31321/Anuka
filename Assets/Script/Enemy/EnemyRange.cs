@@ -30,7 +30,15 @@ public class EnemyRange : MonoBehaviour
         if (collision.CompareTag("Player") && enemy.moving == true)
         {
             enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, player.transform.position, enemy.moveSpeed * Time.deltaTime);
-            enemy.enemyAnimator.SetBool("isRunning", true);
+            if (enemy.moving != false)
+            {
+                enemy.enemyAnimator.SetBool("isRunning", true);
+            }
+            else
+            {
+                enemy.enemyAnimator.SetBool("isRunning", false);
+            }
+            
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

@@ -5,7 +5,7 @@ using UnityEngine;
 public class TriggerBarrier : MonoBehaviour
 {
     private PlayerMovement player;
-    [HideInInspector]public bool isFighting = false;
+    public bool isFighting = false;
     // Start is called before the first frame update
     void Start()
     {

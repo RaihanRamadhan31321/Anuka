@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
                 ResumeGame();
             }
         }
-        if(player.playerHP.currentHealth == 0)
+        if(player.playerHP.currentHealth <= 0)
         {
             Death();
         }
@@ -90,14 +90,14 @@ public class UIManager : MonoBehaviour
     {
         player.playerGameObject.transform.position = player.StartPoint;
         player.playerHP.currentHealth = 100;
-        Application.LoadLevel(2);
+        Application.LoadLevel(3);
         GameOverPanel.SetActive(false);
         ResumeGame();
     }
 
     public void MenuUtama()
     {
-        Application.LoadLevel(0);
+        Application.LoadLevel(1);
     }
 
 }

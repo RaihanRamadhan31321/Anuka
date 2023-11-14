@@ -43,9 +43,11 @@ public class PlayerMovement : MonoBehaviour
         OnEnableMovement();
         child = transform.Find("MoveLimit").gameObject;
         landing = FindAnyObjectByType<LandingPoint>().gameObject;
+        landing.SetActive(false);
+
         playerGameObject = this.gameObject;
         //sementara
-        playerHP = FindObjectOfType<PlayerHealthPoint>();
+        playerHP = GetComponent<PlayerHealthPoint>();
         isGround = true;
         trigger = FindObjectOfType<TriggerBarrier>();
 

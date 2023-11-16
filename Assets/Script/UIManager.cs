@@ -16,7 +16,10 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverPanel;
     private bool isPaused = true;
     private PlayerMovement player;
-    
+
+
+
+
     private void Awake()
     {
         instance = this;
@@ -24,6 +27,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerMovement>();
+        //pausePanel.SetActive(false);
     }
 
     void Update()
@@ -48,8 +52,8 @@ public class UIManager : MonoBehaviour
     public void PauseGame()
     {
         isPaused = true;
-        Time.timeScale = 0;
         pausePanel.SetActive(true);
+        Time.timeScale = 0;
     }
     public void Death()
     {

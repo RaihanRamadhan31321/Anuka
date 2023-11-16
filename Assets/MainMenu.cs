@@ -7,9 +7,8 @@ using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
-    public Image newGame; 
-
- 
+    public Image newGame;
+    public GameObject SettingsPanel;
 
     void Update()
     {
@@ -19,9 +18,9 @@ public class MainMenu : MonoBehaviour
         } 
     }
 
-    public void LevelScene()
+    public void PrologueScene()
     {
-        SceneManager.LoadScene("LevelScene");
+        SceneManager.LoadScene("PrologueScene");
     }
     public void Gameplay()
     {
@@ -31,6 +30,8 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("ExitScene");
     }
+
+
 
 
 }

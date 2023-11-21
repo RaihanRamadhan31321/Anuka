@@ -15,10 +15,7 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-       if (Input.GetKey(KeyCode.Escape))
-        {
-           ExitBoong();
-        } 
+        Esc();
     }
 
     public void PrologueScene()
@@ -28,7 +25,32 @@ public class MainMenu : MonoBehaviour
 
     public void ExitBoong()
     {
-        SceneManager.LoadScene("ExitScene");
+        SceneManager.LoadScene("ExitBoongScene");
+    }
+
+    public void Esc()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (SettingsPanel.activeSelf)
+            {
+                // Jika panel pengaturan aktif, matikan panel
+                SettingsPanel.SetActive(false);
+            }
+            else
+            {
+                // Jika panel pengaturan dimatikan dan kita berada di menu utama, pindah ke ExitBoongScene
+                if (SceneManager.GetActiveScene().name == "MainMenu")
+                {
+                    SceneManager.LoadScene("ExitScene");
+                }
+                else
+                {
+                    // Jika bukan di menu utama, matikan panel pengaturan
+                    SettingsPanel.SetActive(false);
+                }
+            }
+        }
     }
 
     public void ClickSFX()

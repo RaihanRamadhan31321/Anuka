@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public GameObject SettingsPanel;
     public AudioManager audioManager;
-    private bool isPaused = true;
+
     void Update()
     {
        if (Input.GetKey(KeyCode.Escape))
@@ -25,19 +25,11 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("PrologueScene");
     }
-    public void Gameplay()
-    {
-        Application.LoadLevel(2);
-    }
+
     public void ExitBoong()
     {
         SceneManager.LoadScene("ExitScene");
     }
-
-/*    public void ESC()
-    {
-        Time.timeScale;
-    }*/
 
     public void ClickSFX()
     {

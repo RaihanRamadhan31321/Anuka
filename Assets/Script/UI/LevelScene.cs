@@ -7,6 +7,15 @@ public class LevelScene : MonoBehaviour
 {
     public GameObject levelPanel;
 
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            KeMainMenu();
+        }
+    }
+
+
     public void KeMainMenu()
     {
         Time.timeScale = 1;

@@ -27,7 +27,7 @@ public class LevelScene : MonoBehaviour
     {
         Time.timeScale = 1;
         levelPanel.SetActive(false);
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Scene Visto");
     }
 
 

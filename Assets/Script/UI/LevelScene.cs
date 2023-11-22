@@ -34,12 +34,9 @@ public class LevelScene : MonoBehaviour
     {
         Time.timeScale = 1;
         levelPanel.SetActive(false);
-<<<<<<< Updated upstream
         SceneManager.LoadScene("Scene Visto");
-=======
         SceneManager.LoadScene("Level 1");
         cursorController.csr = false;
->>>>>>> Stashed changes
     }
 
 

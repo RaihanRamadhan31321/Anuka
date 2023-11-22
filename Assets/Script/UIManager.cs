@@ -12,8 +12,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider sliderHealth;
     [SerializeField] private Image fillImage;
 
+    [Header("-----------Game Objectt------------")]
     public GameObject pausePanel;//!!!!!!!!!!
     public GameObject GameOverPanel;
+    public GameObject SettingsPanel;
+    public GameObject CoinPanel;
+
     private bool isPaused = true;
     private PlayerMovement player;
 
@@ -27,6 +31,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerMovement>();
+
         //pausePanel.SetActive(false);
     }
 
@@ -34,26 +39,42 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!isPaused)
+            if (SettingsPanel.activeSelf)
             {
-                PauseGame();
+                // Jika panel pengaturan terbuka, kembalikan ke panel pause
+                SettingsPanel.SetActive(false);
+                CoinPanel.SetActive(false);
+                pausePanel.SetActive(true);
+
             }
             else
             {
-                ResumeGame();
+                // Jika panel pengaturan tidak terbuka, jalankan logika pause/resume
+                if (!isPaused)
+                {
+                    PauseGame();
+                }
+                else
+                {
+                    ResumeGame();
+                }
             }
         }
-        if(player.playerHP.currentHealth <= 0)
-        {
-            Death();
-        }
-        
     }
+
     public void PauseGame()
     {
         isPaused = true;
         pausePanel.SetActive(true);
+        CoinPanel.SetActive(false);
         Time.timeScale = 0;
+    }
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
+        CoinPanel.SetActive(true);
     }
     public void Death()
     {
@@ -62,12 +83,6 @@ public class UIManager : MonoBehaviour
         GameOverPanel.SetActive(true);
     }
 
-    public void ResumeGame()
-    {
-        isPaused = false;
-        Time.timeScale = 1;
-        pausePanel.SetActive(false);
-    }
     public void UpdateHealth(float value)
     {
         sliderHealth.value = value;
@@ -103,6 +118,7 @@ public class UIManager : MonoBehaviour
     {
         Application.LoadLevel(1);
     }
+
 
 }
 

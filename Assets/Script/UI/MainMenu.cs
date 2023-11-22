@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
             }
             else
             {
-                // Jika panel pengaturan dimatikan dan kita berada di menu utama, pindah ke ExitBoongScene
+                // Jika panel pengaturan dimatikan dan berada di menu utama, pindah ke ExitScene
                 if (SceneManager.GetActiveScene().name == "MainMenu")
                 {
                     SceneManager.LoadScene("ExitScene");

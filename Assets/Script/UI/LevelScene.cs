@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class LevelScene : MonoBehaviour
 {
     public GameObject levelPanel;
+    public CursorController cursorController;
+
+    private void Start()
+    {
+        cursorController = FindObjectOfType<CursorController>();
+        cursorController.csr = true;
+    }
 
     void Update()
     {
@@ -27,7 +34,12 @@ public class LevelScene : MonoBehaviour
     {
         Time.timeScale = 1;
         levelPanel.SetActive(false);
+<<<<<<< Updated upstream
         SceneManager.LoadScene("Scene Visto");
+=======
+        SceneManager.LoadScene("Level 1");
+        cursorController.csr = false;
+>>>>>>> Stashed changes
     }
 
 

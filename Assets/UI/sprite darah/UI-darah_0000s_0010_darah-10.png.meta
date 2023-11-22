@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,490 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_0
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 3141
+        width: 1036
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ac8fe2fb75a3df449f789484ce5234b
+      internalID: 1707850757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_1
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 3361
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ff8028c886abbd41aa5a36ed5acb387
+      internalID: -476513184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_2
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 3359
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 049bc998d580e5c458a0a936b7557ce7
+      internalID: -206324937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_3
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 3359
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdbab2a0c7df2fd40a3b8c7bcc03e24d
+      internalID: -983283140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_4
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 3361
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef97f9625393f9e4194a67d38dd249ea
+      internalID: 1236759222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_5
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 3362
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc63ecf806dd3134a9d64bd0e1bbd8d6
+      internalID: -1934573509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_6
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 3358
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4876958431088b4288c67bd44583789
+      internalID: -1894034757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_7
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 3362
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e357d3cd068bc174f97b2ebd0a1dc996
+      internalID: 603736573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_8
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 3361
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af19d083ffff62c46931960760d06692
+      internalID: 73096565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_9
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 3362
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c37d33110221f644889ff5c856aa3f0
+      internalID: 118495008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_10
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 3358
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b4b514ec015608428f67276b34b67c7
+      internalID: -1802015431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_11
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 3361
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b94b46f12e6e87e4e8c163b6806da5df
+      internalID: 1223661347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_12
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 3359
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1440280f0cdd3354ea84aca4d44407c5
+      internalID: -1419162090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_13
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 3361
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95800b98098110d44a8f7ee6c68f8ebe
+      internalID: -495129123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_14
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 3361
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65c1f174e4edf224a8c197505d048ec8
+      internalID: 1417315911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_15
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 3362
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9756e8940c869c409991b1252c9f486
+      internalID: 385066768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_16
+      rect:
+        serializedVersion: 2
+        x: 1489
+        y: 3361
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b764aaa85d3ab94bb8cfba1aceabc26
+      internalID: -45903140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_17
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 3361
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 584940081d3ef73489c88924c26313dd
+      internalID: -1588662268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_18
+      rect:
+        serializedVersion: 2
+        x: 1591
+        y: 3321
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ebfeee0f92c224f81ca7d90096ac10
+      internalID: 1610239936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_19
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 3141
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67ddb1be415c88b47aa2337c3c33bd15
+      internalID: 1224501954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_20
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 3141
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a851436870e3794458eb8a04aec8f665
+      internalID: -1611661410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_21
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 3141
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b8f8c3a6d394fe42941b3bf9b408c25
+      internalID: -1737523903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-darah_0000s_0010_darah-10_22
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 3141
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cde4e244b2e6bb34791e854b6822a8e7
+      internalID: -838052518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +602,30 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI-darah_0000s_0010_darah-10_0: 1707850757
+      UI-darah_0000s_0010_darah-10_1: -476513184
+      UI-darah_0000s_0010_darah-10_10: -1802015431
+      UI-darah_0000s_0010_darah-10_11: 1223661347
+      UI-darah_0000s_0010_darah-10_12: -1419162090
+      UI-darah_0000s_0010_darah-10_13: -495129123
+      UI-darah_0000s_0010_darah-10_14: 1417315911
+      UI-darah_0000s_0010_darah-10_15: 385066768
+      UI-darah_0000s_0010_darah-10_16: -45903140
+      UI-darah_0000s_0010_darah-10_17: -1588662268
+      UI-darah_0000s_0010_darah-10_18: 1610239936
+      UI-darah_0000s_0010_darah-10_19: 1224501954
+      UI-darah_0000s_0010_darah-10_2: -206324937
+      UI-darah_0000s_0010_darah-10_20: -1611661410
+      UI-darah_0000s_0010_darah-10_21: -1737523903
+      UI-darah_0000s_0010_darah-10_22: -838052518
+      UI-darah_0000s_0010_darah-10_3: -983283140
+      UI-darah_0000s_0010_darah-10_4: 1236759222
+      UI-darah_0000s_0010_darah-10_5: -1934573509
+      UI-darah_0000s_0010_darah-10_6: -1894034757
+      UI-darah_0000s_0010_darah-10_7: 603736573
+      UI-darah_0000s_0010_darah-10_8: 73096565
+      UI-darah_0000s_0010_darah-10_9: 118495008
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

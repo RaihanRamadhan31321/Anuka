@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
 {
 
     public GameObject SettingsPanel;
+    public GameObject ControlPanel;
     public AudioManager audioManager;
 
     void Update()
@@ -32,11 +33,20 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (SettingsPanel.activeSelf)
+            if (ControlPanel.activeSelf)
             {
                 // Jika panel pengaturan aktif, matikan panel
-                SettingsPanel.SetActive(false);
+                ControlPanel.SetActive(false);
+                SettingsPanel.SetActive(true);
             }
+            else
+            
+                if (SettingsPanel.activeSelf)
+                {
+                    // Jika panel pengaturan aktif, matikan panel
+                    SettingsPanel.SetActive(false);
+                }
+            
             else
             {
                 // Jika panel pengaturan dimatikan dan berada di menu utama, pindah ke ExitScene

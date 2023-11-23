@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private bool isPaused = true;
     private PlayerMovement player;
     private CursorController cursorController;
-    //private LoadSceneTransition loadSceneTransition;
+    private LoadSceneTransition loadSceneTransition;
 
 
 
@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
     {
         player = FindObjectOfType<PlayerMovement>();
         cursorController = FindObjectOfType<CursorController>();
-        //loadSceneTransition = FindObjectOfType<LoadSceneTransition>();
+        loadSceneTransition = FindObjectOfType<LoadSceneTransition>();
         //pausePanel.SetActive(false);
     }
 
@@ -124,7 +124,7 @@ public class UIManager : MonoBehaviour
     
     public void Respawn()
     {
-        //loadSceneTransition.reload = true;
+        loadSceneTransition.reload = true;
         GameOverPanel.SetActive(false);
         ResumeGame();
     }
@@ -132,7 +132,7 @@ public class UIManager : MonoBehaviour
     public void MenuUtama()
     {
         Time.timeScale = 1;
-        //loadSceneTransition.loadMain = true;
+        loadSceneTransition.loadMain = true;
     }
 
 

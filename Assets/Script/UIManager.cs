@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private bool isPaused = true;
     private PlayerMovement player;
     private CursorController cursorController;
+    //private LoadSceneTransition loadSceneTransition;
 
 
 
@@ -34,6 +35,7 @@ public class UIManager : MonoBehaviour
     {
         player = FindObjectOfType<PlayerMovement>();
         cursorController = FindObjectOfType<CursorController>();
+        //loadSceneTransition = FindObjectOfType<LoadSceneTransition>();
         //pausePanel.SetActive(false);
     }
 
@@ -122,16 +124,15 @@ public class UIManager : MonoBehaviour
     
     public void Respawn()
     {
-        player.playerGameObject.transform.position = player.StartPoint;
-        player.playerHP.currentHealth = 100;
-        Application.LoadLevel(3);
+        //loadSceneTransition.reload = true;
         GameOverPanel.SetActive(false);
         ResumeGame();
     }
 
     public void MenuUtama()
     {
-        Application.LoadLevel(1);
+        Time.timeScale = 1;
+        //loadSceneTransition.loadMain = true;
     }
 
 

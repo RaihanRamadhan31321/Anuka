@@ -9,10 +9,14 @@ using System;
 
 public class MainMenu : MonoBehaviour
 {
-
+    public LoadSceneTransition sceneTransition;
     public GameObject SettingsPanel;
     public AudioManager audioManager;
 
+    private void Start()
+    {
+        sceneTransition = FindObjectOfType<LoadSceneTransition>();
+    }
     void Update()
     {
         Esc();
@@ -20,7 +24,7 @@ public class MainMenu : MonoBehaviour
 
     public void PrologueScene()
     {
-        SceneManager.LoadScene("PrologueScene");
+        sceneTransition.loadNext = true;
     }
 
     public void ExitBoong()

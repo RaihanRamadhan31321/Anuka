@@ -7,10 +7,12 @@ public class LevelScene : MonoBehaviour
 {
     public GameObject levelPanel;
     public CursorController cursorController;
+    private LoadSceneTransition transition;
 
     private void Start()
     {
         cursorController = FindObjectOfType<CursorController>();
+        transition = FindObjectOfType<LoadSceneTransition>();
         cursorController.csr = true;
     }
 
@@ -27,15 +29,15 @@ public class LevelScene : MonoBehaviour
     {
         Time.timeScale = 1;
         levelPanel.SetActive(false);
-        SceneManager.LoadScene("MainMenu");
+        transition.loadMain = true;
     }
 
     public void KeLevel1()
     {
         Time.timeScale = 1;
         levelPanel.SetActive(false);
-        SceneManager.LoadScene("Scene Visto");
-        SceneManager.LoadScene("Level 1");
+        //SceneManager.LoadScene("Scene Visto");
+        transition.loadNext = true;
         cursorController.csr = false;
     }
 

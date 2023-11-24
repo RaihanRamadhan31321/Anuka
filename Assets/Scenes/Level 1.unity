@@ -7055,6 +7055,8 @@ MonoBehaviour:
   attackDamage: 30
   specialDamage: 50
   specialCooldown: 3
+  basicATKCooldown: 0.07
+  CanBasicAttack: 1
   mundur: 3
 --- !u!114 &1304989957
 MonoBehaviour:

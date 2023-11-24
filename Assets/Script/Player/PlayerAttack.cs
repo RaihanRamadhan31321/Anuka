@@ -13,8 +13,10 @@ public class PlayerAttack : MonoBehaviour
     public int attackDamage;
     public int specialDamage;
     public float specialCooldown = 3.0f; // Waktu cooldown untuk serangan khusus
+    public float basicATKCooldown;
     //private float lastSpecialAttackTime = -1000.0f; // Inisialisasi dengan nilai yang memastikan serangan pertama bisa dilakukan
     private bool CanSpecialAttack = true;
+    [SerializeField]private bool CanBasicAttack = true;
     private PlayerMovement player;
     private Animator animator;
     private GameObject enemy;
@@ -34,11 +36,17 @@ public class PlayerAttack : MonoBehaviour
     private void Update()
     {
         //basicattack
-        if (Input.GetKeyDown(KeyCode.Mouse0) && player.animator.GetBool("isJumping") == false)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && player.isGround)
         {
-            player.OnDisableMovement();
-            BasicAttack();
-            Invoke("MovementEnable", 0.5f);
+            if (CanBasicAttack)
+            {
+                StartCoroutine(BasicCooldown());
+                Invoke("MovementEnable", 0.5f);
+            }
+            else
+            {
+                Debug.Log("NO");
+            }
 
         }
         //specialattack
@@ -75,7 +83,6 @@ public class PlayerAttack : MonoBehaviour
     void BasicAttack()
     {
         //animasi
-        player.animator.SetBool("isAttacking", true);
 
         //deteksi musuh di radius jarak attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -87,6 +94,7 @@ public class PlayerAttack : MonoBehaviour
             enemy.transform.Find("AttackRange").GetComponent<Enemyattack>().GetHit();
             Debug.Log("Kena Area Pukul");
         }
+        CanBasicAttack = false;
     }
 
     void SpecialAttack()
@@ -116,6 +124,14 @@ public class PlayerAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(specialCooldown);
         CanSpecialAttack = true;
+    }
+    IEnumerator BasicCooldown()
+    {
+        player.OnDisableMovement();
+        player.animator.SetTrigger("isAttacking");
+        BasicAttack();
+        yield return new WaitForSeconds(basicATKCooldown);
+        CanBasicAttack = true;
     }
     public void GetHit()
     {

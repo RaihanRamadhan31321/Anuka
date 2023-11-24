@@ -64,13 +64,6 @@ public class PlayerMovement : MonoBehaviour
             BarrierOn();
 
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("isJumping") == false)
-        {
-            OnDisableMovement();
-            Attack();
-            Invoke("OnEnableMovement", 0.5f);
-
-        }
         if (moving == true)
         {
             Move();
@@ -157,10 +150,6 @@ public class PlayerMovement : MonoBehaviour
         //kalkulasi kecepatan arah
         this.transform.Translate(arah * Time.deltaTime * speed);
         }
-    void Attack()
-    {
-        animator.SetBool("isAttacking", true);
-    }
     public void Jump(float jumping)
     {
         rb.velocity = new Vector2(0, jumping);

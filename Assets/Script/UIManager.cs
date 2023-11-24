@@ -44,6 +44,17 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (ControlMapPanel.activeSelf)
+            {
+                // Jika panel pengaturan aktif, matikan panel
+                ControlMapPanel.SetActive(false);
+                SettingsPanel.SetActive(true);
+                CoinPanel.SetActive(false);
+                pausePanel.SetActive(false);
+            }
+
+            else
+
             if (SettingsPanel.activeSelf)
             {
                 // Jika panel pengaturan terbuka, kembalikan ke panel pause
@@ -52,15 +63,7 @@ public class UIManager : MonoBehaviour
                 pausePanel.SetActive(true);
 
             }
-            if (ControlMapPanel.activeSelf)
-            {
-                // Jika panel pengaturan terbuka, kembalikan ke panel pause
-                ControlMapPanel.SetActive(false);
-                CoinPanel.SetActive(false);
-                pausePanel.SetActive(true);
-                SettingsPanel.SetActive(true);
 
-            }
             else
             {
                 // Jika panel pengaturan tidak terbuka, jalankan logika pause/resume
@@ -70,6 +73,7 @@ public class UIManager : MonoBehaviour
                     cursorController.csr = true;
                 }
                 else
+                if (isPaused && !ControlMapPanel.activeSelf && !SettingsPanel.activeSelf)
                 {
                     ResumeGame();
                     cursorController.csr = false;
@@ -96,6 +100,7 @@ public class UIManager : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1;
         pausePanel.SetActive(false);
+        SettingsPanel.SetActive(false);
         CoinPanel.SetActive(true);
         cursorController.csr = false;
     }

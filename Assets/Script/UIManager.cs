@@ -20,9 +20,10 @@ public class UIManager : MonoBehaviour
     public GameObject CoinPanel;
 
     [SerializeField] private bool isPaused = true;
-    private PlayerMovement player;
+    private PlayerManager player;
     private CursorController cursorController;
     private LoadSceneTransition loadSceneTransition;
+    [SerializeField]private Animator gameOverAnimator;
 
 
 
@@ -33,7 +34,7 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        player = FindObjectOfType<PlayerMovement>();
+        player = FindObjectOfType<PlayerManager>();
         cursorController = FindObjectOfType<CursorController>();
         loadSceneTransition = FindObjectOfType<LoadSceneTransition>();
         //pausePanel.SetActive(false);
@@ -75,6 +76,11 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+        if (player.death)
+        {
+            player.playerHP.currentHealth = 100;
+            Death();
+        }
     }
 
     public void PauseGame()
@@ -95,9 +101,12 @@ public class UIManager : MonoBehaviour
     }
     public void Death()
     {
+        cursorController.csr = true;
         isPaused = true;
+        gameOverAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
         Time.timeScale = 0;
         GameOverPanel.SetActive(true);
+
     }
 
     public void UpdateHealth(float value)
@@ -124,6 +133,8 @@ public class UIManager : MonoBehaviour
     
     public void Respawn()
     {
+        gameOverAnimator.updateMode = AnimatorUpdateMode.Normal;
+        player.death = false;
         loadSceneTransition.reload = true;
         GameOverPanel.SetActive(false);
         ResumeGame();
@@ -131,6 +142,7 @@ public class UIManager : MonoBehaviour
 
     public void MenuUtama()
     {
+        gameOverAnimator.updateMode = AnimatorUpdateMode.Normal;
         Time.timeScale = 1;
         loadSceneTransition.loadMain = true;
     }

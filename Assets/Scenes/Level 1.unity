@@ -1898,6 +1898,7 @@ GameObject:
   - component: {fileID: 278211811}
   - component: {fileID: 278211813}
   - component: {fileID: 278211812}
+  - component: {fileID: 278211814}
   m_Layer: 5
   m_Name: PanelGameOver
   m_TagString: Untagged
@@ -1965,6 +1966,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278211810}
   m_CullTransparentMesh: 1
+--- !u!95 &278211814
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278211810}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &285665185
 GameObject:
   m_ObjectHideFlags: 0
@@ -7052,6 +7074,8 @@ MonoBehaviour:
   playerHP: {fileID: 1304989958}
   playerMV: {fileID: 1304989954}
   coin: {fileID: 1542201934}
+  death: 0
+  deadCheck: 1
 --- !u!114 &1304989958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11123,6 +11147,7 @@ MonoBehaviour:
   ControlMapPanel: {fileID: 1616253416}
   CoinPanel: {fileID: 1542201930}
   isPaused: 0
+  gameOverAnimator: {fileID: 278211814}
 --- !u!4 &1922005151
 Transform:
   m_ObjectHideFlags: 0

@@ -11,7 +11,8 @@ public class PlayerManager : MonoBehaviour
     public PlayerHealthPoint playerHP;
     public PlayerMovement playerMV;
     public CoinsUI coin;
-
+    public bool death;
+    public bool deadCheck = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,10 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(playerHP.currentHealth <= 0 && deadCheck == true)
+        {
+            StartCoroutine(DeathCounter());
+        }
     }
     public void SavePlayer()
     {
@@ -57,6 +61,17 @@ public class PlayerManager : MonoBehaviour
 
 
 
+    }
+    IEnumerator DeathCounter()
+    {
+        deadCheck = false;
+        playerMV.animator.SetTrigger("isDead");
+        playerMV.animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        Debug.Log("CEKKKK");
+        Time.timeScale = 0.2f;
+        yield return new WaitForSecondsRealtime(0.9f);
+        playerMV.animator.updateMode = AnimatorUpdateMode.Normal;
+        death = true;
     }
 
 

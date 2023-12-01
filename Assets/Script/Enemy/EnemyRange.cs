@@ -10,7 +10,10 @@ public class EnemyRange : MonoBehaviour
     void Start()
     {
         enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
-        player = FindObjectOfType<PlayerMovement>().gameObject;
+        if (PlayerManager.instance != null)
+        {
+            player = PlayerManager.instance.gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -39,7 +42,7 @@ public class EnemyRange : MonoBehaviour
                 enemy.enemyAnimator.SetBool("isRunning", false);
             }
             
-        }
+        } 
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

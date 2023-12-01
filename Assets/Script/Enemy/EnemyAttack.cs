@@ -23,6 +23,9 @@ public class Enemyattack : MonoBehaviour
     [Tooltip("Untuk Mengatur seberapa jauh terlempar jika di pukul 3 kali")]
     [SerializeField] private float mundur;
 
+    [SerializeField] private GameObject hitEffect;
+    [SerializeField] private float objHeight = 0.7f;
+
     private void Start()
     {
         enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
@@ -103,6 +106,10 @@ public class Enemyattack : MonoBehaviour
     public void GetHit()
     {
         enemy.OnDisableMovement();
+        
+        var effect = Instantiate(hitEffect, transform.position + Vector3.up * objHeight, Quaternion.identity);
+        Destroy(effect, 0.2f);
+
         animator.SetBool("getHit", true);
         if (hitCount == 3)
         {

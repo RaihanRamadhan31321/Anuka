@@ -13,6 +13,13 @@ public class PlayerManager : MonoBehaviour
     public CoinsUI coin;
     public bool death;
     public bool deadCheck = true;
+    public static PlayerManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

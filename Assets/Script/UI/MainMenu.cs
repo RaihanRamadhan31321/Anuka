@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using System;
+using System.IO;
 
 public class MainMenu : MonoBehaviour
 {
@@ -72,7 +73,16 @@ public class MainMenu : MonoBehaviour
         audioManager.PlaySFX(audioManager.click);
     }
 
+    public void WipeData()
+    {
+        if(File.Exists(Application.persistentDataPath + "/SaveData.gg"))
+        {
+            File.Delete(Application.persistentDataPath + "/SaveData.gg");
+        }
+       
+    }
 
+    
 
 
 }

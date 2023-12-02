@@ -1,31 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections.Generic;
+using UnityEngine.Events;
 
-<<<<<<<< HEAD:Assets/GameManager.cs
-public class GameManager : MonoBehaviour
-========
-public class level : MonoBehaviour
->>>>>>>> fdb306607bfd97c51150eaabafc099b1912634fc:Assets/level.cs
+public enum character
 {
-    // Start is called before the first frame update
-    public List<Button> buttones = new List<Button>();
-    public Button[] buttons;
-    
-    void Start()
-    {
-<<<<<<<< HEAD:Assets/GameManager.cs
-        DontDestroyOnLoad(gameObject);
-========
-        buttons = new Button[buttons.Length];
->>>>>>>> fdb306607bfd97c51150eaabafc099b1912634fc:Assets/level.cs
-    }
+    SINGA,
+    DITO
+}
+public class GameManager : MonoBehaviour
+{
+    public static GameManager Instance;
+    public GameObject dito, singa;
+    public Transform spawnPoint;
+    public character currentCharacter;
 
-    // Update is called once per frame
-    void Update()
+    public UnityEvent onPlayerSpawn;
+
+    private void Start()
     {
-        
+
+    }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+        else
+        {
+            Instance = this;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
+    public void SpawnPlayer()
+    {
+        switch (currentCharacter)
+        {
+            case character.SINGA:
+                Instantiate(singa, spawnPoint.position, spawnPoint.rotation);
+                break;
+            case character.DITO:
+                Debug.Log("Bebas");
+                Instantiate(dito, spawnPoint.position, spawnPoint.rotation);
+                break;
+        }
+        onPlayerSpawn?.Invoke();
     }
 }

@@ -12,6 +12,7 @@ public class FinishScript : MonoBehaviour
         {
             UnlockNewLevel();
             SceneController.instance.LoadScene(levelName);
+            AudioManager.Instance.Mainmenu();
         }
     }
 
@@ -24,4 +25,6 @@ public class FinishScript : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
+
+
 }

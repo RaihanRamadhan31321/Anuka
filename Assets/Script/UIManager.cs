@@ -151,6 +151,7 @@ public class UIManager : MonoBehaviour
         gameOverAnimator.updateMode = AnimatorUpdateMode.Normal;
         Time.timeScale = 1;
         loadSceneTransition.loadMain = true;
+        AudioManager.Instance.Mainmenu();
     }
 
 

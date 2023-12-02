@@ -41,4 +41,9 @@ public class LevelManager : MonoBehaviour
             buttons[i] = levelButtons.transform.GetChild(i).gameObject.GetComponent<Button>();
         }
     }
+
+    public void LevelMusic()
+    {
+        AudioManager.Instance.Gameplay();
+    }
 }

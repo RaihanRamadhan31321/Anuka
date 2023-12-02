@@ -34,8 +34,8 @@ public class Enemyattack : MonoBehaviour
     {
         enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
         sr = transform.parent.gameObject.GetComponent<SpriteRenderer>();
-        playerHP = FindObjectOfType<PlayerHealthPoint>();
-        playerAtk = FindObjectOfType<PlayerAttack>();
+        playerHP = PlayerManager.instance.playerHP;
+        playerAtk = PlayerManager.instance.playerATK;
         rb = GetComponent<Rigidbody2D>();
         camShake = GetComponent<CinemachineImpulseSource>();   
         animator = enemy.enemyAnimator;

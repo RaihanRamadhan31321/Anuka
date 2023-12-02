@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        player = FindObjectOfType<PlayerManager>();
+        player = PlayerManager.instance;
         cursorController = FindObjectOfType<CursorController>();
         loadSceneTransition = FindObjectOfType<LoadSceneTransition>();
         //pausePanel.SetActive(false);
@@ -83,6 +83,7 @@ public class UIManager : MonoBehaviour
         if (player.death)
         {
             player.playerHP.currentHealth = 100;
+            player.death = false;
             Death();
         }
     }

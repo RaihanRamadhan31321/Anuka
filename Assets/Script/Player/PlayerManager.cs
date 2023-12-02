@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     public bool deadCheck = true;
     public static PlayerManager instance;
 
+
     private void Awake()
     {
         instance = this;

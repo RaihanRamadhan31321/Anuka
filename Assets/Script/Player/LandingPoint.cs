@@ -15,9 +15,8 @@ public class LandingPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerMovement>().gameObject;
-        movement = player.GetComponent<PlayerMovement>();
-        childOfPlayer = player.transform.Find("MoveLimit").gameObject;
+        movement = PlayerManager.instance.playerMV;
+        //childOfPlayer = player.transform.Find("MoveLimit").gameObject;
         
         playerSpeed = movement.speed;
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Enemyattack : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Enemyattack : MonoBehaviour
     [SerializeField] private float objHeight = 0.7f;
     [SerializeField] private Color32 warna;
     private SpriteRenderer sr;
+    [SerializeField] private CinemachineImpulseSource camShake;
 
     private void Start()
     {
@@ -35,7 +37,7 @@ public class Enemyattack : MonoBehaviour
         playerHP = FindObjectOfType<PlayerHealthPoint>();
         playerAtk = FindObjectOfType<PlayerAttack>();
         rb = GetComponent<Rigidbody2D>();
-
+        camShake = GetComponent<CinemachineImpulseSource>();   
         animator = enemy.enemyAnimator;
         stay = new Vector3(1.51f, 0.26f, 0);
     }
@@ -116,7 +118,7 @@ public class Enemyattack : MonoBehaviour
             sr.color = Color.white;
         }
         enemy.OnDisableMovement();
-        
+        camShake.GenerateImpulse(1);
         var effect = Instantiate(hitEffect, transform.position + Vector3.up * objHeight, Quaternion.identity);
         Destroy(effect, 0.2f);
         StartCoroutine(HitCooldown());

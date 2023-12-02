@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 public class PlayerManager : MonoBehaviour
 {
     public float health = 100;
-    [SerializeField] private UIManager _uiManager;
     public PlayerAttack playerATK;
     public PlayerHealthPoint playerHP;
     public PlayerMovement playerMV;
@@ -23,8 +22,8 @@ public class PlayerManager : MonoBehaviour
         
 
 
-        _uiManager = UIManager.instance;
-        _uiManager.UpdateHealth(health);
+
+        UIManager.instance.UpdateHealth(health);
     }
 
     // Update is called once per frame
@@ -56,7 +55,7 @@ public class PlayerManager : MonoBehaviour
         coin.currentCoins = data.coinCount;
 
         playerMV.transform.position = pos;
-        _uiManager.UpdateHealth(playerHP.currentHealth);
+        UIManager.instance.UpdateHealth(playerHP.currentHealth);
         coin.coinText.text = "Coins:" + coin.currentCoins.ToString();
 
 

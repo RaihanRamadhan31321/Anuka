@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/DeletePlayerPrefs.cs.meta
 guid: 86691379d9744794cb3deaa1f5e4fa78
+========
+guid: 2d4b449987c5bd343a8e6b5481a6e4db
+>>>>>>>> fdb306607bfd97c51150eaabafc099b1912634fc:Assets/GameManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

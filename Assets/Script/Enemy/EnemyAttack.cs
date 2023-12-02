@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Enemyattack : MonoBehaviour
 {
@@ -23,12 +24,20 @@ public class Enemyattack : MonoBehaviour
     [Tooltip("Untuk Mengatur seberapa jauh terlempar jika di pukul 3 kali")]
     [SerializeField] private float mundur;
 
+    [SerializeField] private GameObject hitEffect;
+    [SerializeField] private float objHeight = 0.7f;
+    [SerializeField] private Color32 warna;
+    private SpriteRenderer sr;
+    [SerializeField] private CinemachineImpulseSource camShake;
+
     private void Start()
     {
         enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
+        sr = transform.parent.gameObject.GetComponent<SpriteRenderer>();
         playerHP = FindObjectOfType<PlayerHealthPoint>();
         playerAtk = FindObjectOfType<PlayerAttack>();
         rb = GetComponent<Rigidbody2D>();
+        camShake = GetComponent<CinemachineImpulseSource>();   
         animator = enemy.enemyAnimator;
         stay = new Vector3(1.51f, 0.26f, 0);
     }
@@ -102,10 +111,22 @@ public class Enemyattack : MonoBehaviour
     }
     public void GetHit()
     {
+        IEnumerator HitCooldown()
+        {
+            sr.color = warna;
+            yield return new WaitForSeconds(0.2f);
+            sr.color = Color.white;
+        }
         enemy.OnDisableMovement();
+        camShake.GenerateImpulse(1);
+        var effect = Instantiate(hitEffect, transform.position + Vector3.up * objHeight, Quaternion.identity);
+        Destroy(effect, 0.2f);
+        StartCoroutine(HitCooldown());
+
         animator.SetBool("getHit", true);
         if (hitCount == 3)
         {
+            
             Vector2 back = new Vector2(mundur, 0);
             enemy.rb.velocity = back;
 
@@ -113,6 +134,7 @@ public class Enemyattack : MonoBehaviour
         }
         Invoke("MovementEnable", 0.4f);
         hitCount++;
+
     }
 
     //display

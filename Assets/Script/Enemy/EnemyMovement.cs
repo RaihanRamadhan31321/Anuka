@@ -11,10 +11,22 @@ public class EnemyMovement : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
     [HideInInspector] public Rigidbody2D rb;
+
+    private void OnEnable()
+    {
+        GameManager.Instance.onPlayerSpawn.AddListener(Initialized);
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.onPlayerSpawn.RemoveAllListeners();
+    }
+    private void Initialized()
+    {
+        player = PlayerManager.instance.gameObject;
+    }
     void Start()
     {
         currentHealth = maxHealth;
-        player = FindObjectOfType<PlayerMovement>().gameObject;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -59,14 +71,18 @@ public class EnemyMovement : MonoBehaviour
 
     void Rotate()
     {
-        if (transform.position.x < player.transform.position.x) 
+        if (player != null)
         {
-            transform.localScale = new Vector3(1, 1, 0);
+            if (transform.position.x < player.transform.position.x)
+            {
+                transform.localScale = new Vector3(1, 1, 0);
+            }
+            if (transform.position.x > player.transform.position.x)
+            {
+                transform.localScale = new Vector3(-1, 1, 0);
+            }
         }
-        if (transform.position.x > player.transform.position.x)
-        {
-            transform.localScale = new Vector3(-1, 1, 0);
-        }
+        
     }
     public void OnDisableMovement()
     {

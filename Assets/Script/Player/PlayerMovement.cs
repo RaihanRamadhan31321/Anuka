@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public GameObject landing;
     [HideInInspector] public GameObject playerGameObject;
     [HideInInspector] public Vector3 StartPoint;
-
     [HideInInspector] public PlayerHealthPoint playerHP;
 
     private float xvalue;
@@ -156,15 +155,19 @@ public class PlayerMovement : MonoBehaviour
     }
     public void BarrierOn()
     {
-        float clampedValue = Mathf.Clamp(transform.position.x, atas,bawah);
-        Vector3 pembatas = new Vector3(clampedValue, transform.position.y, transform.position.z);
+        float PlayerClampedValue = Mathf.Clamp(transform.position.x, atas,bawah);
+        Vector3 pembatas = new Vector3(PlayerClampedValue, transform.position.y, transform.position.z);
+        Vector3 pembatasLanding = new Vector3(PlayerClampedValue, landing.transform.position.y, landing.transform.position.z);
         transform.position = pembatas;
+        landing.transform.position = pembatasLanding;
     }
     public void BarrierOff()
     {
         Vector3 normal = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Vector3 landingNormal = new Vector3(landing.transform.position.x, landing.transform.position.y, landing.transform.position.z);
         trigger.isFighting = false;
         transform.position = normal;
+        landing.transform.position = landingNormal;
     }
 
 }

@@ -59,15 +59,17 @@ public class Enemyattack : MonoBehaviour
     }
     void BasicAttack()
     {
-        Debug.Log("BASIC");
-        enemy.enemyAnimator.SetBool("isAttacking", true);
-        enemy.OnDisableMovement();
-        playerHP.TakeDamage(attackDamage);
-        playerAtk.GetHit();
-        CanAttack = false;
-        cd = true;
-        Invoke("MovementEnable", 0.7f);
-        
+        if(enemy.isDead == false)
+        {
+            Debug.Log("BASIC");
+            enemy.enemyAnimator.SetBool("isAttacking", true);
+            enemy.OnDisableMovement();
+            playerHP.TakeDamage(attackDamage);
+            playerAtk.GetHit();
+            CanAttack = false;
+            cd = true;
+            Invoke("MovementEnable", 0.7f);
+        }
     }
     void CooldownBasicAttack ()
     {
@@ -111,30 +113,32 @@ public class Enemyattack : MonoBehaviour
     }
     public void GetHit()
     {
-        IEnumerator HitCooldown()
+        if(enemy.isDead == false)
         {
-            sr.color = warna;
-            yield return new WaitForSeconds(0.2f);
-            sr.color = Color.white;
-        }
-        enemy.OnDisableMovement();
-        camShake.GenerateImpulse(1);
-        var effect = Instantiate(hitEffect, transform.position + Vector3.up * objHeight, Quaternion.identity);
-        Destroy(effect, 0.2f);
-        StartCoroutine(HitCooldown());
+            IEnumerator HitCooldown()
+            {
+                sr.color = warna;
+                yield return new WaitForSeconds(0.2f);
+                sr.color = Color.white;
+            }
+            enemy.OnDisableMovement();
+            camShake.GenerateImpulse(1);
+            var effect = Instantiate(hitEffect, transform.position + Vector3.up * objHeight, Quaternion.identity);
+            Destroy(effect, 0.2f);
+            StartCoroutine(HitCooldown());
 
-        animator.SetBool("getHit", true);
-        if (hitCount == 3)
-        {
-            
-            Vector2 back = new Vector2(mundur, 0);
-            enemy.rb.velocity = back;
+            animator.SetBool("getHit", true);
+            if (hitCount == 3)
+            {
 
-            hitCount = 0;
-        }
-        Invoke("MovementEnable", 0.4f);
-        hitCount++;
+                Vector2 back = new Vector2(mundur, 0);
+                enemy.rb.velocity = back;
 
+                hitCount = 0;
+            }
+            Invoke("MovementEnable", 0.4f);
+            hitCount++;
+        }   
     }
 
     //display

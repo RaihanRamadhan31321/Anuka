@@ -69,16 +69,18 @@ public class PlayerAttack : MonoBehaviour
                 Debug.Log("Spesial PlayerAttack Sedang Cooldown");
             }
         }
-
-        if (transform.position.x > enemy.transform.position.x)
+        if(enemy != null)
         {
-            mundur = Mathf.Abs(mundur);
-        }
-        else
-        {
-            if (mundur > 0)
+            if (transform.position.x > enemy.transform.position.x)
             {
-                mundur = -mundur;
+                mundur = Mathf.Abs(mundur);
+            }
+            else
+            {
+                if (mundur > 0)
+                {
+                    mundur = -mundur;
+                }
             }
         }
     }

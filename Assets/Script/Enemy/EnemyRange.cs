@@ -30,7 +30,7 @@ public class EnemyRange : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && enemy.moving == true)
+        if (collision.CompareTag("Player") && enemy.moving == true && enemy.isDead == false)
         {
             enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, player.transform.position, enemy.moveSpeed * Time.deltaTime);
             if (enemy.moving != false)

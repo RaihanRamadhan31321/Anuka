@@ -61,7 +61,7 @@ MonoBehaviour:
   objHeight: 0.4
   warna:
     serializedVersion: 2
-    rgba: 0
+    rgba: 2739357695
   camShake: {fileID: 0}
 --- !u!58 &3805353834263432142
 CircleCollider2D:
@@ -431,6 +431,7 @@ MonoBehaviour:
   moving: 0
   maxHealth: 100
   rb: {fileID: 0}
+  isDead: 0
 --- !u!50 &7347405718244084812
 Rigidbody2D:
   serializedVersion: 4

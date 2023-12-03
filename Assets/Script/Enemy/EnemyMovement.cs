@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
     [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public bool isDead = false;
 
     private void OnEnable()
     {
@@ -38,50 +39,71 @@ public class EnemyMovement : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-
-        //animasi kena pukul
-
-        if (currentHealth < 0)
+        if(!isDead)
         {
-               Die();
+            currentHealth -= damage;
+
+
+            //animasi kena pukul
+
+            if (currentHealth < 0)
+            {
+                   Die();
+            }
+
+        } else
+        {
+            return;
         }
     }
     public void SpecialTakeDamage(int specialDamage)
     {
-        currentHealth -= specialDamage;
-
-        //animasi kena pukul
-
-        if (currentHealth < 0)
+        if (!isDead)
         {
-             Die();
-        }
+            currentHealth -= specialDamage;
+
+            //animasi kena pukul
+
+            if (currentHealth < 0)
+            {
+                Die();
+            }
+        }else { return; }
+        
     }
 
     void Die()
     {
         Debug.Log("MATI DIA");
+        enemyAnimator.SetTrigger("isDead");
+        isDead = true;
 
         //animasi mati
 
         //disable musuh
     }
+    public void DeleteThis()
+    {
+        Destroy(gameObject, 5f);
+    }
 
 
     void Rotate()
     {
-        if (player != null)
+        if(!isDead)
         {
-            if (transform.position.x < player.transform.position.x)
+            if (player != null)
             {
-                transform.localScale = new Vector3(1, 1, 0);
+                if (transform.position.x < player.transform.position.x)
+                {
+                    transform.localScale = new Vector3(1, 1, 0);
+                }
+                if (transform.position.x > player.transform.position.x)
+                {
+                    transform.localScale = new Vector3(-1, 1, 0);
+                }
             }
-            if (transform.position.x > player.transform.position.x)
-            {
-                transform.localScale = new Vector3(-1, 1, 0);
-            }
-        }
+        }     
         
     }
     public void OnDisableMovement()

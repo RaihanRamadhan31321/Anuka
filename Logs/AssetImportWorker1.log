@@ -254,3 +254,225 @@ Received Import Request.
 Start importing Assets/Scenes/LevelScene.unity using Guid(d2d73f11c0511944a8724c24856d7f35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0235a16708c2651a08d924bcbab8f926') in 0.004432 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 188.022837 seconds.
+  path: Assets/Char/Ditto/Ditto/dito_basic-attack-2.png
+  artifactKey: Guid(4bfb1b29811b4594fb865dec3f1f7557) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Char/Ditto/Ditto/dito_basic-attack-2.png using Guid(4bfb1b29811b4594fb865dec3f1f7557) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22f352c2b962aecd5631c808ae511b9b') in 0.372677 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Char/Ditto/Ditto/dito_basic-attack-4.png
+  artifactKey: Guid(de54c4e6a6221694da287fa98d9fa51d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Char/Ditto/Ditto/dito_basic-attack-4.png using Guid(de54c4e6a6221694da287fa98d9fa51d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e6e3637715ff22ff11865f53a9832ab') in 0.079651 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000238 seconds.
+  path: Assets/Char/Ditto/Ditto/dito_huge-attack-2.png
+  artifactKey: Guid(519f14dc7f9f16949ad35d1f1a839b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Char/Ditto/Ditto/dito_huge-attack-2.png using Guid(519f14dc7f9f16949ad35d1f1a839b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f837e0a34c593257ef1ff4b2263bde10') in 0.094960 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Char/Ditto/Ditto/dito_huge-attack-4.png
+  artifactKey: Guid(d4bef9d16a95ad6449d0e948800edfcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Char/Ditto/Ditto/dito_huge-attack-4.png using Guid(d4bef9d16a95ad6449d0e948800edfcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b5544be68ca07b73145b711a5d5a277') in 0.098750 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.297993 seconds.
+  path: Assets/Char/Ditto/Ditto/idle/Dito-yeuhidle-2.png
+  artifactKey: Guid(43239660297959b4883922f8d615502f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Char/Ditto/Ditto/idle/Dito-yeuhidle-2.png using Guid(43239660297959b4883922f8d615502f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64e120ff3701fcdb40ca387bd5052654') in 0.057319 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Char/Ditto/Ditto/idle/dito_idle-4.png
+  artifactKey: Guid(0a3331c1656e3a7478f1ee5d51817bc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Char/Ditto/Ditto/idle/dito_idle-4.png using Guid(0a3331c1656e3a7478f1ee5d51817bc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0a90d42b65f7bb7d2acac39765fa0b9') in 0.080003 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Char/Ditto/Ditto/idle/Dito-yeuhIdle-8.png
+  artifactKey: Guid(d0869ba8f1d69b9479b593f985c1a093) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Char/Ditto/Ditto/idle/Dito-yeuhIdle-8.png using Guid(d0869ba8f1d69b9479b593f985c1a093) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fb613d6ad5601833e30dfe4decdffb7') in 0.094990 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000448 seconds.
+  path: Assets/Char/Ditto/Ditto/idle/dito_idle-3.png
+  artifactKey: Guid(33c3e5a4a3843a64da90840947edc677) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Char/Ditto/Ditto/idle/dito_idle-3.png using Guid(33c3e5a4a3843a64da90840947edc677) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89131a63c28fa980f3bec103bb0c2971') in 0.078867 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000112 seconds.
+  path: Assets/Char/Ditto/Ditto/idle/Dito-yeuhidle-7.png
+  artifactKey: Guid(f67f6b5debf1195449d98295720e7c63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Char/Ditto/Ditto/idle/Dito-yeuhidle-7.png using Guid(f67f6b5debf1195449d98295720e7c63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28768f77dd5b1775e2da0056c723b023') in 0.071204 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Char/Ditto/Ditto/idle/dito_idle-5.png
+  artifactKey: Guid(222d4fdc59cdd3d4ca380f81e2de6255) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Char/Ditto/Ditto/idle/dito_idle-5.png using Guid(222d4fdc59cdd3d4ca380f81e2de6255) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbfe7ab76416e32e22e87d5bb989d3df') in 0.089623 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Char/Ditto/Ditto/idle/Dito-yeuhidle-9.png
+  artifactKey: Guid(20be85c1a10e9a44da65492df72ab1d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Char/Ditto/Ditto/idle/Dito-yeuhidle-9.png using Guid(20be85c1a10e9a44da65492df72ab1d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a753a69ba845924a904870d769f59ce') in 0.070249 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Irgie AS\Documents\GitHub\Anuka\.git\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Irgie AS\Documents\GitHub\Anuka\.git\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  1.954 seconds
+Refreshing native plugins compatible for Editor in 19.19 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.735 seconds
+Domain Reload Profiling: 6688ms
+	BeginReloadAssembly (292ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (22ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (83ms)
+	RebuildCommonClasses (82ms)
+	RebuildNativeTypeToScriptingClass (27ms)
+	initialDomainReloadingComplete (74ms)
+	LoadAllAssembliesAndSetupDomain (1475ms)
+		LoadAssemblies (590ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (1018ms)
+			TypeCache.Refresh (985ms)
+				TypeCache.ScanAssembly (939ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (33ms)
+	FinalizeReload (4738ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2373ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (46ms)
+			SetLoadedEditorAssemblies (17ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (360ms)
+			ProcessInitializeOnLoadAttributes (1741ms)
+			ProcessInitializeOnLoadMethodAttributes (188ms)
+			AfterProcessingInitializeOnLoad (20ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (56ms)
+Refreshing native plugins compatible for Editor in 27.56 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4621 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 37 unused Assets / (106.7 KB). Loaded Objects now: 5158.
+Memory consumption went from 155.1 MB to 155.0 MB.
+Total: 9.983600 ms (FindLiveObjects: 0.964100 ms CreateObjectMapping: 0.745200 ms MarkObjects: 8.121200 ms  DeleteObjects: 0.151600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Irgie AS\Documents\GitHub\Anuka\.git\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Irgie AS\Documents\GitHub\Anuka\.git\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  1.988 seconds
+Refreshing native plugins compatible for Editor in 15.58 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.895 seconds
+Domain Reload Profiling: 6866ms
+	BeginReloadAssembly (309ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (25ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (83ms)
+	RebuildCommonClasses (80ms)
+	RebuildNativeTypeToScriptingClass (26ms)
+	initialDomainReloadingComplete (57ms)
+	LoadAllAssembliesAndSetupDomain (1496ms)
+		LoadAssemblies (590ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (1042ms)
+			TypeCache.Refresh (1012ms)
+				TypeCache.ScanAssembly (977ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (30ms)
+	FinalizeReload (4897ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2462ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (21ms)
+			SetLoadedEditorAssemblies (25ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (352ms)
+			ProcessInitializeOnLoadAttributes (1872ms)
+			ProcessInitializeOnLoadMethodAttributes (183ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (59ms)
+Refreshing native plugins compatible for Editor in 19.81 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4622 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 37 unused Assets / (106.7 KB). Loaded Objects now: 5174.
+Memory consumption went from 155.5 MB to 155.4 MB.
+Total: 10.826700 ms (FindLiveObjects: 0.969900 ms CreateObjectMapping: 0.932300 ms MarkObjects: 8.663800 ms  DeleteObjects: 0.258800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 

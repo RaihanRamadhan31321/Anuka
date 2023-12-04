@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 public class PlayerManager : MonoBehaviour
 {
     public float health = 100;
-    [SerializeField] private UIManager _uiManager;
     public PlayerAttack playerATK;
     public PlayerHealthPoint playerHP;
     public PlayerMovement playerMV;
@@ -14,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public bool death;
     public bool deadCheck = true;
     public static PlayerManager instance;
+    public int levelUnlock;
 
 
     private void Awake()
@@ -31,8 +31,8 @@ public class PlayerManager : MonoBehaviour
         
 
 
-        _uiManager = UIManager.instance;
-        _uiManager.UpdateHealth(health);
+
+        UIManager.instance.UpdateHealth(health);
     }
 
     // Update is called once per frame
@@ -51,21 +51,29 @@ public class PlayerManager : MonoBehaviour
 
     public void LoadPlayer()
     {
-        PlayerData data = SaveSystem.LoadPlayer();
+        if(SaveSystem.LoadPlayer()!= null)
+        {
+            PlayerData data = SaveSystem.LoadPlayer();
 
-        playerHP.currentHealth = data.HP;
-        playerMV.speed = data.Speed;
-        playerATK.attackDamage = data.BasicAttackDMG;
-        playerATK.specialDamage = data.SpecialAttackDMG;
-        Vector3 pos;
+            playerHP.currentHealth = data.HP;
+            playerMV.speed = data.Speed;
+            playerATK.attackDamage = data.BasicAttackDMG;
+            playerATK.specialDamage = data.SpecialAttackDMG;
+            Vector3 pos;
             pos.x = data.position[0];
             pos.y = data.position[1];
             pos.z = data.position[2];
-        coin.currentCoins = data.coinCount;
+            coin.currentCoins = data.coinCount;
 
-        playerMV.transform.position = pos;
-        _uiManager.UpdateHealth(playerHP.currentHealth);
-        coin.coinText.text = "Coins:" + coin.currentCoins.ToString();
+            playerMV.transform.position = pos;
+            UIManager.instance.UpdateHealth(playerHP.currentHealth);
+            coin.coinText.text = "Coins:" + coin.currentCoins.ToString();
+        }
+        else
+        {
+            return;
+        }
+
 
 
 

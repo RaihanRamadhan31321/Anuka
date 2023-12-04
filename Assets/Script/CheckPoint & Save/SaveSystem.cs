@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
+
     public static void SavePlayer(PlayerMovement playerMV, PlayerAttack playerATK, PlayerHealthPoint playerHP, CoinsUI coin)
     {
         BinaryFormatter formatter = new BinaryFormatter();

@@ -267,6 +267,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 600030401}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: WipeData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &35111568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1107,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 451725448}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 600030401}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PrologueScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 600030401}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: ClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &451725448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1769,6 +1805,7 @@ MonoBehaviour:
   MusicSource: {fileID: 374102478}
   SFXSource: {fileID: 198258272}
   mainTheme: {fileID: 8300000, guid: 37700ac45eba5234fa82120364d42388, type: 3}
+  gameplayTheme: {fileID: 8300000, guid: 739131474d4d8a74680255a9b2cf7208, type: 3}
   click: {fileID: 8300000, guid: ba3d4451ec3981845b2fa5b2e6e2a18c, type: 3}
 --- !u!4 &954818763
 Transform:

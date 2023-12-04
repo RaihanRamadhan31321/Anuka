@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this);
             return;
@@ -39,11 +39,12 @@ public class GameManager : MonoBehaviour
         switch (currentCharacter)
         {
             case character.SINGA:
-                Instantiate (singa, spawnPoint.position, spawnPoint.rotation);
-            break;
+                Instantiate(singa, spawnPoint.position, spawnPoint.rotation);
+                break;
             case character.DITO:
-                Instantiate (dito, spawnPoint.position, spawnPoint.rotation);
-            break;
+                Debug.Log("Bebas");
+                Instantiate(dito, spawnPoint.position, spawnPoint.rotation);
+                break;
         }
         onPlayerSpawn?.Invoke();
     }

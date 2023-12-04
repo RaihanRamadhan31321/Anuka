@@ -31,19 +31,20 @@ public class LevelScene : MonoBehaviour
 
     public void KeMainMenu()
     {
-        Time.timeScale = 1;
-        levelPanel.SetActive(false);
-        transition.loadMain = true;
+        SceneManager.LoadScene(1);
     }
 
-    public void KeLevel1()
-    {
-        Time.timeScale = 1;
-        levelPanel.SetActive(false);
-        //SceneManager.LoadScene("Scene Visto");
-        transition.loadNext = true;
-        cursorController.csr = false;
-    }
+
+    // public void KeLevel1()
+    // {
+    //     Time.timeScale = 1;
+    //     levelPanel.SetActive(false);
+    //     //SceneManager.LoadScene("Scene Visto");
+    //     transition.loadNext = true;
+    //     cursorController.csr = false;
+    // }
+
+
     public void SwitchCharacter()
     {
         Debug.Log("CEK");
@@ -56,6 +57,7 @@ public class LevelScene : MonoBehaviour
             singa.SetActive(true);
             GameManager.Instance.currentCharacter = character.SINGA;
         }
+
 
 
         

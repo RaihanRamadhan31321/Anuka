@@ -12,48 +12,73 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private string[] speaker;
     [SerializeField] private Sprite[] ImageUI;
 
-    private bool playerInRange;
+    public GameObject interactText;
+    public GameObject interactNextText;
+
     private bool dialogueActive;
+    private bool interactionCompleted;
+    private bool dialogueInProgress;
 
-    private void Start()
-    {
-        dialogueCanvas.SetActive(false);
-    }
+    private int step;
 
-    private void Update()
+    void Update()
     {
-        if (playerInRange && !dialogueActive)
+        if (dialogueActive && !interactionCompleted && Input.GetKeyDown(KeyCode.F) && !dialogueInProgress)
         {
-            StartCoroutine(ShowDialogueForSeconds(3f));
+            StartDialogue();
+        }
+
+        if (dialogueInProgress && Input.GetKeyDown(KeyCode.Return))
+        {
+            ContinueDialogue();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.tag == "Player" && !dialogueInProgress)
         {
-            playerInRange = true;
+            interactText.SetActive(true);
+            dialogueActive = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            playerInRange = false;
-        }
+        interactText.SetActive(false);
+        interactNextText.SetActive(false);
+        dialogueCanvas.SetActive(false);
+        dialogueInProgress = false;
+        dialogueActive = false;
+        interactionCompleted = false;
+        step = 0;
     }
 
-    private IEnumerator ShowDialogueForSeconds(float seconds)
+    private void StartDialogue()
     {
-        dialogueActive = true;
+        dialogueInProgress = true;
         dialogueCanvas.SetActive(true);
-        speakerText.text = speaker[0];
-        UIImage.sprite = ImageUI[0];
+        interactText.SetActive(false);
+        interactNextText.SetActive(true);
+        speakerText.text = speaker[step];
+        UIImage.sprite = ImageUI[step];
+    }
 
-        yield return new WaitForSeconds(seconds);
+    private void ContinueDialogue()
+    {
+        step++;
 
-        dialogueCanvas.SetActive(false);
-        dialogueActive = false;
+        if (step < speaker.Length)
+        {
+            speakerText.text = speaker[step];
+            UIImage.sprite = ImageUI[step];
+        }
+        else
+        {
+            dialogueCanvas.SetActive(false);
+            interactText.SetActive(false);
+            interactNextText.SetActive(false);
+            interactionCompleted = true;
+        }
     }
 }

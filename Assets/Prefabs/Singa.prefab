@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a8ee2bded13124da43b55f3b5edd6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 10
 --- !u!1 &2823310608231983096
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,13 +523,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  _uiManager: {fileID: 0}
   playerATK: {fileID: 1079179275835170093}
   playerHP: {fileID: 600361461768829737}
   playerMV: {fileID: 1979025543364790054}
   coin: {fileID: 0}
   death: 0
   deadCheck: 1
+  levelUnlock: 0
 --- !u!114 &1979025543364790054
 MonoBehaviour:
   m_ObjectHideFlags: 0

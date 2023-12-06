@@ -46,4 +46,9 @@ public class LevelManager : MonoBehaviour
     {
         AudioManager.Instance.Gameplay();
     }
+
+    public void Vistoscane()
+    {
+        SceneManager.LoadScene(6);
+    }
 }

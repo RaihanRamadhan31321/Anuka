@@ -42,10 +42,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void LevelMusic()
+/*    public void LevelMusic()
     {
         AudioManager.Instance.Gameplay();
-    }
+    }*/
 
     public void Vistoscane()
     {

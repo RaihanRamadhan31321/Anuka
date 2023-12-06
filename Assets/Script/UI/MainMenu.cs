@@ -15,7 +15,12 @@ public class MainMenu : MonoBehaviour
     public GameObject ControlPanel;
     public AudioManager audioManager;
 
-    private void Start()
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+    private void Start()    
     {
         sceneTransition = FindObjectOfType<LoadSceneTransition>();
     }
@@ -81,8 +86,18 @@ public class MainMenu : MonoBehaviour
         }
        
     }
+    public void RestartGame()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.Log("Hapus");
+    }
 
-    
 
+    /*    AudioManager audioManager;
+        private void Awake()
+        {
+            audioManager = gameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        }
 
+        AudioManager.PlaySFX(AudioManager.);*/
 }

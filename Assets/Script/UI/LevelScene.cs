@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
 
 public class LevelScene : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class LevelScene : MonoBehaviour
     public CursorController cursorController;
     private LoadSceneTransition transition;
     public GameObject singa, dito;
+    public TMP_Text[] namaChar;
 
 
     private void Start()
@@ -51,11 +54,14 @@ public class LevelScene : MonoBehaviour
         if (singa.gameObject.activeSelf)
         {
             singa.SetActive(false);
+            namaChar[0].text = "DITO";
+
         }
         else
         {
             singa.SetActive(true);
             GameManager.Instance.currentCharacter = character.SINGA;
+            namaChar[0].text = "SINGA";
         }
 
 

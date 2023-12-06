@@ -42,6 +42,12 @@ public class Dialogue : MonoBehaviour
             dialogueActive = true;
         }
     }
+    private IEnumerator ObjekCoroutine()
+    {
+        yield return new WaitForSeconds(3.5f);
+
+        Destroy(gameObject);
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -52,6 +58,7 @@ public class Dialogue : MonoBehaviour
         dialogueActive = false;
         interactionCompleted = false;
         step = 0;
+
     }
 
     private void StartDialogue()
@@ -67,11 +74,13 @@ public class Dialogue : MonoBehaviour
     private void ContinueDialogue()
     {
         step++;
+        StartCoroutine(ObjekCoroutine());
 
         if (step < speaker.Length)
         {
             speakerText.text = speaker[step];
             UIImage.sprite = ImageUI[step];
+
         }
         else
         {

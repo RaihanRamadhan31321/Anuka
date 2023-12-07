@@ -4,6 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class VistoManager : MonoBehaviour
 {
+
+    private void Start()
+    {
+        AudioManager.Instance.PauseMusic();
+    }
+
+    private void OnDestroy()
+    {
+        AudioManager.Instance.UnpauseMusic();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

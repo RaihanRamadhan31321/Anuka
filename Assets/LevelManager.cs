@@ -20,9 +20,19 @@ public class LevelManager : MonoBehaviour
         {
             buttons[i].interactable = false;
         }
-        for (int i = 0; i < unlockedLevel; i++)
+        if(unlockedLevel > 3)
         {
-            buttons[i].interactable = true;
+            unlockedLevel = unlockedLevel - 1;
+            for (int i = 0; i < unlockedLevel; i++)
+            {
+                buttons[i].interactable = true;
+            }
+        } else
+        {
+            for (int i = 0; i < unlockedLevel; i++)
+            {
+              buttons[i].interactable = true;
+            }
         }
 
     }

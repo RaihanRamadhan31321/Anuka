@@ -141,10 +141,12 @@ public class PlayerMovement : MonoBehaviour
         if (xvalue < 0)
         {
             this.transform.localScale = new Vector3(-1, 1, 1);
+            CameraFlip.Instance.FlipCam();
         }
         else if (xvalue > 0)
         {
             this.transform.localScale = new Vector3(1, 1, 1);
+            CameraFlip.Instance.DefaultCam();
         }
         //kalkulasi kecepatan arah
         this.transform.Translate(arah * Time.deltaTime * speed);

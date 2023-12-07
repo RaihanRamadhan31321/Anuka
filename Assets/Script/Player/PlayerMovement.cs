@@ -162,6 +162,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 pembatasLanding = new Vector3(PlayerClampedValue, landing.transform.position.y, landing.transform.position.z);
         transform.position = pembatas;
         landing.transform.position = pembatasLanding;
+        CameraFlip.Instance.CameraWave1();
     }
     public void BarrierOff()
     {
@@ -170,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
         trigger.isFighting = false;
         transform.position = normal;
         landing.transform.position = landingNormal;
+        CameraFlip.Instance.CameraDefault();
     }
 
 }

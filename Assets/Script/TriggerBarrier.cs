@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,13 @@ public class TriggerBarrier : MonoBehaviour
     public bool isFighting = false;
     public bool waveStart = false;
     private bool isTriggered = false;
+    private int RandomNum;
+    [SerializeField]private Transform EnemySpawnPoint1;
+    [SerializeField]private Transform EnemySpawnPoint2;
+    [SerializeField]private GameObject enemy;
+    [SerializeField]private int enemySpawned;
     [SerializeField]private List<GameObject> characters;
+    [SerializeField] private List<GameObject> enemies;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +28,7 @@ public class TriggerBarrier : MonoBehaviour
         if (waveStart)
         {
             CharacterSorting();
+            StartCoroutine(SpawnerEnemy());
         }
     }
     
@@ -33,13 +41,15 @@ public class TriggerBarrier : MonoBehaviour
             player.atas = (transform.position.x) - player.batasBarrier;
             player.bawah = transform.position.x + player.batasBarrier;
             isTriggered = true;
-            Debug.Log("atas = " + player.atas);
-            Debug.Log("bawah = " + player.bawah);
+            EnemySpawnPoint1.position = new Vector3(player.atas - 2, transform.position.y, transform.position.z);
+            EnemySpawnPoint2.position = new Vector3(player.bawah + 2, transform.position.y, transform.position.z);
+
         }
     }
     void CharacterSorting()
     {
-        characters = new List<GameObject> (GameObject.FindGameObjectsWithTag("Enemy"));
+        enemies = new List<GameObject> (GameObject.FindGameObjectsWithTag("Enemy"));
+        characters = new List<GameObject>(enemies);
         characters.Add(player.gameObject);
         characters.Sort(SortPos);
         foreach (var character in characters)
@@ -59,5 +69,29 @@ public class TriggerBarrier : MonoBehaviour
             return 1;
         }
         return 0;
+    }
+    private void SpawnEnemy()
+    {
+        if (enemySpawned <= 5)
+        {
+            RandomNum = UnityEngine.Random.Range(1, 3);
+            switch (RandomNum)
+            {
+                case 1:
+                    Instantiate(enemy, EnemySpawnPoint1.position, EnemySpawnPoint1.rotation);
+                    enemySpawned++;
+                    break;
+                case 2:
+                    Instantiate(enemy, EnemySpawnPoint2.position, EnemySpawnPoint2.rotation);
+                    enemySpawned++;
+                    break;
+            }
+        }
+    }
+
+    IEnumerator SpawnerEnemy()
+    {
+        yield return new WaitForSeconds(UnityEngine.Random.Range(1,5));
+        SpawnEnemy();
     }
 }

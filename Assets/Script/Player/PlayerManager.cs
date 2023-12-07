@@ -73,10 +73,6 @@ public class PlayerManager : MonoBehaviour
         {
             return;
         }
-
-
-
-
     }
     IEnumerator DeathCounter()
     {

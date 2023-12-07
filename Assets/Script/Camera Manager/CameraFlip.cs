@@ -32,7 +32,7 @@ public class CameraFlip : MonoBehaviour
     private void Start()
     {
         confiner = GetComponent<CinemachineConfiner2D>();
-        batasCamera = GameObject.Find("BatasCamera");
+        CameraDefault();
         confiner.m_BoundingShape2D = batasCamera.GetComponent<Collider2D>();
     }
 
@@ -52,5 +52,16 @@ public class CameraFlip : MonoBehaviour
     public void DefaultCam()
     {
         virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = new Vector3(8.82f, 0, 0);
+    }
+    public void CameraDefault()
+    {
+        batasCamera = GameObject.Find("BatasCamera");
+        confiner.m_BoundingShape2D = batasCamera.GetComponent<Collider2D>();
+    }
+    public void CameraWave1()
+    {
+        batasCamera = GameObject.Find("BatasCameraWave1");
+        
+        confiner.m_BoundingShape2D = batasCamera.GetComponent<Collider2D>();
     }
 }

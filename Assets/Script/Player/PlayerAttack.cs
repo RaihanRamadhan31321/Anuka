@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         player = GetComponent<PlayerMovement>();
-        enemy = FindObjectOfType<EnemyMovement>().gameObject;
+        //enemy = EnemyMovement.Instance.gameObject;
 
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -69,20 +69,20 @@ public class PlayerAttack : MonoBehaviour
                 Debug.Log("Spesial PlayerAttack Sedang Cooldown");
             }
         }
-        if(enemy != null)
-        {
-            if (transform.position.x > enemy.transform.position.x)
-            {
-                mundur = Mathf.Abs(mundur);
-            }
-            else
-            {
-                if (mundur > 0)
-                {
-                    mundur = -mundur;
-                }
-            }
-        }
+        //if(enemy != null)
+        //{
+        //    if (transform.position.x > enemy.transform.position.x)
+        //    {
+        //        mundur = Mathf.Abs(mundur);
+        //    }
+        //    else
+        //    {
+        //        if (mundur > 0)
+        //        {
+        //            mundur = -mundur;
+        //        }
+        //    }
+        //}
     }
     void BasicAttack()
     {

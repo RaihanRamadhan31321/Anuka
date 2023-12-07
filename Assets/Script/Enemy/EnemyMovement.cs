@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public static EnemyMovement Instance;
     public Animator enemyAnimator; 
     public float moveSpeed;
-    private GameObject player;
+    [SerializeField] private GameObject player;
     public bool moving;
     public int maxHealth = 100;
     int currentHealth;
@@ -25,8 +26,16 @@ public class EnemyMovement : MonoBehaviour
     {
         player = PlayerManager.instance.gameObject;
     }
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
+        if(player == null)
+        {
+            player = PlayerManager.instance.gameObject;
+        }
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
     }

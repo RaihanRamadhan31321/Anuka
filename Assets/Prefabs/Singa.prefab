@@ -559,7 +559,7 @@ MonoBehaviour:
     m_Bits: 64
   jumpHeight: 8
   speed: 10
-  batasBarrier: 10
+  batasBarrier: 30
 --- !u!114 &1079179275835170093
 MonoBehaviour:
   m_ObjectHideFlags: 0

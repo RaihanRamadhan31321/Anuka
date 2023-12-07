@@ -19,17 +19,6 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
 
-        /*        if (Instance != null && Instance != this)
-                {
-                    Destroy(gameObject);
-                    return;
-                }
-                else
-                {
-                    Instance = this;
-                }
-                DontDestroyOnLoad(gameObject);*/
-
         if (Instance == null)
         {
             Instance = this;
@@ -70,7 +59,24 @@ public class AudioManager : MonoBehaviour
         MusicSource.clip = audio;
         yield return new WaitForSeconds(0.1f);
         MusicSource.Play();
+        Debug.Log("ganti music");
     }
+
+    public void PauseMusic()
+    {
+        MusicSource.Pause();
+    }
+
+    public void UnpauseMusic()
+    {
+        MusicSource.UnPause();
+    }
+
+    public void ButtonSound()
+    {
+        PlaySFX(click);
+    }
+    
 
 
 }

@@ -15,6 +15,6 @@ public class SpawnPoint : MonoBehaviour
     }
     private void Start()
     {
-        
+        AudioManager.Instance.Gameplay();
     }
 }

@@ -13,12 +13,18 @@ public class AudioManager : MonoBehaviour
     public AudioClip mainTheme;
     public AudioClip gameplayTheme;
 
-    [Header("------------Audio Clip Player------------")]
+    [Header("------------SFX Player------------")]
     public AudioClip click;
     public AudioClip footStep;
+    public AudioClip missHit;
+    public AudioClip missHugeHit;
     public AudioClip hitBasicAtt;
     public AudioClip hugeAtt;
     public AudioClip gameOver;
+
+    [Header("------------SFX Player------------")]
+    public AudioClip enemyHit;
+    public AudioClip lowHealthHit;
 
     [Header("------------NPC------------")]
     public AudioClip npcAngkot;

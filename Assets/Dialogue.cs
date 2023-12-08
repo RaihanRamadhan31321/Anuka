@@ -49,6 +49,7 @@ public class Dialogue : MonoBehaviour
         {
             interactText.SetActive(true);
             dialogueActive = true;
+            Debug.Log("Interact");
         }
     }
 

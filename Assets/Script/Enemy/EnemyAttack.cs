@@ -29,7 +29,11 @@ public class Enemyattack : MonoBehaviour
     [SerializeField] private Color32 warna;
     private SpriteRenderer sr;
     [SerializeField] private CinemachineImpulseSource camShake;
-
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     private void Start()
     {
         enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
@@ -64,11 +68,26 @@ public class Enemyattack : MonoBehaviour
             Debug.Log("BASIC");
             enemy.enemyAnimator.SetBool("isAttacking", true);
             enemy.OnDisableMovement();
+
+            int playerHealthPercentage = (playerHP.currentHealth * 100) / playerHP.maxHealth;
+
+            if (playerHealthPercentage < 20)
+            {
+                audioManager.PlaySFX(audioManager.lowHealthHit); 
+            }
+            else
+            {
+                audioManager.PlaySFX(audioManager.enemyHit); 
+            }
+
             playerHP.TakeDamage(attackDamage);
             playerAtk.GetHit();
             CanAttack = false;
             cd = true;
             Invoke("MovementEnable", 0.7f);
+            //audioManager.PlaySFX(audioManager.enemyHit);
+
+            
         }
     }
     void CooldownBasicAttack ()

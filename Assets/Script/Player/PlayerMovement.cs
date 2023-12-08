@@ -75,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
             if(xvalue > 0 ||  yvalue > 0)
             {
                 //audioManager.PlaySFX(audioManager.footStep);
-                Debug.Log("SoundMovement");
             }
             Move();
 

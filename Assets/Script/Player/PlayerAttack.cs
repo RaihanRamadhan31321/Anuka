@@ -27,6 +27,7 @@ public class PlayerAttack : MonoBehaviour
     Rigidbody2D rb;
     AudioManager audioManager;
     private int hitCount;
+    PlayerHealthPoint healthPoint;
 
     private void Awake()
     {
@@ -92,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
     void BasicAttack()
     {
         //animasi
-
+        audioManager.PlaySFX(audioManager.missHit);
         //deteksi musuh di radius jarak attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
@@ -111,7 +112,7 @@ public class PlayerAttack : MonoBehaviour
     {
         //animasi
         player.animator.SetTrigger("IsHugeAttack");
-
+        audioManager.PlaySFX(audioManager.missHugeHit);
 
         //deteksi musuh di radius jarak attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);

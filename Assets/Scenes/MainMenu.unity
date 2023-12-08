@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 187578146}
   - component: {fileID: 187578145}
   - component: {fileID: 187578144}
+  - component: {fileID: 187578147}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -550,6 +551,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &187578147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187578143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &198258271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,9 +2003,13 @@ MonoBehaviour:
   gameplayTheme: {fileID: 8300000, guid: 739131474d4d8a74680255a9b2cf7208, type: 3}
   click: {fileID: 8300000, guid: ba3d4451ec3981845b2fa5b2e6e2a18c, type: 3}
   footStep: {fileID: 8300000, guid: c26cfbbfc5b8cac479bb49c334b13ca6, type: 3}
+  missHit: {fileID: 8300000, guid: c266e86e5ec11e344bf66dede26cbc46, type: 3}
+  missHugeHit: {fileID: 8300000, guid: 51e0a672984795b4087c49f005adf8f8, type: 3}
   hitBasicAtt: {fileID: 8300000, guid: 0a4756cabc3c71a4e819bbd3d441f597, type: 3}
   hugeAtt: {fileID: 8300000, guid: f9d4437d97f222c4bac222161ef2e63d, type: 3}
   gameOver: {fileID: 8300000, guid: 4a63bd41aa6573a449051d329db2ef7d, type: 3}
+  enemyHit: {fileID: 8300000, guid: 2b019c6187fca1e48b47e28c891dc66c, type: 3}
+  lowHealthHit: {fileID: 8300000, guid: 2a295373a10441545bcaf619b61bea94, type: 3}
   npcAngkot: {fileID: 0}
   npcNgopi: {fileID: 0}
   npcGosip: {fileID: 0}

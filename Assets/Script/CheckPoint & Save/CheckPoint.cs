@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckPoint : MonoBehaviour
 {
-    public PlayerManager PlayerManager;
+    //public PlayerManager PlayerManager;
     // Start is called before the first frame update
     void Start()
     {
-        PlayerManager = FindObjectOfType<PlayerManager>();
+        //PlayerManager = FindObjectOfType<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -16,7 +17,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            PlayerManager.LoadPlayer();
+            GameManager.Instance.LoadPlayer();
             Debug.Log("Data Load");
         }
     }
@@ -24,7 +25,10 @@ public class CheckPoint : MonoBehaviour
     {
         if(collision.CompareTag("Player")) 
         {
-            PlayerManager.SavePlayer();
+            GameManager.Instance.cpCheck = true;
+            GameManager.Instance.currentLevel = SceneManager.GetActiveScene().buildIndex;
+            GameManager.Instance.SavePlayer();
+
         }
     }
 }

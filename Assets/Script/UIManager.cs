@@ -25,12 +25,13 @@ public class UIManager : MonoBehaviour
     private LoadSceneTransition loadSceneTransition;
     [SerializeField]private Animator gameOverAnimator;
 
-
+    AudioManager audioManager;
 
 
     private void Awake()
     {
         instance = this;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     private void Start()
     {
@@ -112,7 +113,7 @@ public class UIManager : MonoBehaviour
         gameOverAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
         Time.timeScale = 0;
         GameOverPanel.SetActive(true);
-
+        audioManager.PlaySFX(audioManager.gameOver);
     }
 
     public void UpdateHealth(float value)

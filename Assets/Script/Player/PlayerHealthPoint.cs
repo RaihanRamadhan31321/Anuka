@@ -7,6 +7,13 @@ public class PlayerHealthPoint : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     [SerializeField] private UIManager _uiManager;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +38,7 @@ public class PlayerHealthPoint : MonoBehaviour
     void Die()
     {
         Debug.Log("MATI PLAYER");
+        //audioManager.PlaySFX(audioManager.hitBasicAtt);
 
         //animasi mati
 

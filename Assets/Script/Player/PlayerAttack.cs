@@ -25,8 +25,13 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject hitEffect;
     [SerializeField] private float objHeight = 0.7f;
     Rigidbody2D rb;
+    AudioManager audioManager;
     private int hitCount;
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     private void Start()
     {
         player = GetComponent<PlayerMovement>();
@@ -97,6 +102,7 @@ public class PlayerAttack : MonoBehaviour
             enemy.GetComponent<EnemyMovement>().TakeDamage(attackDamage);
             enemy.transform.Find("AttackRange").GetComponent<Enemyattack>().GetHit();
             Debug.Log("Kena Area Pukul");
+            audioManager.PlaySFX(audioManager.hitBasicAtt);
         }
         CanBasicAttack = false;
     }
@@ -106,13 +112,16 @@ public class PlayerAttack : MonoBehaviour
         //animasi
         player.animator.SetTrigger("IsHugeAttack");
 
+
         //deteksi musuh di radius jarak attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         //damage ke musuh
         foreach (Collider2D enemy in hitEnemies)
+
         {
             enemy.GetComponent<EnemyMovement>().SpecialTakeDamage(specialDamage);
+            audioManager.PlaySFX(audioManager.hugeAtt);
             Debug.Log("Kena Spesial PlayerAttack Pukul");
         }
     }

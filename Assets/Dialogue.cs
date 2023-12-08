@@ -18,9 +18,15 @@ public class Dialogue : MonoBehaviour
     private bool dialogueActive;
     private bool interactionCompleted;
     private bool dialogueInProgress;
+    private bool coroutineStart = false;
 
+    public static Dialogue instance;
     private int step;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     void Update()
     {
         if (dialogueActive && !interactionCompleted && Input.GetKeyDown(KeyCode.F) && !dialogueInProgress)
@@ -42,11 +48,17 @@ public class Dialogue : MonoBehaviour
             dialogueActive = true;
         }
     }
-    private IEnumerator ObjekCoroutine()
+    public IEnumerator ObjekCoroutine()
     {
+        coroutineStart = true;
+           
         yield return new WaitForSeconds(3.5f);
-
-        Destroy(gameObject);
+        if(gameObject != null )
+        {
+            Destroy(gameObject);
+            Debug.Log("coroutine");
+        }
+ 
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -76,18 +88,22 @@ public class Dialogue : MonoBehaviour
         step++;
         StartCoroutine(ObjekCoroutine());
 
+
         if (step < speaker.Length)
         {
             speakerText.text = speaker[step];
             UIImage.sprite = ImageUI[step];
 
         }
-        else
+        else if (step == speaker.Length && coroutineStart == false)
         {
             dialogueCanvas.SetActive(false);
             interactText.SetActive(false);
             interactNextText.SetActive(false);
             interactionCompleted = true;
+
         }
     }
+
+
 }

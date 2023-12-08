@@ -12,7 +12,19 @@ public class AudioManager : MonoBehaviour
     [Header("------------Audio Clip------------")]
     public AudioClip mainTheme;
     public AudioClip gameplayTheme;
+
+    [Header("------------Audio Clip Player------------")]
     public AudioClip click;
+    public AudioClip footStep;
+    public AudioClip hitBasicAtt;
+    public AudioClip hugeAtt;
+    public AudioClip gameOver;
+
+    [Header("------------NPC------------")]
+    public AudioClip npcAngkot;
+    public AudioClip npcNgopi;
+    public AudioClip npcGosip;
+    public AudioClip npcProvok;
 
     public static AudioManager Instance;
 

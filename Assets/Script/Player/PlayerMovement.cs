@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 8;
     [Tooltip("Ukuran BarrierOn untuk playerGameObject")]
     public float batasBarrier;
+
+    AudioManager audioManager;
+
     #endregion
     void Start()
     {
@@ -55,6 +58,10 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     #region unitymethod
     void Update()
     {
@@ -65,7 +72,13 @@ public class PlayerMovement : MonoBehaviour
         }
         if (moving == true)
         {
+            if(xvalue > 0 ||  yvalue > 0)
+            {
+                //audioManager.PlaySFX(audioManager.footStep);
+                Debug.Log("SoundMovement");
+            }
             Move();
+
         }    
         if (rb.velocity.y < 0 && isGround == true)
         {
@@ -117,12 +130,16 @@ public class PlayerMovement : MonoBehaviour
 
         moving = true;
         animator.SetBool("isAttacking", false);
+
     }
     public void Move()
     {
+
         //ambil berapa lama input horizontal 0 = no input,  1/-1 = hold
         xvalue = Input.GetAxis("Horizontal");
         yvalue = Input.GetAxis("Vertical");
+           
+
 
         //ubah boolean isMoving jadi true
         if (xvalue == 0 && yvalue == 0)
@@ -137,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
         //buat arah gerakan
         Vector2 arah = new Vector2(xvalue, yvalue).normalized;
 
+
         //kondisi jika berbalik
         if (xvalue < 0)
         {
@@ -150,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
         }
         //kalkulasi kecepatan arah
         this.transform.Translate(arah * Time.deltaTime * speed);
-        }
+    }
     public void Jump(float jumping)
     {
         rb.velocity = new Vector2(0, jumping);
@@ -163,6 +181,10 @@ public class PlayerMovement : MonoBehaviour
         transform.position = pembatas;
         landing.transform.position = pembatasLanding;
         CameraFlip.Instance.CameraWave1();
+        if(Dialogue.instance != null)
+        {
+            StartCoroutine(Dialogue.instance.ObjekCoroutine());
+        }
     }
     public void BarrierOff()
     {

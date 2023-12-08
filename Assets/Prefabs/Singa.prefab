@@ -562,6 +562,7 @@ MonoBehaviour:
   jumpHeight: 8
   speed: 10
   batasBarrier: 30
+  footStep: {fileID: 0}
 --- !u!114 &1079179275835170093
 MonoBehaviour:
   m_ObjectHideFlags: 0

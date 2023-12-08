@@ -530,7 +530,9 @@ MonoBehaviour:
   coin: {fileID: 0}
   death: 0
   deadCheck: 1
-  levelUnlock: 0
+  playerSpawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1979025543364790054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,6 +562,7 @@ MonoBehaviour:
   jumpHeight: 8
   speed: 10
   batasBarrier: 30
+  footStep: {fileID: 0}
 --- !u!114 &1079179275835170093
 MonoBehaviour:
   m_ObjectHideFlags: 0

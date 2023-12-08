@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public float batasBarrier;
 
     AudioManager audioManager;
+    public AudioClip footStep;
 
     #endregion
     void Start()
@@ -74,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(xvalue > 0 ||  yvalue > 0)
             {
-                //audioManager.PlaySFX(audioManager.footStep);
+ 
             }
             Move();
 
@@ -195,6 +196,10 @@ public class PlayerMovement : MonoBehaviour
         CameraFlip.Instance.CameraDefault();
     }
 
+    public void FootStep()
+    {
+        audioManager.PlaySFX(footStep);
+    }
 }
 
 

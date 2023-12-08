@@ -27,6 +27,14 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         Esc();
+        if(File.Exists(Application.persistentDataPath + "/SaveData.gg"))
+        {
+            continueBtn.interactable = true;
+        }
+        else
+        {
+            continueBtn.interactable= false;
+        }
     }
 
     public void PrologueScene()
@@ -85,6 +93,7 @@ public class MainMenu : MonoBehaviour
             File.Delete(Application.persistentDataPath + "/SaveData.gg");
             GameManager.Instance.levelUnlock = 1;
         }
+            GameManager.Instance.levelUnlock = 1;
        
     }
     public void RestartGame()

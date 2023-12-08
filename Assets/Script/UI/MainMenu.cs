@@ -83,6 +83,7 @@ public class MainMenu : MonoBehaviour
         if(File.Exists(Application.persistentDataPath + "/SaveData.gg"))
         {
             File.Delete(Application.persistentDataPath + "/SaveData.gg");
+            GameManager.Instance.levelUnlock = 1;
         }
        
     }

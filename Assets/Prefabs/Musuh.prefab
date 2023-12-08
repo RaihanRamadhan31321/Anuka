@@ -61,7 +61,7 @@ MonoBehaviour:
   objHeight: 0.4
   warna:
     serializedVersion: 2
-    rgba: 2739357695
+    rgba: 4282861567
   camShake: {fileID: 0}
 --- !u!58 &3805353834263432142
 CircleCollider2D:
@@ -428,6 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 5035158710340629240}
   moveSpeed: 2
+  player: {fileID: 0}
   moving: 0
   maxHealth: 100
   rb: {fileID: 0}

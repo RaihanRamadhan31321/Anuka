@@ -496,7 +496,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -530,7 +530,9 @@ MonoBehaviour:
   coin: {fileID: 0}
   death: 0
   deadCheck: 1
-  levelUnlock: 0
+  playerSpawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1979025543364790054
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,8 +11,11 @@ public class PlayerData
     public int SpecialAttackDMG;
     public int coinCount;
     public float[] position;
+    public bool checkpointCheck;
+    public int levelUnlocks;
+    public int currentLv;
 
-    public PlayerData(PlayerMovement playerMV, PlayerAttack playerATK, PlayerHealthPoint playerHP, CoinsUI coin) 
+    public PlayerData(PlayerMovement playerMV, PlayerAttack playerATK, PlayerHealthPoint playerHP, CoinsUI coin, GameManager cpCheck, GameManager levelUnlocked, GameManager currentLvl) 
     {
         HP = playerHP.currentHealth;
         Speed = playerMV.speed;
@@ -23,5 +26,8 @@ public class PlayerData
             position[1] = playerMV.transform.position.y;
             position[2] = playerMV.transform.position.z;
         coinCount = coin.currentCoins;
+        checkpointCheck = cpCheck.cpCheck;
+        levelUnlocks = levelUnlocked.levelUnlock;
+        currentLv = currentLvl.currentLevel;
     }
 }

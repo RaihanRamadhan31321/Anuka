@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
     public GameObject SettingsPanel;
     public GameObject ControlPanel;
     public AudioManager audioManager;
-
+    public Button continueBtn;
 
     private void Awake()
     {
@@ -90,6 +90,10 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         Debug.Log("Hapus");
+    }
+    public void ContinueGame()
+    {
+        GameManager.Instance.LoadPlayer();
     }
 
 

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerManager : MonoBehaviour
@@ -13,7 +15,8 @@ public class PlayerManager : MonoBehaviour
     public bool death;
     public bool deadCheck = true;
     public static PlayerManager instance;
-    public int levelUnlock;
+    public UnityEvent playerSpawn;
+    
 
 
     private void Awake()
@@ -43,37 +46,7 @@ public class PlayerManager : MonoBehaviour
             StartCoroutine(DeathCounter());
         }
     }
-    public void SavePlayer()
-    {
-        SaveSystem.SavePlayer(playerMV , playerATK, playerHP, coin);
-        Debug.Log("Saving");
-    }
-
-    public void LoadPlayer()
-    {
-        if(SaveSystem.LoadPlayer()!= null)
-        {
-            PlayerData data = SaveSystem.LoadPlayer();
-
-            playerHP.currentHealth = data.HP;
-            playerMV.speed = data.Speed;
-            playerATK.attackDamage = data.BasicAttackDMG;
-            playerATK.specialDamage = data.SpecialAttackDMG;
-            Vector3 pos;
-            pos.x = data.position[0];
-            pos.y = data.position[1];
-            pos.z = data.position[2];
-            coin.currentCoins = data.coinCount;
-
-            playerMV.transform.position = pos;
-            UIManager.instance.UpdateHealth(playerHP.currentHealth);
-            coin.coinText.text = "Coins:" + coin.currentCoins.ToString();
-        }
-        else
-        {
-            return;
-        }
-    }
+    
     IEnumerator DeathCounter()
     {
         deadCheck = false;

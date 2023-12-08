@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     {
         buttonsToArray();
 
-        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+        int unlockedLevel = GameManager.Instance.levelUnlock;
 
         for (int i = 0; i < buttons.Length; i++)
         {

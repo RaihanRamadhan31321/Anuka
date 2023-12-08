@@ -181,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position = pembatas;
         landing.transform.position = pembatasLanding;
         CameraFlip.Instance.CameraWave1();
-        if(Dialogue.instance != null)
+        if(Dialogue.instance.helpChar != null)
         {
             StartCoroutine(Dialogue.instance.ObjekCoroutine());
         }

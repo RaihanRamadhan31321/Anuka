@@ -14,18 +14,21 @@ public class Dialogue : MonoBehaviour
 
     public GameObject interactText;
     public GameObject interactNextText;
+    public GameObject helpChar;
 
     private bool dialogueActive;
     private bool interactionCompleted;
     private bool dialogueInProgress;
     private bool coroutineStart = false;
 
+    [SerializeField]private bool shouldDestroy = false;
     public static Dialogue instance;
     private int step;
 
     private void Awake()
     {
         instance = this;
+        helpChar = GetComponent<Dialogue>().gameObject;
     }
     void Update()
     {
@@ -48,17 +51,33 @@ public class Dialogue : MonoBehaviour
             dialogueActive = true;
         }
     }
+
     public IEnumerator ObjekCoroutine()
     {
         coroutineStart = true;
-           
+
         yield return new WaitForSeconds(3.5f);
-        if(gameObject != null )
+
+        if (!shouldDestroy)
         {
-            Destroy(gameObject);
-            Debug.Log("coroutine");
+            if (helpChar != null)
+            {
+                Destroy(helpChar);
+                Debug.Log("coroutine");
+                SetForDestruction();
+            }
+            else if (helpChar == null)
+            {
+                Debug.LogWarning("Attempting to access destroyed object in ObjekCoroutine");
+            }
         }
- 
+            
+    }
+
+    // Call this method when you want to set the object for destruction
+    public void SetForDestruction()
+    {
+        shouldDestroy = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -86,7 +105,11 @@ public class Dialogue : MonoBehaviour
     private void ContinueDialogue()
     {
         step++;
-        StartCoroutine(ObjekCoroutine());
+        if(helpChar != null)
+        {
+            StartCoroutine(ObjekCoroutine());
+
+        }
 
 
         if (step < speaker.Length)

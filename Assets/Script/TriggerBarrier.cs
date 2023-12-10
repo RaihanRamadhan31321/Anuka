@@ -13,7 +13,7 @@ public class TriggerBarrier : MonoBehaviour
     [SerializeField]private Transform EnemySpawnPoint1;
     [SerializeField]private Transform EnemySpawnPoint2;
     [SerializeField]private GameObject enemy;
-    [SerializeField]private int enemySpawned;
+    [SerializeField]private int enemySpawned = 1;
     [SerializeField]private List<GameObject> characters;
     [SerializeField] private List<GameObject> enemies;
     // Start is called before the first frame update
@@ -29,6 +29,10 @@ public class TriggerBarrier : MonoBehaviour
         {
             CharacterSorting();
             StartCoroutine(SpawnerEnemy());
+        }
+        else
+        {
+            StopCoroutine(SpawnerEnemy());
         }
     }
     
@@ -55,9 +59,8 @@ public class TriggerBarrier : MonoBehaviour
         foreach (var character in characters)
         {
             character.GetComponent<SpriteRenderer>().sortingOrder = characters.IndexOf(character);
-            //SpriteRenderer sr = character.gameObject.GetComponent<SpriteRenderer>();
-            //sr.sortingOrder = characters.IndexOf(character);
         }
+        EndWave();
     }
     private int SortPos(GameObject a, GameObject b)
     {
@@ -88,10 +91,18 @@ public class TriggerBarrier : MonoBehaviour
             }
         }
     }
+    public void EndWave()
+    {
+        if(enemies.Count == 0)
+        {
+            waveStart = false;
+            gameObject.SetActive(false);
+        }
+    }
 
     IEnumerator SpawnerEnemy()
     {
-        yield return new WaitForSeconds(UnityEngine.Random.Range(1,5));
+        yield return new WaitForSeconds(UnityEngine.Random.Range(1,6));
         SpawnEnemy();
     }
 }

@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private GameObject player;
     public bool moving;
     public int maxHealth = 100;
+    private Collider2D colider;
     int currentHealth;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDead = false;
@@ -25,6 +26,7 @@ public class EnemyMovement : MonoBehaviour
     private void Initialized()
     {
         player = PlayerManager.instance.gameObject;
+
     }
     private void Awake()
     {
@@ -38,6 +40,7 @@ public class EnemyMovement : MonoBehaviour
         }
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+        colider = GetComponent<Collider2D>();
     }
 
     void Update() 
@@ -83,8 +86,8 @@ public class EnemyMovement : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("MATI DIA");
         enemyAnimator.SetTrigger("isDead");
+        colider.enabled = false;
         isDead = true;
 
         //animasi mati

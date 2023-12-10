@@ -59,6 +59,6 @@ public class LevelManager : MonoBehaviour
 
     public void Vistoscane()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(4);
     }
 }

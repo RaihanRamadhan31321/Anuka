@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    Invoke("LoadPlayerCheckpoint", 0.2f);
+                    Invoke("LoadPlayerCheckpoint", 0.1f);
                 }
                 
             }

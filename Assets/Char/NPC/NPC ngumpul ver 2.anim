@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NPC ngumpul
+  m_Name: NPC ngumpul ver 2
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 7f45eafa795af85438f2d8a43ad32e45, type: 3}
+      value: {fileID: 21300000, guid: ab99a1b061d1593429b36fbb0f1ab261, type: 3}
     - time: 0.2
-      value: {fileID: 21300000, guid: 3e7d6c991feecfe4fbccf7c2114b25cb, type: 3}
+      value: {fileID: 21300000, guid: f1cf67e34fb9b05409bfe6357cfd3953, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 7f45eafa795af85438f2d8a43ad32e45, type: 3}
-    - {fileID: 21300000, guid: 3e7d6c991feecfe4fbccf7c2114b25cb, type: 3}
+    - {fileID: 21300000, guid: ab99a1b061d1593429b36fbb0f1ab261, type: 3}
+    - {fileID: 21300000, guid: f1cf67e34fb9b05409bfe6357cfd3953, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

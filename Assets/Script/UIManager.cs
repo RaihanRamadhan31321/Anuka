@@ -18,8 +18,9 @@ public class UIManager : MonoBehaviour
     public GameObject SettingsPanel;
     public GameObject ControlMapPanel;
     public GameObject CoinPanel;
+    public GameObject cooldownHUD;
 
-    [SerializeField] private bool isPaused = true;
+   [SerializeField] private bool isPaused = true;
     private PlayerManager player;
     private CursorController cursorController;
     private LoadSceneTransition loadSceneTransition;
@@ -52,6 +53,7 @@ public class UIManager : MonoBehaviour
                 SettingsPanel.SetActive(true);
                 CoinPanel.SetActive(false);
                 pausePanel.SetActive(false);
+                cooldownHUD.SetActive(false);
             }
 
             else
@@ -61,8 +63,8 @@ public class UIManager : MonoBehaviour
                 // Jika panel pengaturan terbuka, kembalikan ke panel pause
                 SettingsPanel.SetActive(false);
                 CoinPanel.SetActive(false);
+                cooldownHUD.SetActive(false);
                 pausePanel.SetActive(true);
-
             }
 
             else
@@ -94,6 +96,7 @@ public class UIManager : MonoBehaviour
         isPaused = true;
         pausePanel.SetActive(true);
         CoinPanel.SetActive(false);
+        cooldownHUD.SetActive(false);
         Time.timeScale = 0;
         cursorController.csr = true;
     }
@@ -104,6 +107,7 @@ public class UIManager : MonoBehaviour
         pausePanel.SetActive(false);
         SettingsPanel.SetActive(false);
         CoinPanel.SetActive(true);
+        cooldownHUD.SetActive(true);
         cursorController.csr = false;
     }
     public void Death()

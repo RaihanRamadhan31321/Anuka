@@ -106,11 +106,7 @@ public class Dialogue : MonoBehaviour
     private void ContinueDialogue()
     {
         step++;
-        if(helpChar != null)
-        {
-            StartCoroutine(ObjekCoroutine());
 
-        }
 
 
         if (step < speaker.Length)
@@ -126,6 +122,11 @@ public class Dialogue : MonoBehaviour
             interactNextText.SetActive(false);
             interactionCompleted = true;
 
+            if (helpChar != null)
+            {
+                StartCoroutine(ObjekCoroutine());
+
+            }
         }
     }
 

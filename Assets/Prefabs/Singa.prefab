@@ -560,7 +560,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpHeight: 8
-  speed: 10
+  speed: 12
   batasBarrier: 30
   footStep: {fileID: 0}
 --- !u!114 &1079179275835170093

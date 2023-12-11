@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     [Header("------------Audio Source------------")]
     [SerializeField] AudioSource MusicSource;
-    [SerializeField] AudioSource SFXSource;
+    [SerializeField] public AudioSource SFXSource;
 
     [Header("------------Audio Clip------------")]
     public AudioClip mainTheme;

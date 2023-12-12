@@ -562,7 +562,7 @@ MonoBehaviour:
   jumpHeight: 8
   speed: 12
   batasBarrier: 30
-  footStep: {fileID: 0}
+  footStep: {fileID: 8300000, guid: c48ba992332c4bf44a0570933da82c75, type: 3}
 --- !u!114 &1079179275835170093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,7 +588,6 @@ MonoBehaviour:
   mundur: 3
   hitEffect: {fileID: 5429187195580619889, guid: 0e841d11dbd86d1448eddb0646bfa290, type: 3}
   objHeight: 0.7
-  cooldownCD: {fileID: 0}
 --- !u!114 &600361461768829737
 MonoBehaviour:
   m_ObjectHideFlags: 0

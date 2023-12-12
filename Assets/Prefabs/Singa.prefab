@@ -562,7 +562,7 @@ MonoBehaviour:
   jumpHeight: 8
   speed: 12
   batasBarrier: 30
-  footStep: {fileID: 8300000, guid: c48ba992332c4bf44a0570933da82c75, type: 3}
+  footStep: {fileID: 8300000, guid: e066e64c93c1a1f4a847b9c87a3d6d0c, type: 3}
 --- !u!114 &1079179275835170093
 MonoBehaviour:
   m_ObjectHideFlags: 0

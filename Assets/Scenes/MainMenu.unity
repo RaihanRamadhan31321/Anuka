@@ -2006,8 +2006,8 @@ MonoBehaviour:
   footStep: {fileID: 8300000, guid: c26cfbbfc5b8cac479bb49c334b13ca6, type: 3}
   missHit: {fileID: 8300000, guid: c266e86e5ec11e344bf66dede26cbc46, type: 3}
   missHugeHit: {fileID: 8300000, guid: 51e0a672984795b4087c49f005adf8f8, type: 3}
-  hitBasicAtt: {fileID: 8300000, guid: 0a4756cabc3c71a4e819bbd3d441f597, type: 3}
-  hugeAtt: {fileID: 8300000, guid: f9d4437d97f222c4bac222161ef2e63d, type: 3}
+  hitBasicAtt: {fileID: 8300000, guid: 14c2135efc8fdbc44b6d48c0410252cf, type: 3}
+  hugeAtt: {fileID: 8300000, guid: 3219388f39a4fdb49882a018496a2057, type: 3}
   gameOver: {fileID: 8300000, guid: 4a63bd41aa6573a449051d329db2ef7d, type: 3}
   enemyHit: {fileID: 8300000, guid: 2b019c6187fca1e48b47e28c891dc66c, type: 3}
   lowHealthHit: {fileID: 8300000, guid: 2a295373a10441545bcaf619b61bea94, type: 3}

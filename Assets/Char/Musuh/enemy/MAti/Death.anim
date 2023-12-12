@@ -32,6 +32,14 @@ AnimationClip:
       value: {fileID: 21300000, guid: f25877ab1328dd44cb20c1e0a6246918, type: 3}
     - time: 0.5
       value: {fileID: 21300000, guid: f57d7d32b073de74a9a0a16092898850, type: 3}
+    - time: 0.6
+      value: {fileID: 21300000, guid: 2010802ac076a3749b11ac051c549795, type: 3}
+    - time: 0.7
+      value: {fileID: 21300000, guid: 7028665345efe814581a38646760b98f, type: 3}
+    - time: 0.8
+      value: {fileID: 21300000, guid: b4d673bcb02573942a034c9cb80c616a, type: 3}
+    - time: 0.9
+      value: {fileID: 21300000, guid: e0a68441faf33e141aeb80be1326aac3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -60,12 +68,16 @@ AnimationClip:
     - {fileID: 21300000, guid: b3595bcafa63c564fb086729eb2303ea, type: 3}
     - {fileID: 21300000, guid: f25877ab1328dd44cb20c1e0a6246918, type: 3}
     - {fileID: 21300000, guid: f57d7d32b073de74a9a0a16092898850, type: 3}
+    - {fileID: 21300000, guid: 2010802ac076a3749b11ac051c549795, type: 3}
+    - {fileID: 21300000, guid: 7028665345efe814581a38646760b98f, type: 3}
+    - {fileID: 21300000, guid: b4d673bcb02573942a034c9cb80c616a, type: 3}
+    - {fileID: 21300000, guid: e0a68441faf33e141aeb80be1326aac3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -85,7 +97,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.6
+  - time: 1
     functionName: DeleteThis
     data: 
     objectReferenceParameter: {fileID: 0}

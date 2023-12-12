@@ -58,9 +58,9 @@ public class EnemyMovement : MonoBehaviour
 
             //animasi kena pukul
 
-            if (currentHealth < 0)
+            if (currentHealth <= 0)
             {
-                   Die();
+                   Invoke("Die", 0.5f);
             }
 
         } else
@@ -76,9 +76,9 @@ public class EnemyMovement : MonoBehaviour
 
             //animasi kena pukul
 
-            if (currentHealth < 0)
+            if (currentHealth <= 0)
             {
-                Die();
+                Invoke("Die", 0.5f);
             }
         }else { return; }
         
@@ -86,6 +86,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Die()
     {
+        GameManager.Instance.onEnemyDeath?.Invoke(this.gameObject);
         enemyAnimator.SetTrigger("isDead");
         colider.enabled = false;
         isDead = true;

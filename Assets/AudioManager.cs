@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     [Header("------------Audio Source------------")]
     [SerializeField] AudioSource MusicSource;
     [SerializeField] public AudioSource SFXSource;
+    public AudioSource NPCSource;
 
     [Header("------------Audio Clip------------")]
     public AudioClip mainTheme;
@@ -58,6 +59,10 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
+    }
+    public void PlayNPC(AudioClip clip)
+    {
+        NPCSource.PlayOneShot(clip);
     }
 
     public void Gameplay()

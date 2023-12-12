@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     public GameObject CoinPanel;
     public GameObject cooldownHUD;
 
-   [SerializeField] private bool isPaused = true;
+    public bool isPaused = true;
     private PlayerManager player;
     private CursorController cursorController;
     private LoadSceneTransition loadSceneTransition;
@@ -97,6 +97,7 @@ public class UIManager : MonoBehaviour
         pausePanel.SetActive(true);
         CoinPanel.SetActive(false);
         cooldownHUD.SetActive(false);
+        AudioManager.Instance.NPCSource.Pause();
         Time.timeScale = 0;
         cursorController.csr = true;
     }
@@ -109,6 +110,7 @@ public class UIManager : MonoBehaviour
         CoinPanel.SetActive(true);
         cooldownHUD.SetActive(true);
         cursorController.csr = false;
+        AudioManager.Instance.NPCSource.UnPause();
     }
     public void Death()
     {

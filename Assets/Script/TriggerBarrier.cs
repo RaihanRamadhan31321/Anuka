@@ -15,8 +15,16 @@ public class TriggerBarrier : MonoBehaviour
     [SerializeField]private GameObject enemy;
     [SerializeField]private int enemySpawned = 1;
     [SerializeField]private List<GameObject> characters;
-    [SerializeField] private List<GameObject> enemies;
+    [SerializeField] private List<GameObject> enemies = new List<GameObject>();
     // Start is called before the first frame update
+    private void OnEnable()
+    {
+        GameManager.Instance.onEnemyDeath += EnemyDeath;
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.onEnemyDeath -= EnemyDeath;
+    }
     void Start()
     {
         player = FindObjectOfType<PlayerMovement>();
@@ -28,11 +36,6 @@ public class TriggerBarrier : MonoBehaviour
         if (waveStart)
         {
             CharacterSorting();
-            StartCoroutine(SpawnerEnemy());
-        }
-        else
-        {
-            StopCoroutine(SpawnerEnemy());
         }
     }
     
@@ -41,26 +44,25 @@ public class TriggerBarrier : MonoBehaviour
         if (collision.CompareTag("Player") && isTriggered == false)
         {
             isFighting = true;
-            waveStart = true;
+            
             player.atas = (transform.position.x) - player.batasBarrier;
             player.bawah = transform.position.x + player.batasBarrier;
             isTriggered = true;
             EnemySpawnPoint1.position = new Vector3(player.atas - 2, transform.position.y, transform.position.z);
             EnemySpawnPoint2.position = new Vector3(player.bawah + 2, transform.position.y, transform.position.z);
+            StartCoroutine(SpawnerEnemy());
 
         }
     }
     void CharacterSorting()
     {
-        enemies = new List<GameObject> (GameObject.FindGameObjectsWithTag("Enemy"));
-        characters = new List<GameObject>(enemies);
-        characters.Add(player.gameObject);
+        
         characters.Sort(SortPos);
         foreach (var character in characters)
         {
             character.GetComponent<SpriteRenderer>().sortingOrder = characters.IndexOf(character);
         }
-        EndWave();
+        
     }
     private int SortPos(GameObject a, GameObject b)
     {
@@ -75,27 +77,33 @@ public class TriggerBarrier : MonoBehaviour
     }
     private void SpawnEnemy()
     {
-        if (enemySpawned <= 5)
+        
+        RandomNum = UnityEngine.Random.Range(1, 3);
+        GameObject enemy1 = null;
+        switch (RandomNum)
         {
-            RandomNum = UnityEngine.Random.Range(1, 3);
-            switch (RandomNum)
-            {
-                case 1:
-                    Instantiate(enemy, EnemySpawnPoint1.position, EnemySpawnPoint1.rotation);
-                    enemySpawned++;
-                    break;
-                case 2:
-                    Instantiate(enemy, EnemySpawnPoint2.position, EnemySpawnPoint2.rotation);
-                    enemySpawned++;
-                    break;
-            }
+            case 1:
+                enemy1 = Instantiate(enemy, EnemySpawnPoint1.position, EnemySpawnPoint1.rotation);
+
+                enemySpawned++;
+                enemies.Add(enemy1);
+                break;
+            case 2:
+                enemy1 = Instantiate(enemy, EnemySpawnPoint2.position, EnemySpawnPoint2.rotation);
+                enemySpawned++;
+                enemies.Add(enemy1);
+                break;
         }
+        characters = new List<GameObject>(enemies);
+        characters.Add(player.gameObject);
+        waveStart = true;
     }
     public void EndWave()
     {
         if(enemies.Count == 0)
         {
             waveStart = false;
+            PlayerManager.instance.playerMV.BarrierOff();
             gameObject.SetActive(false);
         }
     }
@@ -103,6 +111,16 @@ public class TriggerBarrier : MonoBehaviour
     IEnumerator SpawnerEnemy()
     {
         yield return new WaitForSeconds(UnityEngine.Random.Range(1,6));
-        SpawnEnemy();
+        
+        if(enemySpawned <= 5)
+        {
+            SpawnEnemy();
+            StartCoroutine(SpawnerEnemy());
+        }
+    }
+    public void EnemyDeath(GameObject enemy)
+    {
+        enemies.Remove(enemy);
+        EndWave();
     }
 }

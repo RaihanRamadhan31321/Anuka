@@ -12,9 +12,9 @@ public class NpcSFX : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            AudioManager.Instance.SFXSource.loop = true;
+            AudioManager.Instance.NPCSource.loop = true;
 
-            if (!AudioManager.Instance.SFXSource.isPlaying)
+            if (!AudioManager.Instance.NPCSource.isPlaying)
             {
                  NpcMotor();
             }
@@ -27,14 +27,14 @@ public class NpcSFX : MonoBehaviour
         {
             if(AudioManager.Instance != null)
             {
-                AudioManager.Instance.SFXSource.loop = false;
+                AudioManager.Instance.NPCSource.loop = false;
 
             }
         }
     }
     public void NpcMotor()
     {
-        AudioManager.Instance.PlaySFX(npcMotor);
+        AudioManager.Instance.PlayNPC(npcMotor);
         Debug.Log("suaramotor");
     }
 }

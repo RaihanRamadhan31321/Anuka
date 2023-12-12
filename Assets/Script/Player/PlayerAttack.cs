@@ -46,16 +46,12 @@ public class PlayerAttack : MonoBehaviour
         //basicattack
         if (Input.GetKeyDown(KeyCode.Mouse0) && player.isGround)
         {
+            if (UIManager.instance.isPaused) return;
             if (CanBasicAttack)
             {
                 StartCoroutine(BasicCooldown());
                 Invoke("MovementEnable", 0.5f);
             }
-            else
-            {
-                Debug.Log("NO");
-            }
-
         }
         //specialattack
         if (Input.GetKeyDown(KeyCode.Mouse1) && player.isGround)

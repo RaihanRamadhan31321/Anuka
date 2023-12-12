@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public bool cpCheck;
     public int currentLevel;
     public int levelUnlock = 1;
+    public UnityAction<GameObject> onEnemyDeath;
 
     public UnityEvent onPlayerSpawn;
 
@@ -109,4 +110,5 @@ public class GameManager : MonoBehaviour
         UIManager.instance.UpdateHealth(PlayerManager.instance.playerHP.currentHealth);
         PlayerManager.instance.coin.coinText.text = "Coins:" + PlayerManager.instance.coin.currentCoins.ToString();
     }
+    
 }

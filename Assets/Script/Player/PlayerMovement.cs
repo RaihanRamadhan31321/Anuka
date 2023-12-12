@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         OnEnableMovement();
         child = transform.Find("MoveLimit").gameObject;
-        landing = FindAnyObjectByType<LandingPoint>().gameObject;
+        landing = FindObjectOfType<LandingPoint>().gameObject;
         landing.SetActive(false);
 
         playerGameObject = this.gameObject;
@@ -181,10 +181,22 @@ public class PlayerMovement : MonoBehaviour
         transform.position = pembatas;
         landing.transform.position = pembatasLanding;
         CameraFlip.Instance.CameraWave1();
-        if(Dialogue.instance.helpChar != null)
+        if(Dialogue.instance != null)
         {
-            StartCoroutine(Dialogue.instance.ObjekCoroutine());
+            if (Dialogue.instance.helpChar != null)
+            {
+                StartCoroutine(Dialogue.instance.ObjekCoroutine());
+            }
+            else
+            {
+                return;
+            }
         }
+        else
+        {
+            return;
+        }
+
     }
     public void BarrierOff()
     {

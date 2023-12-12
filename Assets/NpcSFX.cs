@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+public enum audioPlay
+{
+    MOTOR,
+    MOBIL
+}
 public class NpcSFX : MonoBehaviour
 {
-
+    public audioPlay playThis;
+    private bool motorPlay;
     public AudioClip npcMotor;
+    public AudioClip npcMobil;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -16,7 +23,34 @@ public class NpcSFX : MonoBehaviour
 
             if (!AudioManager.Instance.NPCSource.isPlaying)
             {
-                 NpcMotor();
+                 NpcAudioPlay();
+            }
+            else
+            {
+                switch (playThis)
+                {
+                    case audioPlay.MOTOR:
+                        if (motorPlay)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            NpcAudioPlay();
+                        }
+                        break;
+
+                    case audioPlay.MOBIL:
+                        if (motorPlay)
+                        {
+                            NpcAudioPlay();
+                        }
+                        else
+                        {
+                            return;
+                        }
+                        break;
+                }
             }
         }
     }
@@ -32,9 +66,18 @@ public class NpcSFX : MonoBehaviour
             }
         }
     }
-    public void NpcMotor()
+    public void NpcAudioPlay()
     {
-        AudioManager.Instance.PlayNPC(npcMotor);
-        Debug.Log("suaramotor");
+        switch(playThis)
+        {
+            case audioPlay.MOTOR:
+                AudioManager.Instance.PlayNPC(npcMotor);
+                motorPlay = true;
+                break;
+            case audioPlay.MOBIL:
+                AudioManager.Instance.PlayNPC(npcMobil);
+                motorPlay = false;
+                break;
+        }
     }
 }

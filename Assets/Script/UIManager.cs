@@ -13,7 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image fillImage;
 
     [Header("-----------Game Objectt------------")]
-    public GameObject pausePanel;//!!!!!!!!!!
+    public GameObject pausePanel;
+    public GameObject saveText;
     public GameObject GameOverPanel;
     public GameObject SettingsPanel;
     public GameObject ControlMapPanel;
@@ -21,6 +22,7 @@ public class UIManager : MonoBehaviour
     public GameObject cooldownHUD;
 
     public bool isPaused = true;
+    private bool check = true;
     private PlayerManager player;
     private CursorController cursorController;
     private LoadSceneTransition loadSceneTransition;
@@ -159,6 +161,19 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         loadSceneTransition.loadMain = true;
         AudioManager.Instance.Mainmenu();
+    }
+    public IEnumerator SaveState()
+    {
+        if (check)
+        {
+            saveText.SetActive(true);
+            yield return new WaitForSeconds(3f);
+            saveText.GetComponent<Animator>().SetTrigger("start");
+            yield return new WaitForSeconds(1f);
+            saveText.SetActive(false);
+            check = false;
+        }
+        
     }
 
 

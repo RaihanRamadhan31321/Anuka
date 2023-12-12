@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     public int specialDamage;
     public float specialCooldown = 3.0f; // Waktu cooldown untuk serangan khusus
     public float basicATKCooldown;
+    public float specialAttackKnockBack;
     //private float lastSpecialAttackTime = -1000.0f; // Inisialisasi dengan nilai yang memastikan serangan pertama bisa dilakukan
     private bool CanSpecialAttack = true;
     [SerializeField]private bool CanBasicAttack = true;
@@ -98,7 +99,6 @@ public class PlayerAttack : MonoBehaviour
         {
             enemy.GetComponent<EnemyMovement>().TakeDamage(attackDamage);
             enemy.transform.Find("AttackRange").GetComponent<Enemyattack>().GetHit();
-            Debug.Log("Kena Area Pukul");
             audioManager.PlaySFX(audioManager.hitBasicAtt);
         }
         CanBasicAttack = false;
@@ -118,6 +118,16 @@ public class PlayerAttack : MonoBehaviour
 
         {
             enemy.GetComponent<EnemyMovement>().SpecialTakeDamage(specialDamage);
+            enemy.transform.Find("AttackRange").GetComponent<Enemyattack>().GetHit();
+            if(enemy.transform.position.x < player.transform.position.x)
+            {
+                enemy.GetComponent<Rigidbody2D>().velocity = new Vector2( -specialAttackKnockBack, 0);
+            }
+            else
+            {
+                enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Abs(specialAttackKnockBack), 0);
+            }
+            
             audioManager.PlaySFX(audioManager.hugeAtt);
             Debug.Log("Kena Spesial PlayerAttack Pukul");
         }

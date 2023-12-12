@@ -56,8 +56,10 @@ public class TriggerBarrier : MonoBehaviour
     }
     void CharacterSorting()
     {
-        
-        characters.Sort(SortPos);
+        if(characters.Count >= 3)
+        {
+            characters.Sort(SortPos);
+        }
         foreach (var character in characters)
         {
             character.GetComponent<SpriteRenderer>().sortingOrder = characters.IndexOf(character);
@@ -112,7 +114,7 @@ public class TriggerBarrier : MonoBehaviour
     {
         yield return new WaitForSeconds(UnityEngine.Random.Range(1,6));
         
-        if(enemySpawned <= 5)
+        if(enemySpawned <= 4)
         {
             SpawnEnemy();
             StartCoroutine(SpawnerEnemy());
@@ -120,6 +122,7 @@ public class TriggerBarrier : MonoBehaviour
     }
     public void EnemyDeath(GameObject enemy)
     {
+        characters.Remove(enemy);
         enemies.Remove(enemy);
         EndWave();
     }

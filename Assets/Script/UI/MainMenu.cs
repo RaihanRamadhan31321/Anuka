@@ -11,6 +11,7 @@ using System.IO;
 public class MainMenu : MonoBehaviour
 {
     public LoadSceneTransition sceneTransition;
+    public GameObject mainMenuPanel;
     public GameObject SettingsPanel;
     public GameObject ControlPanel;
     public AudioManager audioManager;
@@ -63,6 +64,8 @@ public class MainMenu : MonoBehaviour
                 {
                     // Jika panel pengaturan aktif, matikan panel
                     SettingsPanel.SetActive(false);
+                    mainMenuPanel.SetActive(true);
+                
                 }
             
             else

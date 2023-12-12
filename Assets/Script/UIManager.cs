@@ -131,7 +131,7 @@ public class UIManager : MonoBehaviour
 
         if (healthPercentage <= 30f) 
         {
-            fillImage.color = Color.red; 
+            fillImage.color = Color.green; 
         }
         //else
         //{

@@ -23,7 +23,7 @@ public class VistoManager : MonoBehaviour
     }
     public void Level1()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
         Debug.Log("Teks");
     }
 }

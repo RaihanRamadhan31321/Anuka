@@ -109,7 +109,6 @@ public class Enemyattack : MonoBehaviour
                 BasicAttack();
             }
             enemy.OnDisableMovement();
-            Debug.Log("CHECK");
         }
     }
     void MovementEnable()

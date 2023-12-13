@@ -1,19 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class FinishScript : MonoBehaviour
 {
-    [SerializeField] string levelName;
+    //[SerializeField] string levelName;
+    public GameObject panelWin;
+    public AudioClip winGame;
+    private CursorController cursorController;
+
+    private void Start()
+    {
+        cursorController = FindObjectOfType<CursorController>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFX(winGame);
+            AudioManager.Instance.NPCSource.Pause();
+
+            panelWin.SetActive(true);
+            cursorController.csr = true;
+            Time.timeScale = 0;
+            UIManager.instance.cooldownHUD.SetActive(false);
+
             UnlockNewLevel();
             GameManager.Instance.cpCheck = false;
             GameManager.Instance.SavePlayer();
-            SceneController.instance.LoadScene(levelName);
+            //SceneController.instance.LoadScene(levelName);
+
             AudioManager.Instance.Mainmenu();
         }
     }

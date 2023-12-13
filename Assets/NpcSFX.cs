@@ -17,7 +17,12 @@ public class NpcSFX : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("Playmusic");
+        }
+            Debug.Log("Playmusic111");
+        if (collision.CompareTag("Player"))
         {
             AudioManager.Instance.NPCSource.loop = true;
 
@@ -57,7 +62,7 @@ public class NpcSFX : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
             if(AudioManager.Instance != null)
             {

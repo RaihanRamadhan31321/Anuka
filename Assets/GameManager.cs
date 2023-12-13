@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     }
     public void SavePlayer()
     {
-        SaveSystem.SavePlayer(PlayerManager.instance.playerMV, PlayerManager.instance.playerATK, PlayerManager.instance.playerHP, PlayerManager.instance.coin, GameManager.Instance, GameManager.Instance, GameManager.Instance);
+        SaveSystem.SavePlayer(PlayerManager.instance.playerMV, PlayerManager.instance.playerATK, PlayerManager.instance.playerHP, GameManager.Instance, GameManager.Instance, GameManager.Instance);
         Debug.Log("Saving");
     }
 
@@ -104,11 +104,11 @@ public class GameManager : MonoBehaviour
         pos.x = data.position[0];
         pos.y = data.position[1];
         pos.z = data.position[2];
-        PlayerManager.instance.coin.currentCoins = data.coinCount;
+
 
         PlayerManager.instance.playerMV.transform.position = pos;
         UIManager.instance.UpdateHealth(PlayerManager.instance.playerHP.currentHealth);
-        PlayerManager.instance.coin.coinText.text = "Coins:" + PlayerManager.instance.coin.currentCoins.ToString();
+
     }
     
 }

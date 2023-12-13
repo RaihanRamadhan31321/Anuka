@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     private CursorController cursorController;
     private LoadSceneTransition loadSceneTransition;
     [SerializeField]private Animator gameOverAnimator;
+    [SerializeField] string levelName;
 
     AudioManager audioManager;
 
@@ -122,6 +123,10 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         GameOverPanel.SetActive(true);
         audioManager.PlaySFX(audioManager.gameOver);
+    }
+    public void WinToScene()
+    {
+        SceneController.instance.NextLevel();
     }
 
     public void UpdateHealth(float value)

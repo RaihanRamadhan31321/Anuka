@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class VistoManager : MonoBehaviour
 {
+    public float timer = 23;
+    public string nextScene;
+
 
     private void Start()
     {
@@ -16,14 +19,11 @@ public class VistoManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        timer -= Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Escape) || timer <= 0)
         {
-            Level1();
+            // Ganti scene ke scene berikutnya
+            SceneManager.LoadScene(nextScene);
         }
-    }
-    public void Level1()
-    {
-        SceneManager.LoadScene(4);
-        Debug.Log("Teks");
     }
 }

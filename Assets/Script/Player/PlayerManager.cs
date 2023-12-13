@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerAttack playerATK;
     public PlayerHealthPoint playerHP;
     public PlayerMovement playerMV;
-    public CoinsUI coin;
+    //public CoinsUI coin;
     public bool death;
     public bool deadCheck = true;
     public static PlayerManager instance;
@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
         playerATK = GetComponent<PlayerAttack>();
         playerHP = GetComponent<PlayerHealthPoint>();
         playerMV = GetComponent<PlayerMovement>();
-        coin = FindObjectOfType<CoinsUI>();
+        //coin = FindObjectOfType<CoinsUI>();
         
 
 

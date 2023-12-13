@@ -7,18 +7,38 @@ public class TimerScript : MonoBehaviour
     public float timer = 23;
     public string nextScene;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        AudioManager.Instance.PauseMusic();
+    }
+
     void Update()
     {
         // Kurangi waktu timer
         timer -= Time.deltaTime;
 
         // Jika waktu timer habis
-        if (timer <= 0)
+        if (Input.GetKeyDown(KeyCode.Escape) || timer <= 0)
         {
-            // Ganti scene ke scene berikutnya
-            SceneManager.LoadScene(nextScene);
+            if (Time.timeScale != 0)
+            {
+                // Ganti scene ke scene berikutnya
+                SceneManager.LoadScene(nextScene);
+            }
+            else
+            {
+                Time.timeScale = 1;
+                SceneManager.LoadScene(nextScene);
+            }
+
         }
+
+
     }
+    private void OnDestroy()
+    {
+        AudioManager.Instance.UnpauseMusic();
+    }
+
 }
 

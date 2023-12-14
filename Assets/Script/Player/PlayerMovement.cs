@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -22,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float xvalue;
     private float yvalue;
-    private TriggerBarrier trigger;
+    public TriggerBarrier trigger;
     [Header("JANGAN SENTUH!!!")]
     [Tooltip("Masukan animator game object ini ke sini")]
     public Animator animator;
@@ -37,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     AudioManager audioManager;
     public AudioClip footStep;
+    public int currentWave = 1;
 
     #endregion
     void Start()
@@ -52,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
         //sementara
         playerHP = GetComponent<PlayerHealthPoint>();
         isGround = true;
-        trigger = FindObjectOfType<TriggerBarrier>();
 
         StartPoint = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
             
@@ -69,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
         if (trigger.isFighting == true)
         {
             BarrierOn();
-
         }
         if (moving == true)
         {
@@ -175,12 +169,20 @@ public class PlayerMovement : MonoBehaviour
     }
     public void BarrierOn()
     {
+        Debug.Log("cek");
         float PlayerClampedValue = Mathf.Clamp(transform.position.x, atas,bawah);
         Vector3 pembatas = new Vector3(PlayerClampedValue, transform.position.y, transform.position.z);
         Vector3 pembatasLanding = new Vector3(PlayerClampedValue, landing.transform.position.y, landing.transform.position.z);
         transform.position = pembatas;
         landing.transform.position = pembatasLanding;
-        CameraFlip.Instance.CameraWave1();
+        if (currentWave == 1)
+        {
+            CameraFlip.Instance.CameraWave1();
+        }
+        else if(currentWave == 2)
+        {
+            CameraFlip.Instance.CameraWave2();
+        }
         if(Dialogue.instance != null)
         {
             if (Dialogue.instance.helpChar != null)

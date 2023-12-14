@@ -64,4 +64,10 @@ public class CameraFlip : MonoBehaviour
         
         confiner.m_BoundingShape2D = batasCamera.GetComponent<Collider2D>();
     }
+    public void CameraWave2()
+    {
+        batasCamera = GameObject.Find("BatasCameraWave2");
+
+        confiner.m_BoundingShape2D = batasCamera.GetComponent<Collider2D>();
+    }
 }

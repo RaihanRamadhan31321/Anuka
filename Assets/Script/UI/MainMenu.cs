@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
 
     public void PrologueScene()
     {
-        sceneTransition.loadNext = true;
+        SceneManager.LoadScene("LevelScene");
     }
 
     public void ExitBoong()

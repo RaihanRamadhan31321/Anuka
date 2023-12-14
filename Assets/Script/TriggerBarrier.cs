@@ -9,6 +9,8 @@ public class TriggerBarrier : MonoBehaviour
     public bool isFighting = false;
     public bool waveStart = false;
     private bool isTriggered = false;
+    
+    [SerializeField] TriggerBarrier nextTriggerBarier;
     private int RandomNum;
     [SerializeField]private Transform EnemySpawnPoint1;
     [SerializeField]private Transform EnemySpawnPoint2;
@@ -104,9 +106,17 @@ public class TriggerBarrier : MonoBehaviour
     {
         if(enemies.Count == 0)
         {
+            
             waveStart = false;
             PlayerManager.instance.playerMV.BarrierOff();
             gameObject.SetActive(false);
+            if(nextTriggerBarier == null)
+            {
+                return;
+            }
+            player.trigger = nextTriggerBarier;
+            player.currentWave++;
+            nextTriggerBarier.gameObject.SetActive(true);
         }
     }
 

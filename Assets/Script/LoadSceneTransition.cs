@@ -27,7 +27,7 @@ public class LoadSceneTransition : MonoBehaviour
         }
         else if (loadMain)
         {
-            StartCoroutine(Loading(1));
+            StartCoroutine(Loading(0));
 
         }
         else if (reload)

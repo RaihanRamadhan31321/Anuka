@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
+    public TriggerBarrier defaultTriggerBarier;
     private void OnEnable()
     {
         GameManager.Instance.spawnPoint = this.transform;
@@ -15,6 +16,7 @@ public class SpawnPoint : MonoBehaviour
     }
     private void Start()
     {
+        PlayerManager.instance.playerMV.trigger = defaultTriggerBarier;
         AudioManager.Instance.Gameplay();
     }
 }

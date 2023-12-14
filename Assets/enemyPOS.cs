@@ -5,10 +5,15 @@ using UnityEngine;
 public class enemyPOS : MonoBehaviour
 {
     public static enemyPOS instance;
+    private EnemyMovement enemyM;
+    private EnemyRange enemyR;
     public int enemyInSight;
+    bool cek = false;
     private void Awake()
     {
         instance = this;
+        
+        enemyR = transform.parent.gameObject.GetComponent<EnemyRange>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,17 +31,33 @@ public class enemyPOS : MonoBehaviour
     }
     public void CheckSite()
     {
-        if (enemyInSight < 4)
+        if (enemyInSight <= 3)
         {
-            EnemyRange.instance.enemy.moving = true;
-            EnemyRange.instance.enemy.transform.position = Vector2.MoveTowards(EnemyRange.instance.enemy.transform.position, EnemyRange.instance.player.transform.position, EnemyRange.instance.enemy.moveSpeed * Time.deltaTime);
-        }
-        else
+            enemyR.ContinueCS();
+            Debug.Log("Enemy < 3");
+        } else
         {
-            EnemyRange.instance.enemy.moving = false;
-            EnemyRange.instance.enemy.enemyAnimator.SetBool("isRunning", false);
-            //FreeCheck();
+            enemyR.StopChase();
         }
+
+        //if (enemyInSight > 3)
+        //{
+        //    enemyM.moving = false;
+        //    enemyR.isTriggered = false;
+        //    enemyM.enemyAnimator.SetBool("isRunning", false);
+        //    enemyM.transform.position = new Vector2(enemyM.transform.position.x, enemyM.transform.position.y);
+        //    Debug.Log("BISAAA");
+        //    //FreeCheck();
+        //    cek = true;
+        //}
+        //else if(cek)
+        //{
+        //    enemyR.isTriggered = true;
+        //    enemyM.transform.position = Vector2.MoveTowards(enemyM.transform.position, enemyM.transform.position, enemyM.moveSpeed * Time.deltaTime);
+        //    Debug.Log("Diam");
+        //    cek = false;
+        //}
     }
+    
 
 }

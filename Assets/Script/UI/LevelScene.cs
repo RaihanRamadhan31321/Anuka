@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using UnityEngine.UI;
 using TMPro;
 
@@ -11,6 +10,8 @@ public class LevelScene : MonoBehaviour
     public GameObject levelPanel;
     public CursorController cursorController;
     private LoadSceneTransition transition;
+    public Button switchArrowL;
+    public Button switchArrowR;
     public GameObject singa, dito;
     public TMP_Text[] namaChar;
 
@@ -50,32 +51,43 @@ public class LevelScene : MonoBehaviour
 
     public void SwitchCharacter()
     {
-        Debug.Log("CEK");
-        if (singa.gameObject.activeSelf)
+        if (GameManager.Instance.ditoUnlocked)
         {
-            singa.SetActive(false);
-            namaChar[0].text = "DITO";
+            switchArrowL.interactable = true;
+            switchArrowR.interactable = true;
+            Debug.Log("CEK");
+            if (singa.gameObject.activeSelf)
+            {
+                singa.SetActive(false);
+                namaChar[0].text = "DITO";
 
+            }
+            else
+            {
+                singa.SetActive(true);
+                GameManager.Instance.currentCharacter = character.SINGA;
+                namaChar[0].text = "SINGA";
+            }
+
+
+
+
+            if (dito.gameObject.activeSelf)
+            {
+                dito.SetActive(false);
+            }
+            else
+            {
+                dito.SetActive(true);
+                GameManager.Instance.currentCharacter = character.DITO;
+            }
         }
         else
         {
-            singa.SetActive(true);
-            GameManager.Instance.currentCharacter = character.SINGA;
-            namaChar[0].text = "SINGA";
+            switchArrowL.interactable = false;
+            switchArrowR.interactable = false;
         }
-
-
-
         
-        if (dito.gameObject.activeSelf)
-        {
-            dito.SetActive(false);
-        }
-        else
-        {
-            dito.SetActive(true);
-            GameManager.Instance.currentCharacter = character.DITO;
-        }
 
 
     }

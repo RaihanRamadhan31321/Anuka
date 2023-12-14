@@ -20,6 +20,10 @@ public class FinishScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if(SceneManager.GetActiveScene().buildIndex == 4)
+            {
+                GameManager.Instance.ditoUnlocked = true;
+            }
             AudioManager.Instance.PlaySFX(winGame);
             AudioManager.Instance.NPCSource.Pause();
 

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject dito, singa;
     public Transform spawnPoint;
     public character currentCharacter;
+    public bool ditoUnlocked = false;
     public bool cpCheck;
     public int currentLevel;
     public int levelUnlock = 1;
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour
     }
     public void SavePlayer()
     {
-        SaveSystem.SavePlayer(PlayerManager.instance.playerMV, PlayerManager.instance.playerATK, PlayerManager.instance.playerHP, GameManager.Instance, GameManager.Instance, GameManager.Instance);
+        SaveSystem.SavePlayer(PlayerManager.instance.playerMV, PlayerManager.instance.playerATK, PlayerManager.instance.playerHP, GameManager.Instance, GameManager.Instance, GameManager.Instance, GameManager.Instance);
         Debug.Log("Saving");
     }
 
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
             PlayerData data = SaveSystem.LoadPlayer();
             cpCheck = data.checkpointCheck;
             levelUnlock = data.levelUnlocks;
+            ditoUnlocked = data.ditoUnlock;
             if (cpCheck)
             {
                 currentLevel = data.currentLv;

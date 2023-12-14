@@ -4447,10 +4447,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381187c126bba594a90bca90ed47e787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dito: {fileID: 6724929055111353118, guid: 0ebd6b492dcbd1349acfff056d0ed75d, type: 3}
+  dito: {fileID: 6724929055111353118, guid: ace6b26e761c019488520634b4c8c04f, type: 3}
   singa: {fileID: 6724929055111353118, guid: 9d5daedb91730124b9918cd2b56ab77e, type: 3}
   spawnPoint: {fileID: 0}
   currentCharacter: 0
+  ditoUnlocked: 0
   cpCheck: 0
   currentLevel: 0
   levelUnlock: 0

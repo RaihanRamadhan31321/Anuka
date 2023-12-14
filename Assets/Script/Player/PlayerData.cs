@@ -13,9 +13,10 @@ public class PlayerData
     public float[] position;
     public bool checkpointCheck;
     public int levelUnlocks;
+    public bool ditoUnlock;
     public int currentLv;
 
-    public PlayerData(PlayerMovement playerMV, PlayerAttack playerATK, PlayerHealthPoint playerHP, GameManager cpCheck, GameManager levelUnlocked, GameManager currentLvl) 
+    public PlayerData(PlayerMovement playerMV, PlayerAttack playerATK, PlayerHealthPoint playerHP, GameManager cpCheck, GameManager levelUnlocked, GameManager currentLvl, GameManager ditoUnlck) 
     {
         HP = playerHP.currentHealth;
         Speed = playerMV.speed;
@@ -29,5 +30,6 @@ public class PlayerData
         checkpointCheck = cpCheck.cpCheck;
         levelUnlocks = levelUnlocked.levelUnlock;
         currentLv = currentLvl.currentLevel;
+        ditoUnlock = ditoUnlck.ditoUnlocked; 
     }
 }

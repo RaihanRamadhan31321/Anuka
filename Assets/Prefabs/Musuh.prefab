@@ -53,7 +53,7 @@ MonoBehaviour:
   playerLayers:
     serializedVersion: 2
     m_Bits: 1
-  attackDamage: 1
+  attackDamage: 10
   specialDamage: 29
   attackCooldown: 3
   mundur: 1.13

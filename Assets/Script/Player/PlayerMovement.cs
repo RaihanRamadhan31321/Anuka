@@ -61,10 +61,14 @@ public class PlayerMovement : MonoBehaviour
     #region unitymethod
     void Update()
     {
-        if (trigger.isFighting == true)
+        if (trigger!= null)
         {
-            BarrierOn();
+            if (trigger.isFighting == true)
+            {
+                BarrierOn();
+            }
         }
+        
         if (moving == true)
         {
             if(xvalue > 0 ||  yvalue > 0)

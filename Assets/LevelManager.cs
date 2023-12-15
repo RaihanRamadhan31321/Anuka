@@ -61,4 +61,12 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+    public void Scene2()
+    {
+        SceneManager.LoadScene(6);
+    }
+    public void Scene3()
+    {
+        SceneManager.LoadScene(9);
+    }
 }

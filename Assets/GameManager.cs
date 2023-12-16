@@ -12,8 +12,9 @@ public enum character
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public GameObject dito, singa;
+    public GameObject dito, singa, singaComp, ditoComp;
     public Transform spawnPoint;
+    public Transform spawnPointCompanion;
     public character currentCharacter;
     public bool ditoUnlocked = false;
     public bool cpCheck;
@@ -46,10 +47,17 @@ public class GameManager : MonoBehaviour
         {
             case character.SINGA:
                 Instantiate(singa, spawnPoint.position, spawnPoint.rotation);
+                if(SceneManager.GetActiveScene().buildIndex == 10)
+                {
+                    Instantiate(ditoComp, spawnPointCompanion.position, spawnPointCompanion.rotation);
+                }
                 break;
             case character.DITO:
-                Debug.Log("Bebas");
                 Instantiate(dito, spawnPoint.position, spawnPoint.rotation);
+                if (SceneManager.GetActiveScene().buildIndex == 10)
+                {
+                    Instantiate(singaComp, spawnPointCompanion.position, spawnPointCompanion.rotation);
+                }
                 break;
         }
         onPlayerSpawn?.Invoke();

@@ -35,7 +35,7 @@ public class LevelScene : MonoBehaviour
 
     public void KeMainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
 

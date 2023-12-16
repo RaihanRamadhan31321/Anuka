@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class CompMovement : MonoBehaviour
 {
-    public static EnemyMovement Instance;
-    public Animator enemyAnimator; 
+    public static CompMovement Instance;
+    public Animator compAnimator;
     public float moveSpeed;
     [SerializeField] private GameObject player;
     public bool moving;
     public int maxHealth = 100;
-    [SerializeField]private Collider2D colider;
+    private Collider2D colider;
     int currentHealth;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDead = false;
+    public GameObject target;
 
     private void OnEnable()
     {
@@ -34,24 +35,25 @@ public class EnemyMovement : MonoBehaviour
     }
     void Start()
     {
-        if(player == null)
+        if (player == null)
         {
             player = PlayerManager.instance.gameObject;
         }
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         colider = GetComponent<Collider2D>();
+        compAnimator = GetComponent<Animator>();
     }
 
-    void Update() 
+    void Update()
     {
         Rotate();
-    
+
     }
 
     public void TakeDamage(int damage)
     {
-        if(!isDead)
+        if (!isDead)
         {
             currentHealth -= damage;
 
@@ -60,10 +62,11 @@ public class EnemyMovement : MonoBehaviour
 
             if (currentHealth <= 0)
             {
-                   Invoke("Die", 0.5f);
+                Invoke("Die", 0.5f);
             }
 
-        } else
+        }
+        else
         {
             return;
         }
@@ -80,14 +83,15 @@ public class EnemyMovement : MonoBehaviour
             {
                 Invoke("Die", 0.5f);
             }
-        }else { return; }
-        
+        }
+        else { return; }
+
     }
 
     void Die()
     {
         GameManager.Instance.onEnemyDeath?.Invoke(this.gameObject);
-        enemyAnimator.SetTrigger("isDead");
+        compAnimator.SetTrigger("isDead");
         colider.enabled = false;
         isDead = true;
 
@@ -103,35 +107,20 @@ public class EnemyMovement : MonoBehaviour
 
     void Rotate()
     {
-        if(!isDead)
+        if (!isDead)
         {
-            if (player != null)
+            if (target != null)
             {
-                if (transform.position.x < player.transform.position.x)
+                if (transform.position.x < target.transform.position.x)
                 {
                     transform.localScale = new Vector3(1, 1, 0);
                 }
-                if (transform.position.x > player.transform.position.x)
+                if (transform.position.x > target.transform.position.x)
                 {
                     transform.localScale = new Vector3(-1, 1, 0);
                 }
             }
-        }     
-        
-    }
-    public void OnDisableMovement()
-    {
-        moving = false;
-        enemyAnimator.SetBool("isRunning", false);
-        //Debug.Log("IS NOT MOVE");
-    }
-    public void OnEnableMovement()
-    {
-
-        moving = true;
-        enemyAnimator.SetBool("isAttacking", false);
-
-        //Debug.Log("IS MOVE");
+        }
 
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class Enemyattack : MonoBehaviour
+public class CompAttack : MonoBehaviour
 {
     public Animator animator;
     public Transform attackPoint;
@@ -14,12 +14,15 @@ public class Enemyattack : MonoBehaviour
     public float attackCooldown = 3.0f; // Waktu cooldown untuk serangan khusus
     //private float lastSpecialAttackTime = -1000.0f; // Inisialisasi dengan nilai yang memastikan serangan pertama bisa dilakukan
     private bool CanAttack = true;
-    private EnemyMovement enemy;
-    private PlayerHealthPoint playerHP;
-    private PlayerAttack playerAtk;
+    private CompMovement companion;
+    private PlayerManager player;
     private Rigidbody2D rb;
     private bool cd = true;
     private int hitCount;
+    public Collider2D colider;
+    public bool enemyInRange=false;
+    private CompVision companionVision;
+
     private Vector3 stay;
     [Tooltip("Untuk Mengatur seberapa jauh terlempar jika di pukul 3 kali")]
     [SerializeField] private float mundur;
@@ -36,19 +39,21 @@ public class Enemyattack : MonoBehaviour
     }
     private void Start()
     {
-        enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
+        companion = transform.parent.gameObject.GetComponent<CompMovement>();
+        companionVision = companion.GetComponent<CompVision>();
         sr = transform.parent.gameObject.GetComponent<SpriteRenderer>();
-        playerHP = PlayerManager.instance.playerHP;
-        playerAtk = PlayerManager.instance.playerATK;
         rb = GetComponent<Rigidbody2D>();
         camShake = GetComponent<CinemachineImpulseSource>();
+        animator = companion.compAnimator;
+        colider = GetComponent<Collider2D>();
+        player = PlayerManager.instance.GetComponent<PlayerManager>();
         stay = new Vector3(1.51f, 0.26f, 0);
     }
     private void Update()
     {
         transform.localPosition = stay;
         rb.AddForce(Vector2.zero);
-        if (transform.position.x > playerHP.transform.position.x)
+        if (companion.transform.position.x > player.playerHP.transform.position.x)
         {
             mundur = Mathf.Abs(mundur);
         }
@@ -60,77 +65,9 @@ public class Enemyattack : MonoBehaviour
             }
         }
     }
-    void BasicAttack()
-    {
-        if(enemy.isDead == false)
-        {
-            Debug.Log("BASIC");
-            enemy.enemyAnimator.SetBool("isAttacking", true);
-            enemy.OnDisableMovement();
-
-            int playerHealthPercentage = (playerHP.currentHealth * 100) / playerHP.maxHealth;
-
-            if (playerHealthPercentage < 20)
-            {
-                audioManager.PlaySFX(audioManager.lowHealthHit); 
-            }
-            else
-            {
-                audioManager.PlaySFX(audioManager.enemyHit); 
-            }
-
-            playerHP.TakeDamage(attackDamage);
-            playerAtk.GetHit();
-            CanAttack = false;
-            cd = true;
-            Invoke("MovementEnable", 0.7f);
-            //audioManager.PlaySFX(audioManager.enemyHit);
-
-            
-        }
-    }
-    void CooldownBasicAttack ()
-    {
-        cd = false;
-        StartCoroutine(AttackCooldown());
-        
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            if (cd)
-            {
-                CooldownBasicAttack();
-            }
-            if (CanAttack)
-            {
-                BasicAttack();
-            }
-            enemy.OnDisableMovement();
-        }
-    }
-    void MovementEnable()
-    {
-        enemy.OnEnableMovement();
-        enemy.rb.velocity = new Vector2(0,0);
-        enemy.enemyAnimator.SetBool("getHit", false);
-    }
-
-    IEnumerator AttackCooldown()
-    {
-        Debug.Log("CD");
-        enemy.OnDisableMovement();
-        yield return new WaitForSeconds(attackCooldown);
-
-        Debug.Log("CD2");
-        enemy.OnEnableMovement();
-        CanAttack = true;
-        cd = false;
-    }
     public void GetHit()
     {
-        if(enemy.isDead == false)
+        if (companion.isDead == false)
         {
             IEnumerator HitCooldown()
             {
@@ -138,24 +75,37 @@ public class Enemyattack : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 sr.color = Color.white;
             }
-            enemy.OnDisableMovement();
             camShake.GenerateImpulse(1);
             var effect = Instantiate(hitEffect, transform.position + Vector3.up * objHeight, Quaternion.identity);
             Destroy(effect, 0.2f);
             StartCoroutine(HitCooldown());
 
-            enemy.enemyAnimator.SetBool("getHit", true);
+            animator.SetBool("getHit", true);
             if (hitCount == 3)
             {
 
                 Vector2 back = new Vector2(mundur, 0);
-                enemy.rb.velocity = back;
+                companion.rb.velocity = back;
 
                 hitCount = 0;
             }
             Invoke("MovementEnable", 0.4f);
             hitCount++;
-        }   
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            enemyInRange = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            enemyInRange = false;
+        }
     }
 
     //display

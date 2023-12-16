@@ -34,7 +34,6 @@ public class enemyPOS : MonoBehaviour
         if (enemyInSight <= 3)
         {
             enemyR.ContinueCS();
-            Debug.Log("Enemy < 3");
         } else
         {
             enemyR.StopChase();

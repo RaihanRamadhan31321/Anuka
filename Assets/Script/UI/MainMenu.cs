@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     public RectTransform dtSettings;
     public RectTransform dtMainmenu;
     public RectTransform dtNewData;
-
+    public RectTransform dtControlMap;
 
 
 
@@ -53,7 +53,7 @@ public class MainMenu : MonoBehaviour
 
     public void ExitBoong()
     {
-        SceneManager.LoadScene("ExitBoongScene");
+        SceneManager.LoadScene("ExitScene");
     }
 
     public void Esc()
@@ -66,6 +66,7 @@ public class MainMenu : MonoBehaviour
                 // Jika panel pengaturan aktif, matikan panel
                 ControlPanel.SetActive(false);
                 SettingsPanel.SetActive(true);
+                DTCancelControlMap();
             }
             else 
             
@@ -74,6 +75,7 @@ public class MainMenu : MonoBehaviour
                     // Jika panel pengaturan aktif, matikan panel
                     SettingsPanel.SetActive(false);
                     mainMenuPanel.SetActive(true);
+                    DTCancelSettingPanel();
             }
             
             else
@@ -162,5 +164,32 @@ public class MainMenu : MonoBehaviour
         dtMainmenu.anchoredPosition = new Vector2(dtMainmenu.anchoredPosition.x, 0);
 
         dtMainmenu.DOAnchorPosY(1093, 0.8f).SetEase(Ease.OutBack).From();
+    }
+
+    public void DTControlMapPanel()
+    {
+        ControlPanel.SetActive(true);
+        dtControlMap.anchoredPosition = new Vector2(0, -dtControlMap.anchoredPosition.y);
+
+        dtControlMap.DOAnchorPosX(-2093, 0.8f).SetEase(Ease.OutBack).From().OnComplete(() =>
+        {
+            SettingsPanel.SetActive(false);
+        });
+    }
+
+    public void DTCancelControlMap()
+    {
+        SettingsPanel.SetActive(true);
+        dtControlMap.anchoredPosition = new Vector2(-2093, -dtControlMap.anchoredPosition.y);
+        dtSettings.anchoredPosition = new Vector2(-2093, 62);
+
+        dtControlMap.DOAnchorPosX(-2093, 0.8f).SetEase(Ease.OutBack).From().From().OnComplete(() =>
+        {
+            ControlPanel.SetActive(false);
+        });
+        dtSettings.DOAnchorPosX(-111, 0.8f).SetEase(Ease.OutBack);
+        dtSettings.DOAnchorPosY(62, 0.8f);
+
+
     }
 }

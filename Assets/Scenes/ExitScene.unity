@@ -518,6 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitBoong: {fileID: 8389394340808883143}
+  dtExitPanel: {fileID: 2134590726010404185}
 --- !u!4 &1898586777
 Transform:
   m_ObjectHideFlags: 0

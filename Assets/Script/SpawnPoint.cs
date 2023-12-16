@@ -10,7 +10,7 @@ public class SpawnPoint : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.spawnPoint = this.transform;
-        if (SceneManager.GetActiveScene().buildIndex == 10)
+        if (SceneManager.GetActiveScene().buildIndex == 9)
         {
             GameManager.Instance.spawnPointCompanion = spawnComp.transform;
         }

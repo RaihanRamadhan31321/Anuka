@@ -47,14 +47,14 @@ public class GameManager : MonoBehaviour
         {
             case character.SINGA:
                 Instantiate(singa, spawnPoint.position, spawnPoint.rotation);
-                if(SceneManager.GetActiveScene().buildIndex == 10)
+                if(SceneManager.GetActiveScene().buildIndex == 9)
                 {
                     Instantiate(ditoComp, spawnPointCompanion.position, spawnPointCompanion.rotation);
                 }
                 break;
             case character.DITO:
                 Instantiate(dito, spawnPoint.position, spawnPoint.rotation);
-                if (SceneManager.GetActiveScene().buildIndex == 10)
+                if (SceneManager.GetActiveScene().buildIndex == 9)
                 {
                     Instantiate(singaComp, spawnPointCompanion.position, spawnPointCompanion.rotation);
                 }

@@ -59,14 +59,14 @@ public class LevelManager : MonoBehaviour
 
     public void Vistoscane()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
     public void Scene2()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(5);
     }
     public void Scene3()
     {
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(8);
     }
 }

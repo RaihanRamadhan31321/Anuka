@@ -641,6 +641,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadSceneTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 8806145227561465352, guid: c012dd11ebcc2454187431c35e0dca2a, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806145227561465352, guid: c012dd11ebcc2454187431c35e0dca2a, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806145227561465352, guid: c012dd11ebcc2454187431c35e0dca2a, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9003702432627561330, guid: c012dd11ebcc2454187431c35e0dca2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.464394
@@ -721,7 +733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -466, y: 83.77002}
+  m_AnchoredPosition: {x: -466, y: -112}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &629366642
@@ -1181,7 +1193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  m_Color: {r: 0.047169805, g: 0.047169805, b: 0.047169805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

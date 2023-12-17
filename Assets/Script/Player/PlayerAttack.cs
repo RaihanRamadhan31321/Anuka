@@ -98,7 +98,7 @@ public class PlayerAttack : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyMovement>().TakeDamage(attackDamage);
-            enemy.transform.Find("AttackRange").GetComponent<Enemyattack>().GetHit();
+            enemy.GetComponentInChildren<Enemyattack>().GetHit();
             audioManager.PlaySFX(audioManager.hitBasicAtt);
         }
         CanBasicAttack = false;

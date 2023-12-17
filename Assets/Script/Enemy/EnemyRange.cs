@@ -27,6 +27,7 @@ public class EnemyRange : MonoBehaviour
         {
             player = PlayerManager.instance.gameObject;
         }
+        enemyFlw = player;
     }
 
     // Update is called once per frame
@@ -58,10 +59,17 @@ public class EnemyRange : MonoBehaviour
                     enemyFlw = player;
                     break;
                 case 2:
-                    if (!StateManager.instance.isDead)
+                    if(StateManager.instance != null)
                     {
+                        if (!StateManager.instance.compMovement.isDead)
+                        {
 
-                        enemyFlw = StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject;
+                            enemyFlw = StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject;
+                        }
+                        else
+                        {
+                            enemyFlw = player;
+                        }
                     }
                     else
                     {
@@ -93,6 +101,13 @@ public class EnemyRange : MonoBehaviour
     }
     private void MovementTactic(GameObject target)
     {
+        if (StateManager.instance != null)
+        {
+            if (StateManager.instance.compMovement.isDead)
+            {
+                enemyFlw = player;
+            }
+        }
         if ((Vector3.Distance(enemy.transform.position, target.transform.position)) <= 20) //mid distance
         {
             POS.CheckSite();

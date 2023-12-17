@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TriggerBarrier : MonoBehaviour
 {
     private PlayerMovement player;
+    public GameObject companion;
+    public BossManager boss;
     public bool isFighting = false;
     public bool waveStart = false;
     private bool isTriggered = false;
@@ -16,6 +19,7 @@ public class TriggerBarrier : MonoBehaviour
     [SerializeField]private Transform EnemySpawnPoint2;
     [SerializeField]private GameObject enemy;
     [SerializeField]private int enemySpawned = 1;
+    [SerializeField] private int enemySpawnLimit;
     [SerializeField]private List<GameObject> characters;
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
     // Start is called before the first frame update
@@ -30,6 +34,16 @@ public class TriggerBarrier : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerMovement>();
+        if(StateManager.instance != null)
+        {
+            companion = StateManager.instance.gameObject;
+        }
+        boss = FindObjectOfType<BossManager>();
+        
+        if(boss != null)
+        {
+            boss.GetComponentInChildren<EnemyRange>().GetComponent<CircleCollider2D>().enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -50,8 +64,6 @@ public class TriggerBarrier : MonoBehaviour
             player.atas = (transform.position.x) - player.batasBarrier;
             player.bawah = transform.position.x + player.batasBarrier;
             isTriggered = true;
-            EnemySpawnPoint1.position = new Vector3(player.atas - 2, transform.position.y, transform.position.z);
-            EnemySpawnPoint2.position = new Vector3(player.bawah + 2, transform.position.y, transform.position.z);
             StartCoroutine(SpawnerEnemy());
 
         }
@@ -100,31 +112,52 @@ public class TriggerBarrier : MonoBehaviour
         }
         characters = new List<GameObject>(enemies);
         characters.Add(player.gameObject);
+        characters.Add(boss.gameObject);
+        if(companion != null)
+        {
+            characters.Add(companion.gameObject);
+        }
         waveStart = true;
     }
     public void EndWave()
     {
         if(enemies.Count == 0)
         {
-            
+            Debug.Log("EnemyHabs");
             waveStart = false;
-            PlayerManager.instance.playerMV.BarrierOff();
-            gameObject.SetActive(false);
-            if(nextTriggerBarier == null)
+            if(SceneManager.GetActiveScene().buildIndex != 9)
             {
-                return;
+                waveStart = false;
+                PlayerManager.instance.playerMV.BarrierOff();
+                gameObject.SetActive(false);
+                if (nextTriggerBarier == null)
+                {
+                    return;
+                }
+                player.trigger = nextTriggerBarier;
+                player.currentWave++;
             }
-            player.trigger = nextTriggerBarier;
-            player.currentWave++;
-            nextTriggerBarier.gameObject.SetActive(true);
+            else
+            {
+                if (player.currentWave != 2)
+                {
+                    Debug.Log("StartWave2");
+                    waveStart = true;
+                    enemySpawnLimit = 7;
+                    enemySpawned = 0;
+                    boss.GetComponentInChildren<EnemyRange>().GetComponent<CircleCollider2D>().enabled = true;
+
+                }
+            }
+            
         }
     }
 
     IEnumerator SpawnerEnemy()
     {
-        yield return new WaitForSeconds(UnityEngine.Random.Range(1,6));
+        yield return new WaitForSeconds(UnityEngine.Random.Range(1,4));
         
-        if(enemySpawned <= 4)
+        if(enemySpawned <= enemySpawnLimit)
         {
             SpawnEnemy();
             StartCoroutine(SpawnerEnemy());

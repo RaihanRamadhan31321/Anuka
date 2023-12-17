@@ -325,7 +325,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 10.61
+  m_Radius: 15.9
 --- !u!114 &8847693987141741949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,8 +358,9 @@ GameObject:
   - component: {fileID: 5035158710340629240}
   - component: {fileID: 5180066255463293271}
   - component: {fileID: 7347405718244084812}
+  - component: {fileID: 7723874262085814221}
   m_Layer: 8
-  m_Name: Musuh
+  m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,8 +424,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1392130883
   m_SortingLayer: 1
-  m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: ea0a6d81929eb2847b40e626449c7a86, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 380ddb0ca12af31419d1048cfd74c06b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -467,18 +468,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.053756118, y: -1.7067451}
+  m_Offset: {x: -0.053756118, y: -1.99}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.95}
+    oldSize: {x: 6.9, y: 7.7}
     newSize: {x: 1.09, y: 1.84}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8425815, y: 1.9206338}
+  m_Size: {x: 1.8425815, y: 2.75}
   m_EdgeRadius: 0
 --- !u!95 &5035158710340629240
 Animator:
@@ -490,7 +491,7 @@ Animator:
   m_GameObject: {fileID: 6317309488785274242}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5111ff3c03d054243be302476016a682, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2b2665d30bd86ed4caa96f5060a3e143, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -549,6 +550,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7723874262085814221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317309488785274242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac80d860f0a3dba4bbf552bc8ca68b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6671372561867696101
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,9 +589,9 @@ Transform:
   m_GameObject: {fileID: 6671372561867696101}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -2.5, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.12, y: -3.45, z: 0}
+  m_LocalScale: {x: -1.35, y: 1.35, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 695560971437403243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

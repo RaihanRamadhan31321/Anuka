@@ -9,10 +9,9 @@ public class StateManager : MonoBehaviour
     public CompAttack compAttack;
     public GameObject player;
     public PlayerManager playerManager;
-    public Vector3 jarakPlayer;
+    public Vector3 jarak;
     public bool cd;
     public bool isInAttackRange;
-    public bool isDead = false;
 
     public State currentState;
     public Animator animator;
@@ -22,6 +21,7 @@ public class StateManager : MonoBehaviour
     public Idle idleState = new Idle();
     public Chase chaseState = new Chase();
     public Attack attackState = new Attack();
+    public Death deathState = new Death();
 
     private void Awake()
     {
@@ -49,14 +49,18 @@ public class StateManager : MonoBehaviour
     }
     private void Update()
     {
-        if (compMovement.transform.position.x >= player.transform.position.x)
+        if(compMovement.target != null)
         {
-            jarakPlayer = new Vector3(2, 0, 0);
+            if (compMovement.transform.position.x >= compMovement.target.transform.position.x)
+            {
+                jarak = new Vector3(2, 0, 0);
+            }
+            else
+            {
+                jarak = new Vector3(-2, 0, 0);
+            }
         }
-        else
-        {
-            jarakPlayer = new Vector3(-2, 0, 0);
-        }
+        
         currentState.UpdateState(this);
 
     }
@@ -83,5 +87,17 @@ public class StateManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         cd = false;
+    }
+    public void DeathCounter(float time)
+    {
+        StartCoroutine(RespawnTimer(time));
+    }
+    private IEnumerator RespawnTimer(float time)
+    {
+
+        yield return new WaitForSeconds(time);
+        compMovement.isDead = false;
+        animator.SetBool("isDead", false);
+        compMovement.currentHealth = 100;
     }
 }

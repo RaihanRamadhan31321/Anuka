@@ -48,9 +48,14 @@ public class Attack : State
         }
         else
         {
+            state.compMovement.target = state.player;
             state.SwitchState(state.followState);
         }
-        
+        if (state.compMovement.isDead)//if dead
+        {
+            state.SwitchState(state.deathState);
+        }
+
     }
     
 }

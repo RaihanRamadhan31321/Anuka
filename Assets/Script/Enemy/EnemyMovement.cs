@@ -42,6 +42,7 @@ public class EnemyMovement : MonoBehaviour
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         colider = GetComponent<Collider2D>();
+        enemyR = GetComponentInChildren<EnemyRange>();
     }
 
     void Update() 

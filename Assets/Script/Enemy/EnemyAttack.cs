@@ -89,15 +89,19 @@ public class Enemyattack : MonoBehaviour
                 cd = true;
                 Invoke("MovementEnable", 0.7f);
             }
-            if (targetAtt == StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject)
+            if(StateManager.instance != null)
             {
-                Debug.Log("CompAtt");
-                StateManager.instance.compMovement.TakeDamage(attackDamage);
-                StateManager.instance.compAttack.GetHit();
-                CanAttack = false;
-                cd = true;
-                Invoke("MovementEnable", 0.7f);
+                if (targetAtt == StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject)
+                {
+                    Debug.Log("CompAtt");
+                    StateManager.instance.compMovement.TakeDamage(attackDamage);
+                    StateManager.instance.compAttack.GetHit();
+                    CanAttack = false;
+                    cd = true;
+                    Invoke("MovementEnable", 0.7f);
+                }
             }
+            
             
             //audioManager.PlaySFX(audioManager.enemyHit);
 

@@ -19,7 +19,6 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverPanel;
     public GameObject SettingsPanel;
     public GameObject ControlMapPanel;
-    public GameObject CoinPanel;
     public GameObject cooldownHUD;
 
     public bool isPaused = true;
@@ -58,9 +57,9 @@ public class UIManager : MonoBehaviour
                 // Jika panel pengaturan aktif, matikan panel
                 ControlMapPanel.SetActive(false);
                 SettingsPanel.SetActive(true);
-                CoinPanel.SetActive(false);
                 pausePanel.SetActive(false);
                 cooldownHUD.SetActive(false);
+                DTCancelControlMap();
             }
 
             else
@@ -69,9 +68,9 @@ public class UIManager : MonoBehaviour
             {
                 // Jika panel pengaturan terbuka, kembalikan ke panel pause
                 SettingsPanel.SetActive(false);
-                CoinPanel.SetActive(false);
                 cooldownHUD.SetActive(false);
                 pausePanel.SetActive(true);
+                DTCancelSettings();
             }
 
             else
@@ -103,7 +102,6 @@ public class UIManager : MonoBehaviour
         isPaused = true;
         pausePanel.SetActive(true);
         PauseDoTween();
-        CoinPanel.SetActive(false);
         cooldownHUD.SetActive(false);
         AudioManager.Instance.NPCSource.Pause();
         Time.timeScale = 0;
@@ -115,7 +113,6 @@ public class UIManager : MonoBehaviour
         await ResumeDoTween();
         pausePanel.SetActive(false);
         SettingsPanel.SetActive(false);
-        CoinPanel.SetActive(true);
         cooldownHUD.SetActive(true);
         Time.timeScale = 1;
         cursorController.csr = false;

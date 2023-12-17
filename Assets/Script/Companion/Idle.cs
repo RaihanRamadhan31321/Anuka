@@ -28,17 +28,22 @@ public class Idle : State
     public override void StartState(StateManager state)
     {
         state.animator.SetBool("isRunning", false);
+        state.rb.velocity = Vector3.zero;
     }
 
     public override void UpdateState(StateManager state)
     {
-        if(Vector2.Distance(state.compMovement.transform.position, state.player.transform.position + state.jarakPlayer) >= 2)
+        if(Vector2.Distance(state.compMovement.transform.position, state.player.transform.position + state.jarak) >= 2)//if far from player
         {
             state.SwitchState(state.followState);
         }
-        if (state.compVision.enemies.Count > 0)
+        if (state.compVision.enemies.Count > 0)// if chase
         {
             state.SwitchState(state.chaseState);
+        }
+        if (state.compMovement.isDead)//if dead
+        {
+            state.SwitchState(state.deathState);
         }
     }
 }

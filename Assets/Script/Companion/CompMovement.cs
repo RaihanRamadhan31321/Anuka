@@ -35,6 +35,7 @@ public class CompMovement : MonoBehaviour
     }
     void Start()
     {
+
         if (player == null)
         {
             player = PlayerManager.instance.gameObject;
@@ -43,6 +44,7 @@ public class CompMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         colider = GetComponent<Collider2D>();
         compAnimator = GetComponent<Animator>();
+        target = player;
     }
 
     void Update()
@@ -90,18 +92,10 @@ public class CompMovement : MonoBehaviour
 
     void Die()
     {
-        GameManager.Instance.onEnemyDeath?.Invoke(this.gameObject);
-        compAnimator.SetTrigger("isDead");
+        compAnimator.SetBool("isDead", true);
         colider.enabled = false;
+        rb.velocity = Vector3.zero;
         isDead = true;
-
-        //animasi mati
-
-        //disable musuh
-    }
-    public void DeleteThis()
-    {
-        Destroy(gameObject, 5f);
     }
 
 

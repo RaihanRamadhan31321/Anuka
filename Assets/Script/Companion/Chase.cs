@@ -34,7 +34,7 @@ public class Chase : State
     {
         if (state.compVision.closestEnemy != null)
         {
-            state.compMovement.transform.position = Vector2.MoveTowards(state.compMovement.transform.position, state.compVision.closestEnemy.transform.position, state.compMovement.moveSpeed * Time.deltaTime);
+            state.compMovement.transform.position = Vector2.MoveTowards(state.compMovement.transform.position, state.compVision.closestEnemy.transform.position +state.jarak, state.compMovement.moveSpeed * Time.deltaTime);
             if (state.compAttack.colider.IsTouching(state.compVision.closestEnemy.GetComponent<Collider2D>()))
             {
                 state.SwitchState(state.attackState);
@@ -48,6 +48,10 @@ public class Chase : State
         if(state.compVision.enemies.Count == 0)
         {
             state.SwitchState(state.followState);
+        }
+        if (state.compMovement.isDead)//if dead
+        {
+            state.SwitchState(state.deathState);
         }
     }
 }

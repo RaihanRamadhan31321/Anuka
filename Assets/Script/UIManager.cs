@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 using UnityEngine.SceneManagement;
-
+using System.Threading.Tasks;
 
 public class UIManager : MonoBehaviour
 {
@@ -27,9 +28,12 @@ public class UIManager : MonoBehaviour
     private CursorController cursorController;
     private LoadSceneTransition loadSceneTransition;
     [SerializeField]private Animator gameOverAnimator;
-    [SerializeField] string levelName;
 
     AudioManager audioManager;
+
+    public RectTransform dtPausePanel, dtSettings, dtControlMap;
+
+
 
 
     private void Awake()
@@ -98,23 +102,26 @@ public class UIManager : MonoBehaviour
     {
         isPaused = true;
         pausePanel.SetActive(true);
+        PauseDoTween();
         CoinPanel.SetActive(false);
         cooldownHUD.SetActive(false);
         AudioManager.Instance.NPCSource.Pause();
         Time.timeScale = 0;
         cursorController.csr = true;
     }
-    public void ResumeGame()
+    public async void ResumeGame()
     {
         isPaused = false;
-        Time.timeScale = 1;
+        await ResumeDoTween();
         pausePanel.SetActive(false);
         SettingsPanel.SetActive(false);
         CoinPanel.SetActive(true);
         cooldownHUD.SetActive(true);
+        Time.timeScale = 1;
         cursorController.csr = false;
         AudioManager.Instance.NPCSource.UnPause();
     }
+
     public void Death()
     {
         cursorController.csr = true;
@@ -180,9 +187,79 @@ public class UIManager : MonoBehaviour
         }
         
     }
+    //DOTWEEN
+    void PauseDoTween()
+    {
+        dtPausePanel.anchoredPosition = new Vector2(dtPausePanel.anchoredPosition.x, 1546);
+
+        dtPausePanel.DOAnchorPosY(0, 0.7f).SetEase(Ease.OutBack).SetUpdate(true);
+    }
+
+    async Task ResumeDoTween()
+    {
+        dtPausePanel.anchoredPosition = new Vector2(dtPausePanel.anchoredPosition.x, 0);
+
+        await dtPausePanel.DOAnchorPosY(1546, 0.4f).SetUpdate(true).AsyncWaitForCompletion();
+    }
+
+    public void DTSettings()
+    {
+        
+        dtSettings.anchoredPosition = new Vector2(dtSettings.anchoredPosition.x, 38);
+        dtPausePanel.anchoredPosition = new Vector2(dtPausePanel.anchoredPosition.x, -1480);
 
 
+        dtPausePanel.DOAnchorPosY(0, 0.6f).From().SetUpdate(true).OnComplete(() =>
+        {
+                SettingsPanel.SetActive(true);
+
+            dtSettings.DOAnchorPosY(-934, 0.4f).SetEase(Ease.OutBack).SetUpdate(true).From().OnComplete(() =>
+            {
+            pausePanel.SetActive(false);
+            });
+
+        });
+    }
+
+
+    public void DTControlMapPanel()
+    {
+        ControlMapPanel.SetActive(true);
+        dtControlMap.anchoredPosition = new Vector2(0, -dtControlMap.anchoredPosition.y);
+
+        dtControlMap.DOAnchorPosX(-2093, 0.8f).SetEase(Ease.OutBack).From().SetUpdate(true).OnComplete(() =>
+        {
+            SettingsPanel.SetActive(false);
+        });
+    }
+
+    public void DTCancelControlMap()
+    {
+        SettingsPanel.SetActive(true);
+        dtControlMap.anchoredPosition = new Vector2(-2093, -dtControlMap.anchoredPosition.y);
+        dtSettings.anchoredPosition = new Vector2(-2093, 62);
+
+        dtControlMap.DOAnchorPosX(-2093, 0.8f).SetEase(Ease.OutBack).SetUpdate(true).From().OnComplete(() =>
+        {
+            ControlMapPanel.SetActive(false);
+        });
+        dtSettings.DOAnchorPosX(-111, 0.8f).SetEase(Ease.OutBack).SetUpdate(true);
+        dtSettings.DOAnchorPosY(62, 0.8f).SetUpdate(true);
+    }
+
+    public void DTCancelSettings()
+    {
+        dtSettings.anchoredPosition = new Vector2(dtSettings.anchoredPosition.x, -1123);
+        dtPausePanel.anchoredPosition = new Vector2(dtPausePanel.anchoredPosition.x, 0);
+
+        dtSettings.DOAnchorPosY(62, 0.8f).SetEase(Ease.OutBack).SetUpdate(true).From().OnComplete(() =>
+        {
+            SettingsPanel.SetActive(false);
+        });
+        dtPausePanel.DOAnchorPosY(-1480, 0.8f).SetEase(Ease.OutBack).SetUpdate(true).From();
+    }
 }
+
 
 
 

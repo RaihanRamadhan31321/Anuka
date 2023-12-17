@@ -6,10 +6,11 @@ public class TimerScript : MonoBehaviour
 {
     public float timer = 23;
     public string nextScene;
-
+    private bool isTimerActive = false;
     private void Start()
     {
         AudioManager.Instance.PauseMusic();
+        StartTimer();
     }
 
     void Update()
@@ -40,5 +41,10 @@ public class TimerScript : MonoBehaviour
         AudioManager.Instance.UnpauseMusic();
     }
 
+    private void StartTimer()
+    {
+        // Mulai timer
+        isTimerActive = true;
+    }
 }
 

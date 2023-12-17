@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyRange : MonoBehaviour
 {
+    public GameObject enemyFlw;
     public static EnemyRange instance;
     private float batasAtasY = -0.13f;
     private float batasBawahY = -9.37f;
@@ -12,6 +13,7 @@ public class EnemyRange : MonoBehaviour
     public EnemyMovement enemy;
     public enemyPOS POS;
     public GameObject player;
+    public List<GameObject> characters = new List<GameObject>();
     // Start is called before the first frame update
     private void Awake()
     {
@@ -46,29 +48,52 @@ public class EnemyRange : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && enemy.moving == false)
+        if (collision.CompareTag("Player") || collision.CompareTag("Companion") && enemy.moving == false)
         {
+            characters.Add(collision.gameObject);
             enemy.moving = true;
+            switch (UnityEngine.Random.Range(1, 3))
+            {
+                case 1:
+                    enemyFlw = player;
+                    break;
+                case 2:
+                    if (!StateManager.instance.isDead)
+                    {
+
+                        enemyFlw = StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject;
+                    }
+                    else
+                    {
+                        enemyFlw = player;
+                    }
+                    break;
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && enemy.moving == true && enemy.isDead == false)
+        if(enemy.moving == true && enemy.isDead == false)
         {
-            MovementTactic();
-        } 
+            if (collision.CompareTag("Player") || collision.CompareTag("Companion"))
+            {
+                MovementTactic(enemyFlw);
+            }
+        }
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && enemy.moving == true)
         {
+            characters.Remove(collision.gameObject);
             enemy.moving = false;
             enemy.enemyAnimator.SetBool("isRunning", false);
         }
     }
-    private void MovementTactic()
+    private void MovementTactic(GameObject target)
     {
-        if ((Vector3.Distance(enemy.transform.position, player.transform.position)) <= 15) //mid distance
+        if ((Vector3.Distance(enemy.transform.position, target.transform.position)) <= 20) //mid distance
         {
             POS.CheckSite();
             //RaycastHit2D raycastHit2D = Physics2D.Raycast(enemy.transform.position, player.transform.position, Vector3.Distance(enemy.transform.position, player.transform.position));
@@ -83,7 +108,7 @@ public class EnemyRange : MonoBehaviour
             {
                 enemy.enemyAnimator.SetBool("isRunning", true);
             }
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, player.transform.position, enemy.moveSpeed * Time.deltaTime);
+            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, target.transform.position, enemy.moveSpeed * Time.deltaTime);
             isTriggered = true;
         }
     }
@@ -111,13 +136,13 @@ public class EnemyRange : MonoBehaviour
         StopChase();
         yield return new WaitForSeconds(0.01f);
         enemy.enemyAnimator.SetBool("isRunning", true);
-        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, player.transform.position, enemy.moveSpeed * Time.deltaTime);
+        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemyFlw.transform.position, enemy.moveSpeed * Time.deltaTime);
         Debug.Log("CONTINUE");
     }
     public void ContinueCS()
     {
         enemy.enemyAnimator.SetBool("isRunning", true);
-        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, player.transform.position, enemy.moveSpeed * Time.deltaTime);
+        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemyFlw.transform.position, enemy.moveSpeed * Time.deltaTime);
     }
     public void StopChase()
     {

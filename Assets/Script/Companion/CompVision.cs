@@ -45,6 +45,10 @@ public class CompVision : MonoBehaviour
                 closestEnemyDistance = distance;
             }
         }
+        if(enemies.Count == 1)
+        {
+            closestEnemy = enemies[0];
+        }
         //Debug.Log(enemy.moving);
     }
     private void OnTriggerEnter2D(Collider2D collision)

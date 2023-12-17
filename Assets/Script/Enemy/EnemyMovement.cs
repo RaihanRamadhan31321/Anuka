@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public static EnemyMovement Instance;
+    public EnemyRange enemyR;
     public Animator enemyAnimator; 
     public float moveSpeed;
     [SerializeField] private GameObject player;
@@ -107,11 +108,11 @@ public class EnemyMovement : MonoBehaviour
         {
             if (player != null)
             {
-                if (transform.position.x < player.transform.position.x)
+                if (transform.position.x < enemyR.enemyFlw.transform.position.x)
                 {
                     transform.localScale = new Vector3(1, 1, 0);
                 }
-                if (transform.position.x > player.transform.position.x)
+                if (transform.position.x > enemyR.enemyFlw.transform.position.x)
                 {
                     transform.localScale = new Vector3(-1, 1, 0);
                 }

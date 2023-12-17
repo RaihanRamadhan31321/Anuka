@@ -32,7 +32,7 @@ public class Idle : State
 
     public override void UpdateState(StateManager state)
     {
-        if(Vector2.Distance(state.compMovement.transform.position, state.player.transform.position + state.jarakPlayer) > 2)
+        if(Vector2.Distance(state.compMovement.transform.position, state.player.transform.position + state.jarakPlayer) >= 2)
         {
             state.SwitchState(state.followState);
         }

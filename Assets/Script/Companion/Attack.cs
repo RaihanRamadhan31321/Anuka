@@ -24,7 +24,7 @@ public class Attack : State
 
     public override void StartState(StateManager state)
     {
-
+        state.animator.SetBool("isRunning", false);
     }
 
     public override void UpdateState(StateManager state)

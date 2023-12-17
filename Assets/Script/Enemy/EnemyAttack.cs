@@ -8,13 +8,14 @@ public class Enemyattack : MonoBehaviour
     public Animator animator;
     public Transform attackPoint;
     public float attackRange = 0.5f;
-    public LayerMask playerLayers;
+    public GameObject targetAtt;
     public int attackDamage;
     public int specialDamage;
     public float attackCooldown = 3.0f; // Waktu cooldown untuk serangan khusus
     //private float lastSpecialAttackTime = -1000.0f; // Inisialisasi dengan nilai yang memastikan serangan pertama bisa dilakukan
     private bool CanAttack = true;
     private EnemyMovement enemy;
+    private EnemyRange enemyR;
     private PlayerHealthPoint playerHP;
     private PlayerAttack playerAtk;
     private Rigidbody2D rb;
@@ -37,6 +38,7 @@ public class Enemyattack : MonoBehaviour
     private void Start()
     {
         enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
+        enemyR = enemy.GetComponentInChildren<EnemyRange>();
         sr = transform.parent.gameObject.GetComponent<SpriteRenderer>();
         playerHP = PlayerManager.instance.playerHP;
         playerAtk = PlayerManager.instance.playerATK;
@@ -64,7 +66,7 @@ public class Enemyattack : MonoBehaviour
     {
         if(enemy.isDead == false)
         {
-            Debug.Log("BASIC");
+            Debug.Log("enemyAtt");
             enemy.enemyAnimator.SetBool("isAttacking", true);
             enemy.OnDisableMovement();
 
@@ -79,11 +81,24 @@ public class Enemyattack : MonoBehaviour
                 audioManager.PlaySFX(audioManager.enemyHit); 
             }
 
-            playerHP.TakeDamage(attackDamage);
-            playerAtk.GetHit();
-            CanAttack = false;
-            cd = true;
-            Invoke("MovementEnable", 0.7f);
+            if(targetAtt == playerHP.gameObject)
+            {
+                playerHP.TakeDamage(attackDamage);
+                playerAtk.GetHit();
+                CanAttack = false;
+                cd = true;
+                Invoke("MovementEnable", 0.7f);
+            }
+            if (targetAtt == StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject)
+            {
+                Debug.Log("CompAtt");
+                StateManager.instance.compMovement.TakeDamage(attackDamage);
+                StateManager.instance.compAttack.GetHit();
+                CanAttack = false;
+                cd = true;
+                Invoke("MovementEnable", 0.7f);
+            }
+            
             //audioManager.PlaySFX(audioManager.enemyHit);
 
             
@@ -95,10 +110,25 @@ public class Enemyattack : MonoBehaviour
         StartCoroutine(AttackCooldown());
         
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") || collision.CompareTag("Companion"))
+        {
+            enemy.OnDisableMovement();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") || collision.CompareTag("Companion"))
+        {
+            enemy.OnEnableMovement();
+        }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            targetAtt = playerHP.gameObject;
             if (cd)
             {
                 CooldownBasicAttack();
@@ -108,6 +138,20 @@ public class Enemyattack : MonoBehaviour
                 BasicAttack();
             }
             enemy.OnDisableMovement();
+        }
+        if (collision.CompareTag("Companion"))
+        {
+            targetAtt = StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject;
+            enemyR.enemyFlw = StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject;
+            if (cd)
+            {
+                CooldownBasicAttack();
+            }
+            if (CanAttack)
+            {
+                BasicAttack();
+                Debug.Log("CompGet");
+            }
         }
     }
     void MovementEnable()

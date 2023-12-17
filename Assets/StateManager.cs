@@ -12,6 +12,7 @@ public class StateManager : MonoBehaviour
     public Vector3 jarakPlayer;
     public bool cd;
     public bool isInAttackRange;
+    public bool isDead = false;
 
     public State currentState;
     public Animator animator;
@@ -80,7 +81,7 @@ public class StateManager : MonoBehaviour
     private IEnumerator AttackCD()
     {
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(1f);
         cd = false;
     }
 }

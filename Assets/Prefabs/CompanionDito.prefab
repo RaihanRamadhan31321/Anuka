@@ -233,9 +233,9 @@ GameObject:
   - component: {fileID: 2783887935800063709}
   - component: {fileID: 2874850930003508412}
   - component: {fileID: 6163795347290215209}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CompanionDito
-  m_TagString: Untagged
+  m_TagString: Companion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

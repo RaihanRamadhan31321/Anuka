@@ -39,7 +39,7 @@ public class CompAttack : MonoBehaviour
     }
     private void Start()
     {
-        companion = transform.parent.gameObject.GetComponent<CompMovement>();
+        companion = transform.parent.GetComponent<CompMovement>();
         companionVision = companion.GetComponent<CompVision>();
         sr = transform.parent.gameObject.GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -89,7 +89,7 @@ public class CompAttack : MonoBehaviour
 
                 hitCount = 0;
             }
-            Invoke("MovementEnable", 0.4f);
+            Invoke("HitAfter", 0.4f);
             hitCount++;
         }
     }
@@ -114,5 +114,9 @@ public class CompAttack : MonoBehaviour
         if (attackPoint == null)
             return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+    void HitAfter()
+    {
+        animator.SetBool("getHit", false);
     }
 }

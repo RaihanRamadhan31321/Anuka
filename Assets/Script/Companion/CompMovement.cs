@@ -11,7 +11,7 @@ public class CompMovement : MonoBehaviour
     public bool moving;
     public int maxHealth = 100;
     private Collider2D colider;
-    int currentHealth;
+    public int currentHealth;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDead = false;
     public GameObject target;

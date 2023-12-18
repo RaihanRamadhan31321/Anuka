@@ -11,6 +11,7 @@ public class EnemyRange : MonoBehaviour
     private float batasBawahY = -9.37f;
     public bool isTriggered = false;
     public EnemyMovement enemy;
+    public GameObject boss;
     public enemyPOS POS;
     public GameObject player;
     public List<GameObject> characters = new List<GameObject>();
@@ -22,6 +23,11 @@ public class EnemyRange : MonoBehaviour
     void Start()
     {
         enemy = transform.parent.gameObject.GetComponent<EnemyMovement>();
+        if(enemy.GetComponent<BossManager>() != null )
+        {
+
+        boss = enemy.GetComponent<BossManager>().gameObject;
+        }
         POS = GetComponentInChildren<enemyPOS>();
         if (PlayerManager.instance != null)
         {
@@ -53,40 +59,49 @@ public class EnemyRange : MonoBehaviour
         {
             characters.Add(collision.gameObject);
             enemy.moving = true;
-            switch (UnityEngine.Random.Range(1, 3))
+        if(enemy.gameObject.GetComponent<BossManager>() == null)
             {
-                case 1:
-                    enemyFlw = player;
-                    break;
-                case 2:
-                    if(StateManager.instance != null)
-                    {
-                        if (!StateManager.instance.compMovement.isDead)
+                Debug.Log("Cekkk");
+                switch (UnityEngine.Random.Range(1, 3))
+                {
+                    case 1:
+                        enemyFlw = player;
+                        break;
+                    case 2:
+                        if (StateManager.instance != null)
                         {
+                            if (!StateManager.instance.compMovement.isDead)
+                            {
 
-                            enemyFlw = StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject;
+                                enemyFlw = StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject;
+                            }
+                            else
+                            {
+                                enemyFlw = player;
+                            }
                         }
                         else
                         {
                             enemyFlw = player;
                         }
-                    }
-                    else
-                    {
-                        enemyFlw = player;
-                    }
-                    break;
+                        break;
+                }
             }
+            
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(enemy.moving == true && enemy.isDead == false)
         {
-            if (collision.CompareTag("Player") || collision.CompareTag("Companion"))
+            if (enemy.gameObject.GetComponent<BossManager>() == null)
             {
-                MovementTactic(enemyFlw);
+                if (collision.CompareTag("Player") || collision.CompareTag("Companion"))
+                {
+                    MovementTactic(enemyFlw);
+                }
             }
+            
         }
         
     }

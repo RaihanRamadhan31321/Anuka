@@ -420,7 +420,7 @@ MonoBehaviour:
   compAttack: {fileID: 0}
   player: {fileID: 0}
   playerManager: {fileID: 0}
-  jarakPlayer: {x: 0, y: 0, z: 0}
+  jarak: {x: 0, y: 0, z: 0}
   cd: 0
   isInAttackRange: 0
   animator: {fileID: 0}

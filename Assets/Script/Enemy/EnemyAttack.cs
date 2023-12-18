@@ -13,13 +13,13 @@ public class Enemyattack : MonoBehaviour
     public int specialDamage;
     public float attackCooldown = 3.0f; // Waktu cooldown untuk serangan khusus
     //private float lastSpecialAttackTime = -1000.0f; // Inisialisasi dengan nilai yang memastikan serangan pertama bisa dilakukan
-    private bool CanAttack = true;
+    public bool CanAttack = true;
     private EnemyMovement enemy;
     private EnemyRange enemyR;
     private PlayerHealthPoint playerHP;
     private PlayerAttack playerAtk;
     private Rigidbody2D rb;
-    private bool cd = true;
+    public bool cd = true;
     private int hitCount;
     private Vector3 stay;
     [Tooltip("Untuk Mengatur seberapa jauh terlempar jika di pukul 3 kali")]
@@ -62,11 +62,10 @@ public class Enemyattack : MonoBehaviour
             }
         }
     }
-    void BasicAttack()
+    public void BasicAttack()
     {
         if(enemy.isDead == false)
         {
-            Debug.Log("enemyAtt");
             enemy.enemyAnimator.SetBool("isAttacking", true);
             enemy.OnDisableMovement();
 
@@ -93,7 +92,6 @@ public class Enemyattack : MonoBehaviour
             {
                 if (targetAtt == StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject)
                 {
-                    Debug.Log("CompAtt");
                     StateManager.instance.compMovement.TakeDamage(attackDamage);
                     StateManager.instance.compAttack.GetHit();
                     CanAttack = false;
@@ -108,7 +106,7 @@ public class Enemyattack : MonoBehaviour
             
         }
     }
-    void CooldownBasicAttack ()
+    public void CooldownBasicAttack ()
     {
         cd = false;
         StartCoroutine(AttackCooldown());

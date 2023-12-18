@@ -85,37 +85,33 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
             landing.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
-        {
-            landing.SetActive(true);
-            landing.transform.position = child.transform.position;
-            rb.gravityScale = 1;
-            Jump(jumpHeight);
-            child.SetActive(false);
+        //if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
+        //{
+        //    landing.SetActive(true);
+        //    landing.transform.position = child.transform.position;
+        //    rb.gravityScale = 1;
+        //    Jump(jumpHeight);
+        //    child.SetActive(false);
 
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            BarrierOff();
-        }
+        //}
     }
 
     private void FixedUpdate()
     {
-        Vector3 down = transform.TransformDirection(Vector3.down);
-        RaycastHit2D groundHit = Physics2D.Raycast(child.transform.position, down, 0.5f, layerMask);
+    //    Vector3 down = transform.TransformDirection(Vector3.down);
+    //    RaycastHit2D groundHit = Physics2D.Raycast(child.transform.position, down, 0.5f, layerMask);
 
-        Debug.DrawRay(child.transform.position, down * 0.5f, Color.red);
+    //    Debug.DrawRay(child.transform.position, down * 0.5f, Color.red);
 
-        if (groundHit.rigidbody != null) {
-            isGround = true;
-            animator.SetBool("isJumping", false);
-    }
-        else
-        {
-            isGround = false;
-            animator.SetBool("isJumping", true);
-        }
+    //    if (groundHit.rigidbody != null) {
+    //        isGround = true;
+    //        animator.SetBool("isJumping", false);
+    //}
+    //    else
+    //    {
+    //        isGround = false;
+    //        animator.SetBool("isJumping", true);
+    //    }
     }
     #endregion 
     public void OnDisableMovement()
@@ -167,10 +163,10 @@ public class PlayerMovement : MonoBehaviour
         //kalkulasi kecepatan arah
         this.transform.Translate(arah * Time.deltaTime * speed);
     }
-    public void Jump(float jumping)
-    {
-        rb.velocity = new Vector2(0, jumping);
-    }
+    //public void Jump(float jumping)
+    //{
+    //    rb.velocity = new Vector2(0, jumping);
+    //}
     public void BarrierOn()
     {
         Debug.Log("cek");

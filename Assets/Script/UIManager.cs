@@ -130,12 +130,13 @@ public class UIManager : MonoBehaviour
     }
     public void WinToScene()
     {
+        Time.timeScale = 1;
         SceneController.instance.NextLevel();
     }
 
-    public void UpdateHealth(float value)
+    public void UpdateHealth(float values)
     {
-        sliderHealth.value = value;
+        sliderHealth.value = values;
 
     
         float healthPercentage = sliderHealth.value;
@@ -159,6 +160,7 @@ public class UIManager : MonoBehaviour
     {
         gameOverAnimator.updateMode = AnimatorUpdateMode.Normal;
         player.death = false;
+        Time.timeScale = 1;
         loadSceneTransition.reload = true;
         GameOverPanel.SetActive(false);
         ResumeGame();

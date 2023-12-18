@@ -11,6 +11,7 @@ public class FinishScript : MonoBehaviour
     //[SerializeField] string levelName;
     public GameObject panelWin;
     public GameObject continueBtn;
+    public GameObject dito;
 
     public AudioClip winGame;
     private CursorController cursorController;
@@ -21,6 +22,8 @@ public class FinishScript : MonoBehaviour
     private void Start()
     {
         cursorController = FindObjectOfType<CursorController>();
+        dito.SetActive(false);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,15 +64,28 @@ public class FinishScript : MonoBehaviour
         {
             continueBtn.SetActive(true);
         });
-        dtContinue.DOAnchorPosY(-129, 3f).SetEase(Ease.OutBack).SetUpdate(true);
+        dtContinue.DOAnchorPosY(-219, 3f).SetEase(Ease.OutBack).SetUpdate(true);
     }
 
 
     void UnlockNewLevel()
     {
-        if (GameManager.Instance.levelUnlock <= 3)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
-            GameManager.Instance.levelUnlock++;
+            if(GameManager.Instance.levelUnlock <= 1)
+            {
+                GameManager.Instance.ditoUnlocked = true;
+                GameManager.Instance.levelUnlock++;
+            }
+            
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            if (GameManager.Instance.levelUnlock <= 2)
+            {
+                GameManager.Instance.levelUnlock++;
+            }
+
         }
         //if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
         //{

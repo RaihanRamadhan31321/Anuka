@@ -112,7 +112,10 @@ public class TriggerBarrier : MonoBehaviour
         }
         characters = new List<GameObject>(enemies);
         characters.Add(player.gameObject);
-        characters.Add(boss.gameObject);
+        if (boss != null)
+        {
+            characters.Add(boss.gameObject);
+        }
         if(companion != null)
         {
             characters.Add(companion.gameObject);
@@ -127,15 +130,17 @@ public class TriggerBarrier : MonoBehaviour
             waveStart = false;
             if(SceneManager.GetActiveScene().buildIndex != 9)
             {
+                Debug.Log("Trigger2");
                 waveStart = false;
                 PlayerManager.instance.playerMV.BarrierOff();
-                gameObject.SetActive(false);
                 if (nextTriggerBarier == null)
                 {
                     return;
                 }
                 player.trigger = nextTriggerBarier;
+                nextTriggerBarier.gameObject.SetActive(true);
                 player.currentWave++;
+                gameObject.SetActive(false);
             }
             else
             {

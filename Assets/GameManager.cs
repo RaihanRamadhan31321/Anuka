@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public character currentCharacter;
     public bool ditoUnlocked = false;
     public bool cpCheck;
-    public int currentLevel;
+    public int currentLevel = 1;
     public int levelUnlock = 1;
     public UnityAction<GameObject> onEnemyDeath;
 

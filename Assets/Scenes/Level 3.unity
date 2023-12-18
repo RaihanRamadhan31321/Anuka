@@ -7510,7 +7510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2095894717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7532,7 +7532,7 @@ MonoBehaviour:
   EnemySpawnPoint2: {fileID: 1868195236}
   enemy: {fileID: 6317309488785274242, guid: afa77774468273040b15c978810ecb8c, type: 3}
   enemySpawned: 0
-  enemySpawnLimit: 5
+  enemySpawnLimit: 8
   characters: []
   enemies: []
 --- !u!61 &2095894718

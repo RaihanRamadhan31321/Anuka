@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class CheckPoint : MonoBehaviour
 {
+    private void Start()
+    {
+        if (GameManager.Instance.cpCheck)
+        {
+            GameManager.Instance.LoadPlayerCheckpoint();
+            PlayerManager.instance.playerHP.currentHealth = 100;
+            PlayerManager.instance.playerMV.animator.SetBool("isDead", false);
+            UIManager.instance.UpdateHealth(PlayerManager.instance.playerHP.currentHealth);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player")) 

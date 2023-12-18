@@ -33,7 +33,7 @@ public class LoadSceneTransition : MonoBehaviour
         else if (reload)
         {
             StartCoroutine(Loading(SceneManager.GetActiveScene().buildIndex));
-
+            
         }
     }
     IEnumerator Loading(int level)

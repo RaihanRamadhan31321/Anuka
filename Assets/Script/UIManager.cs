@@ -164,9 +164,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         if (GameManager.Instance.cpCheck)
         {
-            GameManager.Instance.LoadPlayerCheckpoint();
-            PlayerManager.instance.playerHP.currentHealth = 100;
-            UpdateHealth(PlayerManager.instance.playerHP.currentHealth);
+            loadSceneTransition.reload = true;
+            
         }
         else
         {

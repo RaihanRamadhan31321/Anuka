@@ -48,8 +48,6 @@ public class FinishScript : MonoBehaviour
             GameManager.Instance.cpCheck = false;
             GameManager.Instance.SavePlayer();
             //SceneController.instance.LoadScene(levelName);
-
-            AudioManager.Instance.Mainmenu();
         }
     }
 

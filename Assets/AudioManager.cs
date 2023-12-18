@@ -89,11 +89,13 @@ public class AudioManager : MonoBehaviour
     public void PauseMusic()
     {
         MusicSource.Pause();
+        NPCSource.Pause();
     }
 
     public void UnpauseMusic()
     {
         MusicSource.UnPause();
+        NPCSource.UnPause();
     }
 
     public void ButtonSound()

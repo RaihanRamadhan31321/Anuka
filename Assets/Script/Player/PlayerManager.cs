@@ -50,7 +50,7 @@ public class PlayerManager : MonoBehaviour
     IEnumerator DeathCounter()
     {
         deadCheck = false;
-        playerMV.animator.SetTrigger("isDead");
+        playerMV.animator.SetBool("isDead", true);
         playerMV.animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         Debug.Log("CEKKKK");
         Time.timeScale = 0.2f;

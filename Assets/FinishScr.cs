@@ -47,8 +47,6 @@ public class FinishScr : MonoBehaviour
             GameManager.Instance.cpCheck = false;
             GameManager.Instance.SavePlayer();
             //SceneController.instance.LoadScene(levelName);
-
-            AudioManager.Instance.Mainmenu();
         }
     }
 
@@ -77,9 +75,22 @@ public class FinishScr : MonoBehaviour
 
     void UnlockNewLevel()
     {
-        if (GameManager.Instance.levelUnlock <= 3)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
-            GameManager.Instance.levelUnlock++;
+            if (GameManager.Instance.levelUnlock <= 1)
+            {
+                GameManager.Instance.ditoUnlocked = true;
+                GameManager.Instance.levelUnlock++;
+            }
+
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            if (GameManager.Instance.levelUnlock <= 2)
+            {
+                GameManager.Instance.levelUnlock++;
+            }
+
         }
         //if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
         //{

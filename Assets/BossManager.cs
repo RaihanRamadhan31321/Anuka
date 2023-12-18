@@ -15,6 +15,7 @@ public class BossManager : MonoBehaviour
     public SpriteRenderer rbSprite;
     public GameObject player;
     public PlayerManager playerManager;
+    public StateManager compManager;
 
     public Vector3 jarak;
     public bool cd = false;
@@ -42,6 +43,7 @@ public class BossManager : MonoBehaviour
         bossMV = GetComponent<EnemyMovement>();
         bossAT = GetComponentInChildren<Enemyattack>();
         player = PlayerManager.instance.gameObject;
+        compManager = StateManager.instance;
         playerManager = PlayerManager.instance;
         bossRG = GetComponentInChildren<EnemyRange>();
 

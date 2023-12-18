@@ -19,7 +19,7 @@ public class BossChase : BossState
                         if (!BossManager.instance.bossMV.isDead)
                         {
 
-                            state.bossRG.enemyFlw = BossManager.instance.bossMV.GetComponent<CompMovement>().gameObject;
+                            state.bossRG.enemyFlw = BossManager.instance.bossMV.gameObject;
                         }
                         else
                         {
@@ -61,6 +61,10 @@ public class BossChase : BossState
         if (state.bossMV.isDead)//if dead
         {
             state.SwitchState(state.deathState);
+        }
+        if (!state.cd)
+        {
+            state.SwitchState(state.specialAttackState);
         }
 
     }

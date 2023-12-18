@@ -158,10 +158,21 @@ public class UIManager : MonoBehaviour
     
     public void Respawn()
     {
+
         gameOverAnimator.updateMode = AnimatorUpdateMode.Normal;
         player.death = false;
         Time.timeScale = 1;
+        if (GameManager.Instance.cpCheck)
+        {
+            GameManager.Instance.LoadPlayerCheckpoint();
+            PlayerManager.instance.playerHP.currentHealth = 100;
+            UpdateHealth(PlayerManager.instance.playerHP.currentHealth);
+        }
+        else
+        {
+
         loadSceneTransition.reload = true;
+        }
         GameOverPanel.SetActive(false);
         ResumeGame();
     }

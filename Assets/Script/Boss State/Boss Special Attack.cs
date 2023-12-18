@@ -22,6 +22,7 @@ public class BossSpecialAttack : BossState
     public override void UpdateState(BossManager state)
     {
         distance = Vector2.Distance(state.transform.position, state.bossRG.enemyFlw.transform.position);
+        
         if (!state.isCharging)
         {
             state.lineRenderer.SetPosition(0, state.gameObject.transform.position);
@@ -37,7 +38,17 @@ public class BossSpecialAttack : BossState
         {
             
             state.lineRenderer.SetPosition(0, state.gameObject.transform.position);
-            state.bossRG.enemy.transform.position = Vector2.MoveTowards(state.bossRG.enemy.transform.position, state.chargeTarget, (state.bossRG.enemy.moveSpeed * 10) * Time.deltaTime);
+            state.bossRG.enemy.transform.position = Vector2.MoveTowards(state.bossRG.enemy.transform.position, state.chargeTarget, (state.bossRG.enemy.moveSpeed * 6) * Time.deltaTime);
+            if (state.bossAT.GetComponent<Collider2D>().IsTouching(state.playerManager.playerMV.GetComponent<Collider2D>()))
+            {
+                state.playerManager.playerATK.GetHit();
+                state.playerManager.playerHP.TakeDamage(5);
+            }
+            if (state.bossAT.GetComponent<Collider2D>().IsTouching(state.compManager.GetComponent<Collider2D>()))
+            {
+                state.compManager.compAttack.GetHit();
+                state.compManager.compMovement.TakeDamage(5);
+            }
         }
         
         

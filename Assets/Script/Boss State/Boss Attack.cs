@@ -19,6 +19,7 @@ public class BossAttack : BossState
         }
         else
         {
+            state.bossAT.targetAtt = state.bossRG.enemyFlw;
             if (state.bossAT.cd)
             {
                 state.bossAT.CooldownBasicAttack();

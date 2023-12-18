@@ -128,33 +128,37 @@ public class Enemyattack : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if(enemy.gameObject.GetComponent<BossManager>() == null)
         {
-            targetAtt = playerHP.gameObject;
-            if (cd)
+            if (collision.CompareTag("Player"))
             {
-                CooldownBasicAttack();
+                targetAtt = playerHP.gameObject;
+                if (cd)
+                {
+                    CooldownBasicAttack();
+                }
+                if (CanAttack)
+                {
+                    BasicAttack();
+                }
+                enemy.OnDisableMovement();
             }
-            if (CanAttack)
+            if (collision.CompareTag("Companion"))
             {
-                BasicAttack();
+                targetAtt = StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject;
+                enemyR.enemyFlw = StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject;
+                if (cd)
+                {
+                    CooldownBasicAttack();
+                }
+                if (CanAttack)
+                {
+                    BasicAttack();
+                    Debug.Log("CompGet");
+                }
             }
-            enemy.OnDisableMovement();
         }
-        if (collision.CompareTag("Companion"))
-        {
-            targetAtt = StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject;
-            enemyR.enemyFlw = StateManager.instance.compMovement.GetComponent<CompMovement>().gameObject;
-            if (cd)
-            {
-                CooldownBasicAttack();
-            }
-            if (CanAttack)
-            {
-                BasicAttack();
-                Debug.Log("CompGet");
-            }
-        }
+        
     }
     void MovementEnable()
     {

@@ -9,6 +9,8 @@ public class CheckPoint : MonoBehaviour
     {
         if(collision.CompareTag("Player")) 
         {
+            PlayerManager.instance.playerHP.currentHealth = 100;
+            UIManager.instance.UpdateHealth(PlayerManager.instance.playerHP.currentHealth);
             GameManager.Instance.cpCheck = true;
             GameManager.Instance.currentLevel = SceneManager.GetActiveScene().buildIndex;
             GameManager.Instance.SavePlayer();

@@ -370,7 +370,7 @@ Transform:
   m_GameObject: {fileID: 3877905943601128172}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.61, y: 0, z: 0}
+  m_LocalPosition: {x: 1.46, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -630,7 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 2179407111230254753}
-  attackRange: 2.34
+  attackRange: 2.46
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -638,7 +638,7 @@ MonoBehaviour:
   specialDamage: 50
   specialCooldown: 3
   basicATKCooldown: 0.7
-  specialAttackKnockBack: 10
+  specialAttackKnockBack: 30
   CanBasicAttack: 1
   mundur: 3
   hitEffect: {fileID: 5429187195580619889, guid: 0e841d11dbd86d1448eddb0646bfa290, type: 3}

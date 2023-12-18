@@ -121,11 +121,13 @@ public class PlayerAttack : MonoBehaviour
             enemy.transform.Find("AttackRange").GetComponent<Enemyattack>().GetHit();
             if(enemy.transform.position.x < player.transform.position.x)
             {
-                enemy.GetComponent<Rigidbody2D>().velocity = new Vector2( -specialAttackKnockBack, 0);
+                enemy.GetComponent<Rigidbody2D>().AddForce(Vector2.left*specialAttackKnockBack, ForceMode2D.Impulse);
+                //enemy.GetComponent<Rigidbody2D>().velocity = new Vector2( -specialAttackKnockBack, 0);
             }
             else
             {
-                enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Abs(specialAttackKnockBack), 0);
+                enemy.GetComponent<Rigidbody2D>().AddForce(Vector2.right * specialAttackKnockBack, ForceMode2D.Impulse);
+                //enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Abs(specialAttackKnockBack), 0);
             }
             
             audioManager.PlaySFX(audioManager.hugeAtt);

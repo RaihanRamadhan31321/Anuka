@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 1762592096323824307}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.51, y: 0.26, z: 0}
-  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
+  m_LocalPosition: {x: 1.51, y: 0.06, z: 0}
+  m_LocalScale: {x: 0.74, y: 0.74, z: 0.74}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 695560971437403243}
@@ -49,11 +49,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   attackPoint: {fileID: 497222676512053509}
-  attackRange: 1.5
+  attackRange: 1.34
   targetAtt: {fileID: 0}
   attackDamage: 10
   specialDamage: 29
   attackCooldown: 3
+  CanAttack: 1
+  cd: 1
   mundur: 1.13
   hitEffect: {fileID: 5429187195580619889, guid: 0e841d11dbd86d1448eddb0646bfa290, type: 3}
   objHeight: 0.4
@@ -341,6 +343,7 @@ MonoBehaviour:
   enemyFlw: {fileID: 0}
   isTriggered: 0
   enemy: {fileID: 0}
+  boss: {fileID: 0}
   POS: {fileID: 0}
   player: {fileID: 0}
   characters: []

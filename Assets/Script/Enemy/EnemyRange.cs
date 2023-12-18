@@ -139,6 +139,7 @@ public class EnemyRange : MonoBehaviour
                 enemy.enemyAnimator.SetBool("isRunning", true);
             }
             enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, target.transform.position, enemy.moveSpeed * Time.deltaTime);
+            enemy.rb.velocity = Vector2.zero;
             isTriggered = true;
         }
     }

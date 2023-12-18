@@ -162,9 +162,17 @@ public class Enemyattack : MonoBehaviour
     }
     void MovementEnable()
     {
-        enemy.OnEnableMovement();
+        if (enemy.gameObject.GetComponent<BossManager>() == null)
+        {
+            enemy.OnEnableMovement();
+        }
+        
         enemy.rb.velocity = new Vector2(0,0);
         enemy.enemyAnimator.SetBool("getHit", false);
+        if (enemy.gameObject.GetComponent<BossManager>() != null)
+        {
+            enemy.enemyAnimator.SetBool("isRunning", true);
+        }
     }
 
     IEnumerator AttackCooldown()

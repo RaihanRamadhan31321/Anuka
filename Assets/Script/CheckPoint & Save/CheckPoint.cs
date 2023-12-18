@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class CheckPoint : MonoBehaviour
 {
+    TriggerBarrier tb;
     private void Start()
     {
+        tb = FindObjectOfType<TriggerBarrier>();
         if (GameManager.Instance.cpCheck)
         {
+            tb.BarrierChange();
             GameManager.Instance.LoadPlayerCheckpoint();
             PlayerManager.instance.playerHP.currentHealth = 100;
             PlayerManager.instance.playerMV.animator.SetBool("isDead", false);

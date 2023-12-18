@@ -27,6 +27,21 @@ public class BossSpecialAttack : BossState
         {
             state.lineRenderer.SetPosition(0, state.gameObject.transform.position);
             state.lineRenderer.SetPosition(1, state.bossRG.enemyFlw.transform.position);
+
+            //knock nearby char
+            if(Vector2.Distance(state.transform.position, state.compManager.transform.position) < 3)
+            {
+                if(state.transform.position.x < state.compManager.transform.position.x)
+                {
+                    state.compManager.GetComponent<Rigidbody2D>().AddForce(Vector2.right * state.knockBack, ForceMode2D.Impulse);
+                }
+                else
+                {
+                    state.compManager.GetComponent<Rigidbody2D>().AddForce(Vector2.left * state.knockBack, ForceMode2D.Impulse);
+                }
+                    
+            }
+
             if (!isWaiting)
             {
                 isWaiting = true;

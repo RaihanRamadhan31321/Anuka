@@ -43,6 +43,7 @@ public class TriggerBarrier : MonoBehaviour
         if(boss != null)
         {
             boss.GetComponentInChildren<EnemyRange>().GetComponent<CircleCollider2D>().enabled = false;
+            boss.GetComponent<EnemyMovement>().GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 
@@ -131,16 +132,7 @@ public class TriggerBarrier : MonoBehaviour
             if(SceneManager.GetActiveScene().buildIndex != 9)
             {
                 Debug.Log("Trigger2");
-                waveStart = false;
-                PlayerManager.instance.playerMV.BarrierOff();
-                if (nextTriggerBarier == null)
-                {
-                    return;
-                }
-                player.trigger = nextTriggerBarier;
-                nextTriggerBarier.gameObject.SetActive(true);
-                player.currentWave++;
-                gameObject.SetActive(false);
+                BarrierChange();
             }
             else
             {
@@ -151,11 +143,49 @@ public class TriggerBarrier : MonoBehaviour
                     enemySpawnLimit = 7;
                     enemySpawned = 0;
                     boss.GetComponentInChildren<EnemyRange>().GetComponent<CircleCollider2D>().enabled = true;
+                    boss.GetComponent<EnemyMovement>().GetComponent<BoxCollider2D>().enabled = true;
 
                 }
             }
             
         }
+    }
+    public void BarrierChange()
+    {
+        waveStart = false;
+        PlayerManager.instance.playerMV.BarrierOff();
+        if (nextTriggerBarier == null)
+        {
+            return;
+        }
+        if(player!=null)
+        {
+            player.trigger = nextTriggerBarier;
+        }
+        else
+        {
+            void Delay()
+            {
+                player.trigger = nextTriggerBarier;
+            }
+            Invoke("Delay", 0.1f);
+        }
+        
+        nextTriggerBarier.gameObject.SetActive(true);
+        if (player != null)
+        {
+            player.currentWave++;
+        }
+        else
+        {
+            void Delay()
+            {
+                player.currentWave++;
+            }
+            Invoke("Delay", 0.1f);
+        }
+        
+        gameObject.SetActive(false);
     }
 
     IEnumerator SpawnerEnemy()

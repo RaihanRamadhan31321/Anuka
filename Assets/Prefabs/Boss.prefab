@@ -575,10 +575,12 @@ MonoBehaviour:
   rbSprite: {fileID: 0}
   player: {fileID: 0}
   playerManager: {fileID: 0}
+  compManager: {fileID: 0}
   jarak: {x: 0, y: 0, z: 0}
   cd: 0
   isCharging: 0
   chargeTarget: {x: 0, y: 0, z: 0}
+  knockBack: 40
 --- !u!120 &1882603973870213948
 LineRenderer:
   serializedVersion: 2

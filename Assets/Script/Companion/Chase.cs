@@ -32,6 +32,10 @@ public class Chase : State
 
     public override void UpdateState(StateManager state)
     {
+        if(state.compMovement.target == null)
+        {
+            state.compMovement.target = state.compVision.closestEnemy;
+        }
         if (state.compVision.closestEnemy != null)
         {
             state.compMovement.transform.position = Vector2.MoveTowards(state.compMovement.transform.position, state.compVision.closestEnemy.transform.position +state.jarak, state.compMovement.moveSpeed * Time.deltaTime);

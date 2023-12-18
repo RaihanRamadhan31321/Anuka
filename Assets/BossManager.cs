@@ -21,6 +21,7 @@ public class BossManager : MonoBehaviour
     public bool cd = false;
     public bool isCharging = false;
     public Vector3 chargeTarget;
+    public float knockBack;
 
     public BossIdle idleState = new BossIdle();
     public BossChase chaseState = new BossChase();

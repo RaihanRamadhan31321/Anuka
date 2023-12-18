@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
     }
     public void LoadPlayerCheckpoint()
     {
+        TriggerBarrier.FindObjectOfType<TriggerBarrier>().BarrierChange();
         PlayerData data = SaveSystem.LoadPlayer();
         PlayerManager.instance.playerHP.currentHealth = data.HP;
         PlayerManager.instance.playerMV.speed = data.Speed;

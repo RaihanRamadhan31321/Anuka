@@ -257,6 +257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   currentPosX: 0
+  batasCamera: {fileID: 0}
+  confiner: {fileID: 0}
 --- !u!1 &2823310608231983096
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +638,7 @@ MonoBehaviour:
     m_Bits: 256
   attackDamage: 30
   specialDamage: 50
-  specialCooldown: 3
+  specialCooldown: 7
   basicATKCooldown: 0.7
   specialAttackKnockBack: 30
   CanBasicAttack: 1

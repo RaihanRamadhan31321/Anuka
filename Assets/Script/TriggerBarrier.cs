@@ -61,7 +61,7 @@ public class TriggerBarrier : MonoBehaviour
         if (collision.CompareTag("Player") && isTriggered == false)
         {
             isFighting = true;
-            
+            UIManager.instance.DTWave();
             player.atas = (transform.position.x) - player.batasBarrier;
             player.bawah = transform.position.x + player.batasBarrier;
             isTriggered = true;
@@ -128,6 +128,7 @@ public class TriggerBarrier : MonoBehaviour
         if(enemies.Count == 0 && enemySpawned == enemySpawnLimit+1)
         {
             Debug.Log("EnemyHabs");
+            UIManager.instance.DTWaveFinishedUI();
             waveStart = false;
             if(SceneManager.GetActiveScene().buildIndex != 9)
             {

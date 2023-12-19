@@ -53,7 +53,7 @@ MonoBehaviour:
   targetAtt: {fileID: 0}
   attackDamage: 10
   specialDamage: 29
-  attackCooldown: 3
+  attackCooldown: 2
   CanAttack: 1
   cd: 1
   mundur: 1.13

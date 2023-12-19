@@ -1907,7 +1907,7 @@ Transform:
   m_GameObject: {fileID: 679797501}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.29, y: -2.91, z: -9.9}
+  m_LocalPosition: {x: -1.29, y: -2.91, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6937,26 +6937,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1983382302020733237, guid: 73ea71b2e356dd440a5fb97f0c7a7990, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1983382302020733237, guid: 73ea71b2e356dd440a5fb97f0c7a7990, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1983382302020733237, guid: 73ea71b2e356dd440a5fb97f0c7a7990, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5058444607174849445, guid: 73ea71b2e356dd440a5fb97f0c7a7990, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -14.428467
-      objectReference: {fileID: 0}
-    - target: {fileID: 5396398934460280923, guid: 73ea71b2e356dd440a5fb97f0c7a7990, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 28.574951
-      objectReference: {fileID: 0}
     - target: {fileID: 5560565260554227594, guid: 73ea71b2e356dd440a5fb97f0c7a7990, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -7510,7 +7490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2095894717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7527,6 +7507,7 @@ MonoBehaviour:
   boss: {fileID: 0}
   isFighting: 0
   waveStart: 0
+  isTriggered: 0
   nextTriggerBarier: {fileID: 0}
   EnemySpawnPoint1: {fileID: 1534917819}
   EnemySpawnPoint2: {fileID: 1868195236}

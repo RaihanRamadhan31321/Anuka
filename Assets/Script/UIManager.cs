@@ -20,17 +20,20 @@ public class UIManager : MonoBehaviour
     public GameObject SettingsPanel;
     public GameObject ControlMapPanel;
     public GameObject cooldownHUD;
+    public GameObject waveUI;
+    public GameObject waveFinishedUI;
 
     public bool isPaused = true;
     private bool check = true;
     private PlayerManager player;
     private CursorController cursorController;
     private LoadSceneTransition loadSceneTransition;
+    private TriggerBarrier triggerBarrier;
     [SerializeField]private Animator gameOverAnimator;
 
     AudioManager audioManager;
 
-    public RectTransform dtPausePanel, dtSettings, dtControlMap;
+    public RectTransform dtPausePanel, dtSettings, dtControlMap, dtWave, dtWaveFinished;
 
 
 
@@ -45,6 +48,7 @@ public class UIManager : MonoBehaviour
         player = PlayerManager.instance;
         cursorController = FindObjectOfType<CursorController>();
         loadSceneTransition = FindObjectOfType<LoadSceneTransition>();
+        triggerBarrier = FindObjectOfType<TriggerBarrier>();
         //pausePanel.SetActive(false);
     }
 
@@ -266,6 +270,33 @@ public class UIManager : MonoBehaviour
             SettingsPanel.SetActive(false);
         });
         dtPausePanel.DOAnchorPosY(-1480, 0.8f).SetEase(Ease.OutBack).SetUpdate(true).From();
+    }
+
+    public void DTWave()
+    {
+        waveUI.SetActive(true);
+        dtWave.anchoredPosition = new Vector2(-483, dtWave.anchoredPosition.y);
+
+        dtWave.DOAnchorPosX(589, 1f).SetEase(Ease.OutBack).From().OnComplete(() =>
+        {
+            Invoke("HideWaveUI", 3f);
+        });
+    }
+
+    public void DTWaveFinishedUI()
+    {
+        waveFinishedUI.SetActive(true);
+        dtWaveFinished.anchoredPosition = new Vector2(-483, dtWaveFinished.anchoredPosition.y);
+        dtWaveFinished.DOAnchorPosX(589, 1f).SetEase(Ease.OutBack).From().OnComplete(() =>
+        {
+            Invoke("HideWaveUI", 3f);
+        });
+    }
+
+    public void HideWaveUI()
+    {
+        waveUI.SetActive(false);
+        waveFinishedUI.SetActive(false);
     }
 }
 

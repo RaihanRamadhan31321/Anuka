@@ -5,18 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class CheckPoint : MonoBehaviour
 {
-    TriggerBarrier tb;
+    public TriggerBarrier tb;
+    public TriggerBarrier nextTb;
     private void Start()
     {
         tb = FindObjectOfType<TriggerBarrier>();
         if (GameManager.Instance.cpCheck)
         {
-            tb.BarrierChange();
+            
+            Invoke("Delay", 0.5f);
+            PlayerManager.instance.playerMV.trigger = nextTb;
+            PlayerManager.instance.playerMV.currentWave = 2;
             GameManager.Instance.LoadPlayerCheckpoint();
             PlayerManager.instance.playerHP.currentHealth = 100;
             PlayerManager.instance.playerMV.animator.SetBool("isDead", false);
             UIManager.instance.UpdateHealth(PlayerManager.instance.playerHP.currentHealth);
         }
+    }
+    void Delay()
+    {
+        tb.BarrierChange();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

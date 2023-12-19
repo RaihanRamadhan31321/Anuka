@@ -46,6 +46,7 @@ public class FinishScr : MonoBehaviour
             UnlockNewLevel();
             GameManager.Instance.cpCheck = false;
             GameManager.Instance.SavePlayer();
+            PlayerManager.instance.playerMV.currentWave = 1;
             //SceneController.instance.LoadScene(levelName);
         }
     }

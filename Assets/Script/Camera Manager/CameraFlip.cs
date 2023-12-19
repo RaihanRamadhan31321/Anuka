@@ -7,10 +7,10 @@ public class CameraFlip : MonoBehaviour
 {
     public static CameraFlip Instance;
     [SerializeField] private float speed;
-    [SerializeField]private float currentPosX;
+    [SerializeField] private float currentPosX;
     private Vector3 velocity;
-    private GameObject batasCamera;
-    private CinemachineConfiner2D confiner;
+    [SerializeField] private GameObject batasCamera;
+    [SerializeField]private CinemachineConfiner2D confiner;
     private CinemachineVirtualCamera virtualCamera;
     private void Awake()
     {
@@ -56,18 +56,27 @@ public class CameraFlip : MonoBehaviour
     public void CameraDefault()
     {
         batasCamera = GameObject.Find("BatasCamera");
-        confiner.m_BoundingShape2D = batasCamera.GetComponent<Collider2D>();
+        if(confiner == null)
+        {
+            confiner = GetComponent<CinemachineConfiner2D>();
+            confiner.m_BoundingShape2D = batasCamera.GetComponent<PolygonCollider2D>();
+        }
+        else
+        {
+            confiner.m_BoundingShape2D = batasCamera.GetComponent<PolygonCollider2D>();
+        }
+        
     }
     public void CameraWave1()
     {
         batasCamera = GameObject.Find("BatasCameraWave1");
         
-        confiner.m_BoundingShape2D = batasCamera.GetComponent<Collider2D>();
+        confiner.m_BoundingShape2D = batasCamera.GetComponent<PolygonCollider2D>();
     }
     public void CameraWave2()
     {
         batasCamera = GameObject.Find("BatasCameraWave2");
 
-        confiner.m_BoundingShape2D = batasCamera.GetComponent<Collider2D>();
+        confiner.m_BoundingShape2D = batasCamera.GetComponent<PolygonCollider2D>();
     }
 }

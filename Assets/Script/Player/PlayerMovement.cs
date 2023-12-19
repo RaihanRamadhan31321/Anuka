@@ -203,11 +203,10 @@ public class PlayerMovement : MonoBehaviour
     public void BarrierOff()
     {
         Vector3 normal = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        Vector3 landingNormal = new Vector3(landing.transform.position.x, landing.transform.position.y, landing.transform.position.z);
         trigger.isFighting = false;
         transform.position = normal;
-        landing.transform.position = landingNormal;
         CameraFlip.Instance.CameraDefault();
+
     }
 
     public void FootStep()

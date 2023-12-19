@@ -11,7 +11,7 @@ public class TriggerBarrier : MonoBehaviour
     public BossManager boss;
     public bool isFighting = false;
     public bool waveStart = false;
-    private bool isTriggered = false;
+    [SerializeField]private bool isTriggered = false;
     
     [SerializeField] TriggerBarrier nextTriggerBarier;
     private int RandomNum;
@@ -125,7 +125,7 @@ public class TriggerBarrier : MonoBehaviour
     }
     public void EndWave()
     {
-        if(enemies.Count == 0)
+        if(enemies.Count == 0 && enemySpawned == enemySpawnLimit+1)
         {
             Debug.Log("EnemyHabs");
             waveStart = false;

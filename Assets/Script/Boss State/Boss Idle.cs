@@ -21,9 +21,5 @@ public class BossIdle : BossState
         {
             state.SwitchState(state.deathState);
         }
-        if (state.bossMV.isDead)//if dead
-        {
-            state.SwitchState(state.deathState);
-        }
     }
 }

@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
     public bool moving;
     public int maxHealth = 100;
     [SerializeField]private Collider2D colider;
-    int currentHealth;
+    public int currentHealth;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDead = false;
 

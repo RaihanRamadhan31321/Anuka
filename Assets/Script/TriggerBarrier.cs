@@ -20,7 +20,7 @@ public class TriggerBarrier : MonoBehaviour
     [SerializeField]private GameObject enemy;
     [SerializeField]private int enemySpawned = 1;
     [SerializeField] private int enemySpawnLimit;
-    [SerializeField]private List<GameObject> characters;
+    [SerializeField]public  List<GameObject> characters;
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
     // Start is called before the first frame update
     private void OnEnable()
@@ -54,6 +54,13 @@ public class TriggerBarrier : MonoBehaviour
         {
             CharacterSorting();
         }
+        if(boss != null)
+        {
+            if(boss.bossMV.currentHealth <= 0)
+            {
+                characters.Remove(boss.gameObject);
+            }
+        }
     }
     
     void OnTriggerEnter2D(Collider2D collision)
@@ -71,13 +78,14 @@ public class TriggerBarrier : MonoBehaviour
     }
     void CharacterSorting()
     {
-        if(characters.Count >= 3)
+        if (characters.Count >= 3)
         {
             characters.Sort(SortPos);
-        }
-        foreach (var character in characters)
-        {
-            character.GetComponent<SpriteRenderer>().sortingOrder = characters.IndexOf(character);
+
+            foreach (var character in characters)
+            {
+                character.GetComponent<SpriteRenderer>().sortingOrder = characters.IndexOf(character);
+            }
         }
         
     }
@@ -140,13 +148,20 @@ public class TriggerBarrier : MonoBehaviour
             {
                 if (player.currentWave != 2)
                 {
-                    UIManager.instance.DTWaveFinishedUI();
+                    UIManager.instance.DTWaveFinishLv3();
                     Debug.Log("StartWave2");
                     waveStart = true;
                     enemySpawnLimit = 7;
                     enemySpawned = 0;
                     boss.GetComponentInChildren<EnemyRange>().GetComponent<CircleCollider2D>().enabled = true;
                     boss.GetComponent<EnemyMovement>().GetComponent<BoxCollider2D>().enabled = true;
+                    player.currentWave = 2;
+                    StartCoroutine(SpawnerEnemy());
+
+                }
+                else
+                {
+                    UIManager.instance.WinToScene();
 
                 }
             }

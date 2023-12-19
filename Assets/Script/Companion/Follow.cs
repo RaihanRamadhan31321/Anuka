@@ -24,6 +24,7 @@ public class Follow : State
     {
         state.animator.SetBool("isRunning", true);
         state.compMovement.target = state.player;
+        state.rb.velocity = Vector2.zero;
     }
 
     public override void UpdateState(StateManager state)

@@ -4772,9 +4772,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381187c126bba594a90bca90ed47e787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dito: {fileID: 6724929055111353118, guid: ace6b26e761c019488520634b4c8c04f, type: 3}
+  dito: {fileID: 6724929055111353118, guid: fccab545994e6e443882f21b9427fcb8, type: 3}
   singa: {fileID: 6724929055111353118, guid: 9d5daedb91730124b9918cd2b56ab77e, type: 3}
-  singaComp: {fileID: 6724929055111353118, guid: 5dc10242946544b43ba8dafcdc1c12b4, type: 3}
+  singaComp: {fileID: 6724929055111353118, guid: 50951f75093d6684fb798f45f29065ce, type: 3}
   ditoComp: {fileID: 6724929055111353118, guid: 12885b84883e18f4281f68238956c5ed, type: 3}
   spawnPoint: {fileID: 0}
   spawnPointCompanion: {fileID: 0}

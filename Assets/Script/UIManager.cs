@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour
     public GameObject cooldownHUD;
     public GameObject waveUI;
     public GameObject waveFinishedUI;
+    public GameObject waveFinishedLv3;
+    public GameObject winPanel;
 
     public bool isPaused = true;
     private bool check = true;
@@ -33,7 +35,7 @@ public class UIManager : MonoBehaviour
 
     AudioManager audioManager;
 
-    public RectTransform dtPausePanel, dtSettings, dtControlMap, dtWave, dtWaveFinished;
+    public RectTransform dtPausePanel, dtSettings, dtControlMap, dtWave, dtWaveFinished, dtWaveLv3Finished;
 
 
 
@@ -54,6 +56,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (ControlMapPanel.activeSelf)
@@ -86,7 +89,7 @@ public class UIManager : MonoBehaviour
                     cursorController.csr = true;
                 }
                 else
-                if (isPaused && !ControlMapPanel.activeSelf && !SettingsPanel.activeSelf)
+                if (isPaused && !ControlMapPanel.activeSelf && !SettingsPanel.activeSelf && !GameOverPanel.activeSelf && !winPanel.activeSelf)
                 {
                     ResumeGame();
                     cursorController.csr = false;
@@ -107,6 +110,9 @@ public class UIManager : MonoBehaviour
         pausePanel.SetActive(true);
         PauseDoTween();
         cooldownHUD.SetActive(false);
+        waveUI.SetActive(false);
+        waveFinishedUI.SetActive(false);
+        waveFinishedLv3.SetActive(false);
         AudioManager.Instance.NPCSource.Pause();
         Time.timeScale = 0;
         cursorController.csr = true;
@@ -130,10 +136,12 @@ public class UIManager : MonoBehaviour
         gameOverAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
         Time.timeScale = 0;
         GameOverPanel.SetActive(true);
+        pausePanel.SetActive(false);
         audioManager.PlaySFX(audioManager.gameOver);
     }
     public void WinToScene()
     {
+        isPaused = false;
         Time.timeScale = 1;
         SceneController.instance.NextLevel();
     }
@@ -292,11 +300,21 @@ public class UIManager : MonoBehaviour
             Invoke("HideWaveUI", 3f);
         });
     }
+    public void DTWaveFinishLv3()
+    {
+        waveFinishedLv3.SetActive(true);
+        dtWaveLv3Finished.anchoredPosition = new Vector2(-483, dtWaveLv3Finished.anchoredPosition.y);
+        dtWaveLv3Finished.DOAnchorPosX(589, 1f).SetEase(Ease.OutBack).From().OnComplete(() =>
+        {
+            Invoke("HideWaveUI", 3f);
+        });
+    }
 
     public void HideWaveUI()
     {
         waveUI.SetActive(false);
         waveFinishedUI.SetActive(false);
+        waveFinishedLv3.SetActive(false);
     }
 }
 

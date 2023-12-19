@@ -121,12 +121,7 @@ public class Dialogue : MonoBehaviour
             interactText.SetActive(false);
             interactNextText.SetActive(false);
             interactionCompleted = true;
-
-            if (helpChar != null)
-            {
-                StartCoroutine(ObjekCoroutine());
-
-            }
+            StartCoroutine(ObjekCoroutine());
         }
     }
 

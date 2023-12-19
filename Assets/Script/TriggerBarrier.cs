@@ -128,10 +128,11 @@ public class TriggerBarrier : MonoBehaviour
         if(enemies.Count == 0 && enemySpawned == enemySpawnLimit+1)
         {
             Debug.Log("EnemyHabs");
-            UIManager.instance.DTWaveFinishedUI();
+            
             waveStart = false;
             if(SceneManager.GetActiveScene().buildIndex != 9)
             {
+                UIManager.instance.DTWaveFinishedUI();
                 Debug.Log("Trigger2");
                 BarrierChange();
             }
@@ -139,6 +140,7 @@ public class TriggerBarrier : MonoBehaviour
             {
                 if (player.currentWave != 2)
                 {
+                    UIManager.instance.DTWaveFinishedUI();
                     Debug.Log("StartWave2");
                     waveStart = true;
                     enemySpawnLimit = 7;

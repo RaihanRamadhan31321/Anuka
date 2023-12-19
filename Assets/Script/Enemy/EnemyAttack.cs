@@ -164,6 +164,7 @@ public class Enemyattack : MonoBehaviour
     {
         if (enemy.gameObject.GetComponent<BossManager>() == null)
         {
+
             enemy.OnEnableMovement();
         }
         
@@ -171,6 +172,7 @@ public class Enemyattack : MonoBehaviour
         enemy.enemyAnimator.SetBool("getHit", false);
         if (enemy.gameObject.GetComponent<BossManager>() != null)
         {
+            enemy.enemyAnimator.SetBool("isAttacking", true);
             enemy.enemyAnimator.SetBool("isRunning", true);
         }
     }

@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     [Header("------------Audio Clip------------")]
     public AudioClip mainTheme;
     public AudioClip gameplayTheme;
+    public AudioClip gameplayTheme1;
+    public AudioClip gameplayTheme2;
 
     [Header("------------SFX Player------------")]
     public AudioClip click;
@@ -66,9 +68,19 @@ public class AudioManager : MonoBehaviour
         NPCSource.PlayOneShot(clip);
     }
 
-    public void Gameplay()
+    public void GameplayLev1()
     {
         StartCoroutine(MusicChange(gameplayTheme));
+        Debug.Log("Blabla");
+    }
+    public void GameplayLev2()
+    {
+        StartCoroutine(MusicChange(gameplayTheme1));
+        Debug.Log("Blabla");
+    }
+    public void GameplayLev3()
+    {
+        StartCoroutine(MusicChange(gameplayTheme2));
         Debug.Log("Blabla");
     }
 

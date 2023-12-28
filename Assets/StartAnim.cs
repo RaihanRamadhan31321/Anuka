@@ -30,7 +30,7 @@ public class StartAnim : MonoBehaviour
 
         btnPrologue.DOAnchorPosX(384, 0.6f).SetEase(Ease.OutBack);
         btnContinue.DOAnchorPosX(-388, 0.6f).SetEase(Ease.OutBack);
-        btnLogo.DOAnchorPosY(-229, 0.6f).SetEase(Ease.OutBack);
+        btnLogo.DOAnchorPosY(-114, 0.6f).SetEase(Ease.OutBack);
         btnSettings.DOAnchorPosX(-158, 0.6f).SetEase(Ease.OutBack);
         btnSettings.DOAnchorPosY(-140, 0.6f).SetEase(Ease.OutBack);
 

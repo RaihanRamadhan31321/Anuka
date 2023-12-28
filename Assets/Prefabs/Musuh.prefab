@@ -51,7 +51,7 @@ MonoBehaviour:
   attackPoint: {fileID: 497222676512053509}
   attackRange: 1.34
   targetAtt: {fileID: 0}
-  attackDamage: 10
+  attackDamage: 5
   specialDamage: 29
   attackCooldown: 2.8
   CanAttack: 1
@@ -523,6 +523,7 @@ MonoBehaviour:
   moving: 0
   maxHealth: 100
   colider: {fileID: 0}
+  currentHealth: 0
   rb: {fileID: 0}
   isDead: 0
 --- !u!50 &7347405718244084812

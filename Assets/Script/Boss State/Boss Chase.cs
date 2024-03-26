@@ -5,6 +5,7 @@ public class BossChase : BossState
 
     public override void StartState(BossManager state)
     {
+        
         state.animator.SetBool("isRunning", true);
         if(state.bossRG.characters.Count > 1)
         {
@@ -42,6 +43,7 @@ public class BossChase : BossState
 
     public override void UpdateState(BossManager state)
     {
+        state.bossMV.enemyAnimator.SetBool("isAttacking", false);
         state.bossRG.enemy.transform.position = Vector2.MoveTowards(state.bossRG.enemy.transform.position, state.bossRG.enemyFlw.transform.position + state.jarak, state.bossRG.enemy.moveSpeed * Time.deltaTime);
         if (state.bossAT.GetComponent<CircleCollider2D>().IsTouching(state.bossRG.enemyFlw.GetComponent<Collider2D>()))
         {

@@ -76,7 +76,6 @@ public class StateManager : MonoBehaviour
         currentState = state;
         state.StartState(this);
         Debug.Log("Change State To : " + state);
-
     }
     public void AttackCooldown()
     {

@@ -100,11 +100,12 @@ public class Enemyattack : MonoBehaviour
                 }
             }
             
-            
+
             //audioManager.PlaySFX(audioManager.enemyHit);
 
-            
+
         }
+        
     }
     public void CooldownBasicAttack ()
     {

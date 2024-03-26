@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 7361185054765054874}
   - component: {fileID: 8398235893477433392}
   - component: {fileID: 3730356314548825112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: VisionRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}

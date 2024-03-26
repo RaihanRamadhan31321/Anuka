@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 5180066255463293271}
   - component: {fileID: 7347405718244084812}
   m_Layer: 8
-  m_Name: Musuh
+  m_Name: MusuhState
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,7 +428,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: ea0a6d81929eb2847b40e626449c7a86, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9339623, g: 0.914292, b: 0.09251513, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -470,7 +470,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.053756118, y: -0.3402933}
+  m_Offset: {x: -0.053756118, y: -1.7067451}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -481,7 +481,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8425815, y: 4.653537}
+  m_Size: {x: 1.8425815, y: 1.9206338}
   m_EdgeRadius: 0
 --- !u!95 &5035158710340629240
 Animator:
@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 537067720106079046}
   m_Layer: 11
   m_Name: MoveLimit
-  m_TagString: Limit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -629,7 +629,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.94, y: 0.39}
+  m_Size: {x: 1, y: 0.39}
   m_EdgeRadius: 0
 --- !u!212 &537067720106079046
 SpriteRenderer:

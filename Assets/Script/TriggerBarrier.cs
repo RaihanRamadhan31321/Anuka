@@ -149,6 +149,7 @@ public class TriggerBarrier : MonoBehaviour
                 if (player.currentWave != 2)
                 {
                     UIManager.instance.DTWaveFinishLv3();
+                    PlayerManager.instance.playerHP.currentHealth = 100;
                     Debug.Log("StartWave2");
                     waveStart = true;
                     enemySpawnLimit = 7;

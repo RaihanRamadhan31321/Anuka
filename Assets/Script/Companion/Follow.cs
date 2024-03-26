@@ -34,7 +34,11 @@ public class Follow : State
         {
             state.SwitchState(state.idleState);
         }
-        if(state.compVision.enemies.Count > 0)
+        if (state.compMovement.target == null)
+        {
+            state.compMovement.target = state.compVision.closestEnemy;
+        }
+        if (state.compVision.enemies.Count > 0)
         {
             state.SwitchState(state.chaseState);
         }

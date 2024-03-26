@@ -22,11 +22,13 @@ public class BossAttack : BossState
             state.bossAT.targetAtt = state.bossRG.enemyFlw;
             if (state.bossAT.cd)
             {
+                
                 state.bossAT.CooldownBasicAttack();
             }
             if (state.bossAT.CanAttack)
             {
                 state.bossAT.BasicAttack();
+                
             }
         }
         if(!state.cd)

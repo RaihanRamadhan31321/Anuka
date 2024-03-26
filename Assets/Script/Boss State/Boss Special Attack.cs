@@ -9,6 +9,7 @@ public class BossSpecialAttack : BossState
     
     public override void StartState(BossManager state)
     {
+        
         state.animator.SetBool("isCharging", true);
         state.isCharging = false;
 
@@ -21,6 +22,7 @@ public class BossSpecialAttack : BossState
 
     public override void UpdateState(BossManager state)
     {
+        state.bossMV.enemyAnimator.SetBool("isAttacking", false);
         distance = Vector2.Distance(state.transform.position, state.bossRG.enemyFlw.transform.position);
         
         if (!state.isCharging)

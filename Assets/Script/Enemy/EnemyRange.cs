@@ -168,7 +168,6 @@ public class EnemyRange : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         enemy.enemyAnimator.SetBool("isRunning", true);
         enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemyFlw.transform.position, enemy.moveSpeed * Time.deltaTime);
-        Debug.Log("CONTINUE");
     }
     public void ContinueCS()
     {
@@ -179,7 +178,6 @@ public class EnemyRange : MonoBehaviour
     {
         enemy.enemyAnimator.SetBool("isRunning", false);
         enemy.transform.position = new Vector2(enemy.transform.position.x, enemy.transform.position.y);
-        Debug.Log("STOP");
     }
 
 
